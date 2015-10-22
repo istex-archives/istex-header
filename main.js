@@ -25,7 +25,7 @@
         $.ajax({
           url: contentDeliveryUrl + "include/surenteteistex.html",
           converters: {"text html": function (data) {
-              return data.replace(/(href|src)="(?!http)(.*?)"/img, "$1=\"" + contentDeliveryUrl + "include/$2\"");
+              return data.replace(/(href|src)="(?!http)([^#]*?)"/img, "$1=\"" + contentDeliveryUrl + "include/$2\"");
             }},
           success: function (data) {
 
@@ -33,7 +33,7 @@
               .filter("#surentete")
               .prependTo($("body"))
               .filter("#surentete").wrap("<div id='istex-web-header' class='sandbox'></div>")
-              .find("[href*=XX]").click(preventDefaultEvent).end()
+              .find("[href*=#]").click(preventDefaultEvent).end()
               .find("[href*='" + window.location.hostname + "']").parent("li").remove().end().end()
               ;
 
