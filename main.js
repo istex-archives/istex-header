@@ -2,19 +2,16 @@
   "use strict";
 
   if (window.jQuery) {
-    init(jQuery);
+    init(window.jQuery);
   } else {
-    document.write('<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"><\/script>');
-    setTimeout(function () {
-      init(jQuery);
-    }, 618);
+    loadJqueryAndInvokeInit();
   }
 
   function init ($) {
     var contentDeliveryUrl = "http://content-delivery.istex.fr/web-header/"
       ;
 
-
+//    contentDeliveryUrl = ~window.location.hostname.indexOf("127.0.0.1") && window.location.href || contentDeliveryUrl;
 
     $.ajax({
       url: contentDeliveryUrl + "public/css/main.min.css",
@@ -24,31 +21,43 @@
 
         $.ajax({
           url: contentDeliveryUrl + "include/surenteteistex.html",
-          converters: {"text html": function (data) {
-              return data.replace(/(href|src)="(?!http)([^#]*?)"/img, "$1=\"" + contentDeliveryUrl + "include/$2\"");
-            }},
           success: function (data) {
 
-            $(jQuery.parseHTML(data))
+            var $webHeader =
+              $(jQuery.parseHTML(data))
               .filter("#surentete")
+              .find("img").each(function () {
+              $(this).attr("src", function (index, attr) {
+                return attr.replace(/^(?!http)(?:\/?([^/#"]+))+$/i, contentDeliveryUrl + "public/img/$1");
+              });
+            }).end()
               .prependTo($("body"))
-              .filter("#surentete").wrap("<div id='istex-web-header' class='sandbox'></div>")
+              .wrap("<div id='istex-web-header' class='sandbox'></div>")
               .find("[href*=#]").click(preventDefaultEvent).end()
               .find("[href*='" + window.location.hostname + "']").parent("li").remove().end().end()
               ;
 
-            window.location.hostname === "www.istex.fr" && $("#surentete .logoistex").remove();
+            window.location.hostname === "www.istex.fr" && $webHeader.find(".logoistex").remove();
           }
 
         });
       }
     });
 
+  }
 
-    function preventDefaultEvent (e) {
-      e.preventDefault();
-    }
+  function loadJqueryAndInvokeInit () {
+    var script = document.createElement("script");
+    script.src = "//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js";
+    script.onload = function () {
+      init(window.jQuery.noConflict());
+    };
+    document.head.appendChild(script).parentNode.removeChild(script);
 
+  }
+
+  function preventDefaultEvent (e) {
+    e.preventDefault();
   }
 
 }());
