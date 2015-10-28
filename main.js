@@ -26,11 +26,7 @@
             var $webHeader =
               $(jQuery.parseHTML(data))
               .filter("#surentete")
-              .find("img").each(function () {
-              $(this).attr("src", function (index, attr) {
-                return attr.replace(/^(?!http)(?:\/?([^/#"]+))+$/i, contentDeliveryUrl + "public/img/$1");
-              });
-            }).end()
+              .find("img").each(rewriteImgUrl).end()
               .prependTo($("body"))
               .wrap("<div id='istex-web-header' class='sandbox'></div>")
               .find("[href*=#]").click(preventDefaultEvent).end()
@@ -44,7 +40,14 @@
       }
     });
 
+    function rewriteImgUrl () {
+        $(this).attr("src", function (index, attr) {
+          return attr.replace(/^(?!http)(?:\/?([^/#"]+))+$/i, contentDeliveryUrl + "public/img/$1");
+        });
+    }
+    
   }
+
 
   function loadJqueryAndInvokeInit () {
     var script = document.createElement("script");
