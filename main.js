@@ -8,7 +8,7 @@
   }
 
   function init ($) {
-    var contentDeliveryUrl = "http://content-delivery.istex.fr/web-header/"
+    var contentDeliveryUrl = "https://content-delivery.istex.fr/web-header/"
       ;
 
     contentDeliveryUrl = ~window.location.hostname.match(/localhost|127\.0\.0\.1/) && window.location.href || contentDeliveryUrl;
