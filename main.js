@@ -11,7 +11,7 @@
     var contentDeliveryUrl = "https://content-delivery.istex.fr/web-header/"
       ;
 
-      // uncomment for local use
+    // uncomment for local use
 //    contentDeliveryUrl = window.location.hostname.match(/localhost|127\.0\.0\.1/) && window.location.href || contentDeliveryUrl;
 
     $.ajax({
@@ -34,8 +34,8 @@
               .find("[href*='" + window.location.hostname + "']").addClass('disabled').click(preventDefaultEvent).end()
               ;
 
-            window.location.hostname === "wiki.istex.fr" && $webHeader.find('.logoistex').remove();
-            window.location.hostname === "www.istex.fr" && $webHeader.find(".srent").addClass('border');
+            window.location.hostname === "www.istex.fr" && $webHeader.find('.logoistex').remove();
+            window.location.hostname === "wiki.istex.fr" && $webHeader.find(".srent").addClass('border');
           }
 
         });
@@ -43,9 +43,9 @@
     });
 
     function rewriteImgUrl () {
-        $(this).attr("src", function (index, attr) {
-          return attr.replace(/^(?!http)(?:\/?([^/#"]+))+$/i, contentDeliveryUrl + "public/img/$1");
-        });
+      $(this).attr("src", function (index, attr) {
+        return attr.replace(/^(?!http)(?:\/?([^/#"]+))+$/i, contentDeliveryUrl + "public/img/$1");
+      });
     }
 
   }
