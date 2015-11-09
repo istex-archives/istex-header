@@ -2,15 +2,29 @@
 @import "surenteteistex.less";
 
 #istex-web-header{
-  .srent, .srentss{
-    background-color: #fff;
-  }
-  .srent{
-    margin-top: 5px;
-    border:1px solid #eaeade;
-    padding:0;
-    img{
-      vertical-align: middle;
+  #surentete{
+    border-bottom:1px solid #eaeade;
+
+    .srent, .srentss{
+      background-color: #fff;
+    }
+    .srentss{
+      border: 1px solid #eaeade;
+      & > li{border:0;}
+      & > li +li  { border-top: 1px solid #eaeade; }
+    }
+    .srent{
+      margin-top: 9px;
+      padding:0;
+      img{
+        vertical-align: middle;
+      }
+    }
+    a.disabled{
+      background-color: #fff;
+      color: #777;
+      text-decoration: none;
+      cursor: not-allowed;
     }
   }
 }
