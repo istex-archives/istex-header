@@ -11,7 +11,8 @@
     var contentDeliveryUrl = "https://content-delivery.istex.fr/web-header/"
       ;
 
-//    contentDeliveryUrl = ~window.location.hostname.match(/localhost|127\.0\.0\.1/) && window.location.href || contentDeliveryUrl;
+      // uncomment for local use
+//    contentDeliveryUrl = window.location.hostname.match(/localhost|127\.0\.0\.1/) && window.location.href || contentDeliveryUrl;
 
     $.ajax({
       url: contentDeliveryUrl + "public/css/main.min.css",
@@ -33,7 +34,8 @@
               .find("[href*='" + window.location.hostname + "']").addClass('disabled').click(preventDefaultEvent).end()
               ;
 
-            window.location.hostname === "www.istex.fr" && $webHeader.find(".logoistex").remove();
+            window.location.hostname === "wiki.istex.fr" && $webHeader.find('.logoistex').remove();
+            window.location.hostname === "www.istex.fr" && $webHeader.find(".srent").addClass('border');
           }
 
         });
