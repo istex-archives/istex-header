@@ -1,4 +1,4 @@
-(function () {
+(function() {
   "use strict";
 
   if (window.jQuery) {
@@ -16,19 +16,19 @@
 
     $.ajax({
       url: contentDeliveryUrl + "public/css/main.min.css",
-      success: function (data) {
+      success: function(data) {
 
         $("head").append("<style>" + data + "</style>");
 
         $.ajax({
           url: contentDeliveryUrl + "include/surenteteistex.html",
-          success: function (data) {
-
+          success: function(data) {
+            var prependToTarget = window.location.hostname === "article-type.lod.istex.fr" ? ".navbar.navbar-inverse.navbar-fixed-top" : "body";
             var $webHeader =
               $(jQuery.parseHTML(data))
               .filter("#surentete")
               .find("img").each(rewriteImgUrl).end()
-              .prependTo($("body"))
+              .prependTo($(prependToTarget))
               .wrap("<div id='istex-web-header' class='sandbox'></div>")
               .find("[href*=#]").click(preventDefaultEvent).end()
               .find("[href*='" + window.location.hostname + "']").addClass('disabled').click(preventDefaultEvent).end()
@@ -43,7 +43,7 @@
     });
 
     function rewriteImgUrl () {
-      $(this).attr("src", function (index, attr) {
+      $(this).attr("src", function(index, attr) {
         return attr.replace(/^(?!http)(?:\/?([^/#"]+))+$/i, contentDeliveryUrl + "public/img/$1");
       });
     }
@@ -54,7 +54,7 @@
   function loadJqueryAndInvokeInit () {
     var script = document.createElement("script");
     script.src = "//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js";
-    script.onload = function () {
+    script.onload = function() {
       init(window.jQuery.noConflict());
     };
     document.head.appendChild(script).parentNode.removeChild(script);
