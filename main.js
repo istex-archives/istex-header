@@ -35,7 +35,6 @@
               ;
 
             window.location.hostname === "www.istex.fr" && $webHeader.find('.logoistex').remove();
-            window.location.hostname === "wiki.istex.fr" && $webHeader.find(".srent").addClass('border');
           }
 
         });
