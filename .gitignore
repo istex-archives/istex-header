@@ -1,2 +1,4 @@
 node_modules
 nbproject
+.idea
+public/css/main.min.css
