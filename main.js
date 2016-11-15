@@ -12,7 +12,7 @@
       ;
 
     // uncomment for local use
-//    contentDeliveryUrl = window.location.hostname.match(/localhost|127\.0\.0\.1/) && window.location.href || contentDeliveryUrl;
+    contentDeliveryUrl = window.location.hostname.match(/localhost|127\.0\.0\.1/) && window.location.href || contentDeliveryUrl;
 
     $.ajax({
       url: contentDeliveryUrl + "public/css/main.min.css",
@@ -55,8 +55,9 @@
     script.src = "//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js";
     script.onload = function() {
       init(window.jQuery.noConflict());
+      document.head.removeChild(script);
     };
-    document.head.appendChild(script).parentNode.removeChild(script);
+    document.head.appendChild(script);
 
   }
 
