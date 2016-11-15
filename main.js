@@ -15,7 +15,9 @@
     if (window.WEB_HEADER_LOCAL
         || (window.location.href && window.location.href.match(/web_header_local=true/))
     ) {
-      contentDeliveryUrl = window.location.hostname.match(/localhost|127\.0\.0\.1/) && window.location.href || contentDeliveryUrl;
+      contentDeliveryUrl = window.location.hostname.match(/localhost|127\.0\.0\.1/)
+                           && window.location.href.split('?')[0]
+                           || contentDeliveryUrl;
     }
 
     $.ajax({
