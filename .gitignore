@@ -1,5 +1,8 @@
 node_modules
 nbproject
 .idea
-public/css/main.min.css
+public/css/*
+public/fonts/*
+!public/css/*.gitkeep
+!public/fonts/*.gitkeep
 npm-debug.log
