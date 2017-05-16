@@ -1,7 +1,7 @@
 node_modules
 nbproject
 .idea
-public/css/*
+public/css/main.min.css
 public/fonts/*
 !public/css/*.gitkeep
 !public/fonts/*.gitkeep

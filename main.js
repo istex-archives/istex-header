@@ -1,6 +1,12 @@
 (function() {
   'use strict';
 
+  var CONTENT_DELIVERY_URL = 'https://content-delivery.istex.fr/web-header',
+      LOCAL_DELIVERY_URL   = 'http://localhost:8080',
+      JQUERY_CDN_URL       = 'https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js',
+      ressourcesUrl        = CONTENT_DELIVERY_URL
+  ;
+
   if (window.jQuery) {
     init(window.jQuery);
   } else {
@@ -8,10 +14,6 @@
   }
 
   function init ($) {
-    var CONTENT_DELIVERY_URL = 'https://content-delivery.istex.fr/web-header',
-      LOCAL_DELIVERY_URL = 'http://localhost:8080',
-      ressourcesUrl = CONTENT_DELIVERY_URL
-      ;
 
     // Mode de debug local
     if ((window.localStorage && window.localStorage.getItem('web_header_local'))
@@ -32,7 +34,7 @@
         $('head').append('<style>' + data + '</style>');
 
         $.ajax({
-          url: ressourcesUrl + '/views/header.view.html',
+          url: ressourcesUrl + '/public/views/header.view.html',
           success: function(_data) {
             var prependToTarget =
               window.location.hostname === 'article-type.lod.istex.fr' ? '.navbar.navbar-inverse.navbar-fixed-top' : 'body';
@@ -40,7 +42,7 @@
             var $webHeader =
               $(jQuery.parseHTML(_data))
               .filter('#istex-web-header')
-              .find('img').each(rewriteImgUrl).end()
+              .find('img').each(rebaseImgUrl).end()
               .prependTo($(prependToTarget))
               .wrap('<div class="sandbox"></div>')
               .find('[href*="#"]').click(preventDefaultEvent).end()
@@ -58,9 +60,9 @@
       }
     });
 
-    function rewriteImgUrl () {
+    function rebaseImgUrl () {
       $(this).attr('src', function(index, attr) {
-        return attr.replace(/^(?!http)(?:\/?([^/#"]+))+$/i, ressourcesUrl + '/public/img/$1');
+        return attr.replace(/^(?!https?)(?:\/?([^/#"]+))+$/i, ressourcesUrl + '/public/img/$1');
       });
     }
 
@@ -69,7 +71,7 @@
 
   function loadJqueryAndInvokeInit () {
     var script = document.createElement('script');
-    script.src = 'https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js';
+    script.src = JQUERY_CDN_URL;
     script.onload = function() {
       init(window.jQuery.noConflict());
       document.head.removeChild(script);
