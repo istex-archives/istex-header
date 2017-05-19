@@ -30,7 +30,6 @@ nav {
     a {
       display:         block;
       color:           #000;
-      text-align:      center;
       text-decoration: none;
 
       &.disabled {
@@ -65,12 +64,13 @@ nav {
     }
 
     .istex__dropdown-menu {
-      position:        absolute;
-      display:         none;
-      border:          1px solid @navbar-border-color;
-      width: 140px;
+      position:         absolute;
+      display:          none;
+      margin-left:      -15px;
+      border:           1px solid @navbar-border-color;
+      width:            140px;
       background-color: #fff;
-      list-style-type: none;
+      list-style-type:  none;
       & > li {
         padding: 0 10px;
       }
