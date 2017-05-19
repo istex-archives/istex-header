@@ -1,49 +1,26 @@
+// Variables
+@font-path: "//netdna.bootstrapcdn.com/font-awesome/4.7.0/fonts";
+@navbar-border-color: #eaeade;
+
 .sandbox {
+  /*! Reset and normalize */
   @import "reset.less";
+  @import "../node_modules/bootstrap/less/normalize.less";
+
+  /*! Fonts */
   @import "../node_modules/font-awesome/less/font-awesome.less";
+
+  /*! Scaffolding */
+  & * {
+    box-sizing: border-box;
+  }
+
+  & *:before,
+  & *:after {
+    box-sizing: border-box;
+  }
+
+  /*! Web header */
   @import "header.less";
-
-  @font-path: "//netdna.bootstrapcdn.com/font-awesome/4.7.0/fonts";
   @fa-font-path: @font-path;
-  .srent .fa {
-    margin-right: .33em;
-    color:        #458ca6;
-  }
-}
-
-#istex-web-header {
-  background-color: white;
-  border-bottom:    1px solid #eaeade;
-
-  .srentss {
-    background-color: #fff;
-  }
-  .srentss {
-    border: 1px solid #eaeade;
-    & > li { border: 0; }
-    & > li + li { border-top: 1px solid #eaeade; }
-  }
-  .srent {
-    margin-top: 9px;
-    padding:    0;
-
-    &.border {
-      margin-top:    8px;
-      border:        1px solid #eaeade;
-      border-bottom: 0;
-    }
-
-    img {
-      vertical-align: middle;
-    }
-  }
-  a.disabled {
-    color:           #777;
-    text-decoration: none;
-    cursor:          not-allowed;
-  }
-}
-
-#dokuwiki__site {
-  position: relative;
 }

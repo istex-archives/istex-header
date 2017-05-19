@@ -1,41 +1,82 @@
-#istex-web-header { margin: 0 auto; padding: 0; font-family: Arial, Helvetica, sans-serif; color: #333; height: 40px; position: relative; z-index: 1000; padding-left: 150px; padding-right: 150px; background-color: white }
+#istex__web-header {
+  position:         relative;
+  z-index:          1000;
+  margin:           0 auto;
+  border-bottom:    1px solid @navbar-border-color;
+  padding:          0 10%;
+  background-color: white;
+  font-family:      Arial, Helvetica, sans-serif;
+}
 
-#barresrent { border-bottom: 1px solid #eaeade; }
-
-//.bsbb, .srent li { box-sizing: border-box; }
+img {
+  vertical-align: middle;
+}
 
 .clear { clear: both }
 
-.logoistex { position: absolute; margin: 3px 0 0 0; }
+.logoistex {
+  position: absolute;
+  margin:   3px 0 0 0;
+}
 
-.logoistex img, .logoanr img { float: left }
+nav {
+  & > .istex__navbar {
+    position:        relative;
+    float:           right;
+    margin:          9px 50px 0 0;
+    font-size:       .8em;
+    list-style-type: none;
 
-.srent { margin: 0 50px 0 0; padding: 10px 0 0 0; list-style-type: none; position: relative; background: transparent; float: right }
+    a {
+      display:         block;
+      color:           #000;
+      text-align:      center;
+      text-decoration: none;
 
-.srent img { padding: 0 7px 0 20px; }
+      &.disabled {
+        color:           #777;
+        text-decoration: none;
+        cursor:          not-allowed;
+      }
 
-.srent li { float: left; position: relative; display: block; height: 30px; line-height: 30px; padding-right: 10px }
+      &:hover,
+      &:active {
+        text-decoration: underline;
+      }
+      & > img,
+      & > .fa {
+        margin-right: .33em;
+      }
+      & > .fa {
+        color:           #458ca6;
+        text-decoration: none;
+      }
+    }
 
-.srent a:link { text-decoration: none; height: 30px }
+    li {
+      height:      30px;
+      line-height: 30px;
+    }
 
-.srent a:active, .srent a:visited, .srent a:hover { text-decoration: underline; }
+    & > li {
+      float:        left;
+      position:     relative;
+      margin-right: 10px;
+    }
 
-.srent a:link, .srent a:active, .srent a:visited, .srent a:hover { color: black; display: block; text-align: center; font-size: 0.8em; }
-
-.srent li li { background-color: transparent; border-right: 1px solid #eaeade; border-bottom: 1px solid #eaeade; border-left: 1px solid #eaeade; padding-left: 10px; color: #fff }
-
-.srent li li, .srent li li a, .srent li li a:hover, .srent li li a:focus { display: block; width: 140px; }
-
-.srent li li a:link, .srent li li a:active, .srent li li a:visited, .srent li li a:hover, .srent li li a:focus { text-align: left; }
-
-.srent li li a:hover, .srent li li a:focus { text-align: left; display: block; width: 140px; height: 30px; }
-
-.srent ul { position: absolute; display: none; padding: 0; list-style-type: none; }
-
-.srent li ul a { float: left; }
-
-.srent li:hover ul, .srent li:focus ul { display: block; }
-
-.srent li li img { padding: 0 5px 0 3px; }
-
-
+    .istex__dropdown-menu {
+      position:        absolute;
+      display:         none;
+      border:          1px solid @navbar-border-color;
+      width: 140px;
+      list-style-type: none;
+      & > li {
+        padding: 0 10px;
+      }
+      & > li + li { border-top: 1px solid @navbar-border-color; }
+    }
+    .istex__dropdown:hover > .istex__dropdown-menu {
+      display: block;
+    }
+  }
+}

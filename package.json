@@ -5,11 +5,12 @@
   "main": "main.js",
   "scripts": {
     "postinstall": "node ./lib/npm/postInstall.js",
-    "static": "./node_modules/node-static/bin/cli.js",
-    "less-watcher":"node ./lib/scripts/watch.js"
+    "static": "./node_modules/node-static/bin/cli.js -H '{\"Access-Control-Allow-Origin\":\"*\"}'",
+    "less-watcher": "node ./lib/scripts/watch.js"
   },
   "dependencies": {
     "async": "^2.4.0",
+    "bootstrap": "^3.3.7",
     "chokidar": "^1.7.0",
     "font-awesome": "^4.7.0",
     "fs-extra": "^3.0.0",
