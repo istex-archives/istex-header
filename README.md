@@ -1,2 +1,4 @@
-# web-header
-Header for all ISTEX websites
+web-header
+===============
+
+Le header lié à la Galaxy Istex

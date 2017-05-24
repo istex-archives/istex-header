@@ -1,0 +1,26 @@
+// Variables
+@font-path: "//netdna.bootstrapcdn.com/font-awesome/4.7.0/fonts";
+@navbar-border-color: #eaeade;
+
+.sandbox {
+  /*! Reset and normalize */
+  @import "reset.less";
+  @import "../node_modules/bootstrap/less/normalize.less";
+
+  /*! Fonts */
+  @import "../node_modules/font-awesome/less/font-awesome.less";
+
+  /*! Scaffolding */
+  & * {
+    box-sizing: border-box;
+  }
+
+  & *:before,
+  & *:after {
+    box-sizing: border-box;
+  }
+
+  /*! Web header */
+  @import "header.less";
+  @fa-font-path: @font-path;
+}
