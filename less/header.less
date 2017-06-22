@@ -1,83 +1,65 @@
-#istex__web-header {
-  position:         relative;
-  z-index:          1000;
-  margin:           0 auto;
-  border-bottom:    1px solid @navbar-border-color;
-  padding:          0 10%;
-  background-color: white;
-  font-family:      Arial, Helvetica, sans-serif;
+@import url('https://fonts.googleapis.com/css?family=PT+Sans');
+#pkepEzpaarseHeader {
+    width: 100%;
+    padding: 0 10px 0 10px;
+    background-color: #fff;
+    box-sizing: border-box;
+    height: 40px;
+    display: flex;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    flex-direction: row;
+    -webkit-flex-direction: row;
+    -ms-flex-direction:row;
+    justify-content: space-between;
+    -webkit-justify-content: space-between;
+    align-items: flex-end;
+    -ms-flex-align: flex-end;
+    -webkit-align-items: flex-end;
 }
-
-img {
-  vertical-align: middle;
+#pkepEzpaarseHeader a{
+    text-decoration: none;
 }
-
-.clear { clear: both }
-
-.logoistex {
-  position: absolute;
-  margin:   3px 0 0 0;
+.pkepLogoEzpaarse {
+    max-width: 200px;
+    align-self: center;
 }
-
-nav {
-  & > .istex__navbar {
-    position:        relative;
-    float:           right;
-    margin:          9px 50px 0 0;
-    font-size:       .8em;
-    list-style-type: none;
-
-    a {
-      display:         block;
-      color:           #000;
-      text-decoration: none;
-
-      &.disabled {
-        color:           #777;
-        text-decoration: none;
-        cursor:          not-allowed;
-      }
-
-      &:hover,
-      &:active {
-        text-decoration: underline;
-      }
-      & > img,
-      & > .fa {
-        margin-right: .33em;
-      }
-      & > .fa {
-        color:           #458ca6;
-        text-decoration: none;
-      }
+#pkepLinks a, #pkepLinks a:hover, #pkepLinks a:link, #pkepLinks a:visited {
+    color: #5e6a81;
+}
+.pkepLinksText {
+    font-family: "PT sans";
+    font-size: 16px;
+    padding-right: 5px;
+}
+#pkepSocial {
+    height: 25px;
+    padding-bottom: 7px;
+}
+#pkepLinks img, #pkepSocial img  {
+    height: 100%;
+    padding-left: 5px;
+}
+.pkepSmallImg {
+    display: inline;
+    vertical-align: middle;
+}
+@media (max-width:1061px) {
+    .pkepLogoEzpaarse {
+        max-width: 150px;
     }
-
-    li {
-      height:      30px;
-      line-height: 30px;
+}
+@media (max-width:986px){
+    .pkepLinksText {
+        display: none;
     }
-
-    & > li {
-      float:        left;
-      position:     relative;
-      margin-right: 10px;
+}
+@media (max-width:600px) {
+    .pkepLogoEzpaarse {
+        display: none;
     }
-
-    .istex__dropdown-menu {
-      position:         absolute;
-      display:          none;
-      margin-left:      -15px;
-      border:           1px solid @navbar-border-color;
-      width:            140px;
-      background-color: #fff;
-      list-style-type:  none;
-      & > li {
-        padding: 0 10px;
-      }
-      & > li + li { border-top: 1px solid @navbar-border-color; }
+    #pkepLinks img, #pkepSocial img {
+        padding-left: 0;
+        height: 20px;
     }
-    .istex__dropdown:hover > .istex__dropdown-menu {
-      display: block;
-    }
-  }
 }
