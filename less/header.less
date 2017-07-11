@@ -73,7 +73,12 @@ nav {
       background-color: #fff;
       list-style-type:  none;
       & > li {
+          padding: 0 5px;
+      }
+      & .sub_menu {
         padding: 0 5px;
+        width: 200px;
+        background-color: #fff;
       }
       & > li + li { border-top: 1px solid @navbar-border-color; }
     }
@@ -87,7 +92,7 @@ nav {
         padding: 0 2px 0 2px;
     }
 }
-@media (max-width: 735px){
+@media (max-width: 745px){
     .logoistexanr {
         display: none;
     }
@@ -95,7 +100,7 @@ nav {
         display: inline;
     }
 }
-@media (max-width: 684px){
+@media (max-width: 695px){
     .text__dropdown {
         display: none;
     }
