@@ -52,8 +52,8 @@
                                   .prependTo($(prependToTarget))
                                   .wrap('<div class="sandbox"></div>')
                                   .find('[href*="#"]').click(preventDefaultEvent).end()
-                                  .find('[href*="' + window.location.hostname + '"]').addClass('disabled').click(
-                                  preventDefaultEvent).end()
+                                  .find('[href="' + window.location.href + '"]').addClass('disabled').click(
+                                  preventDefaultEvent).end();
                           ;
 
                           window.location.hostname === 'www.istex.fr' && $webHeader.find('.logoistex').remove();
