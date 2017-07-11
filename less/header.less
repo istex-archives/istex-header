@@ -1,65 +1,107 @@
-@import url('https://fonts.googleapis.com/css?family=PT+Sans');
-#pkepEzpaarseHeader {
+#istex__web-header {
     width: 100%;
-    padding: 0 10px 0 10px;
-    background-color: #fff;
-    box-sizing: border-box;
     height: 40px;
+    z-index: 1000;
+    border-bottom: 1px solid @navbar-border-color;
+    background-color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 0 75px 0 3%;
     display: flex;
-    display: -ms-flexbox;
-    display: -webkit-flex;
     flex-direction: row;
-    -webkit-flex-direction: row;
-    -ms-flex-direction:row;
     justify-content: space-between;
-    -webkit-justify-content: space-between;
-    align-items: flex-end;
-    -ms-flex-align: flex-end;
-    -webkit-align-items: flex-end;
 }
-#pkepEzpaarseHeader a{
-    text-decoration: none;
-}
-.pkepLogoEzpaarse {
-    max-width: 200px;
-    align-self: center;
-}
-#pkepLinks a, #pkepLinks a:hover, #pkepLinks a:link, #pkepLinks a:visited {
-    color: #5e6a81;
-}
-.pkepLinksText {
-    font-family: "PT sans";
-    font-size: 16px;
-    padding-right: 5px;
-}
-#pkepSocial {
-    height: 25px;
-    padding-bottom: 7px;
-}
-#pkepLinks img, #pkepSocial img  {
-    height: 100%;
-    padding-left: 5px;
-}
-.pkepSmallImg {
-    display: inline;
+img {
     vertical-align: middle;
 }
-@media (max-width:1061px) {
-    .pkepLogoEzpaarse {
-        max-width: 150px;
+.clear { clear: both }
+
+.logoistex {
+    align-self: center;
+}
+.logoistexonly {
+    display: none;
+}
+
+nav {
+  & > .istex__navbar {
+    margin:          9px 0 0 0;
+    font-size:       .8em;
+    list-style-type: none;
+
+    a {
+      display:         block;
+      color:           #000;
+      text-decoration: none;
+
+      &.disabled {
+        color:           #777;
+        text-decoration: none;
+        cursor:          not-allowed;
+      }
+
+      &:hover,
+      &:active {
+        text-decoration: underline;
+      }
+      & > img,
+      & > .fa {
+        margin-right: .33em;
+      }
+      & > .fa {
+        color:           #458ca6;
+        text-decoration: none;
+      }
+    }
+
+    li {
+      height:      30px;
+      line-height: 30px;
+    }
+
+    & > li {
+      float:        left;
+      position:     relative;
+      margin-right: 10px;
+    }
+
+    .istex__dropdown-menu {
+      position:         absolute;
+      display:          none;
+      margin-left:      -15px;
+      border:           1px solid @navbar-border-color;
+      width:            130px;
+      background-color: #fff;
+      list-style-type:  none;
+      & > li {
+        padding: 0 5px;
+      }
+      & > li + li { border-top: 1px solid @navbar-border-color; }
+    }
+    .istex__dropdown:hover > .istex__dropdown-menu {
+      display: block;
+    }
+  }
+}
+@media (max-width: 830px) {
+    #istex__web-header {
+        padding: 0 2px 0 2px;
     }
 }
-@media (max-width:986px){
-    .pkepLinksText {
+@media (max-width: 735px){
+    .logoistexanr {
+        display: none;
+    }
+    .logoistexonly {
+        display: inline;
+    }
+}
+@media (max-width: 684px){
+    .text__dropdown {
         display: none;
     }
 }
-@media (max-width:600px) {
-    .pkepLogoEzpaarse {
+@media (max-width: 444px) {
+    .logoistexonly {
         display: none;
-    }
-    #pkepLinks img, #pkepSocial img {
-        padding-left: 0;
-        height: 20px;
     }
 }
