@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  var CONTENT_DELIVERY_URL = 'https://content-delivery.istex.fr/web-header',
+  var CONTENT_DELIVERY_URL = 'https://content-delivery.' + 'istex' + '.fr' + '/web-header', // split istex.fr because of ezproxy automatic parsing (istex-view use case)
       LOCAL_DELIVERY_URL   = 'http://localhost:8080',
       JQUERY_CDN_URL       = 'https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js',
       ressourcesUrl        = CONTENT_DELIVERY_URL
