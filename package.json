@@ -30,8 +30,8 @@
   "author": "Istex API",
   "license": "MIT",
   "lint-staged": {
-    "*.{js,less}": [
-      "prettier --write *.js less/*.less",
+    "*.{js,less,html}": [
+      "prettier --write *.js less/*.less public/views/*.html",
       "git add"
     ]
   },
