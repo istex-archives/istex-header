@@ -1,41 +1,43 @@
 #istex__web-header {
-  position:         relative;
-  z-index:          1000;
-  margin:           0 auto;
-  border-bottom:    1px solid @navbar-border-color;
-  padding:          0 10%;
+  position: relative;
+  z-index: 1000;
+  margin: 0 auto;
+  border-bottom: 1px solid @navbar-border-color;
+  padding: 0 10%;
   background-color: white;
-  font-family:      Arial, Helvetica, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 img {
   vertical-align: middle;
 }
 
-.clear { clear: both }
+.clear {
+  clear: both;
+}
 
 .logoistex {
   position: absolute;
-  margin:   3px 0 0 0;
+  margin: 3px 0 0 0;
 }
 
 nav {
   & > .istex__navbar {
-    position:        relative;
-    float:           right;
-    margin:          9px 50px 0 0;
-    font-size:       .8em;
+    position: relative;
+    float: right;
+    margin: 9px 50px 0 0;
+    font-size: 0.8em;
     list-style-type: none;
 
     a {
-      display:         block;
-      color:           #000;
+      display: block;
+      color: #000;
       text-decoration: none;
 
       &.disabled {
-        color:           #777;
+        color: #777;
         text-decoration: none;
-        cursor:          not-allowed;
+        cursor: not-allowed;
       }
 
       &:hover,
@@ -44,37 +46,39 @@ nav {
       }
       & > img,
       & > .fa {
-        margin-right: .33em;
+        margin-right: 0.33em;
       }
       & > .fa {
-        color:           #458ca6;
+        color: #458ca6;
         text-decoration: none;
       }
     }
 
     li {
-      height:      30px;
+      height: 30px;
       line-height: 30px;
     }
 
     & > li {
-      float:        left;
-      position:     relative;
+      float: left;
+      position: relative;
       margin-right: 10px;
     }
 
     .istex__dropdown-menu {
-      position:         absolute;
-      display:          none;
-      margin-left:      -15px;
-      border:           1px solid @navbar-border-color;
-      width:            140px;
+      position: absolute;
+      display: none;
+      margin-left: -15px;
+      border: 1px solid @navbar-border-color;
+      width: 140px;
       background-color: #fff;
-      list-style-type:  none;
+      list-style-type: none;
       & > li {
         padding: 0 10px;
       }
-      & > li + li { border-top: 1px solid @navbar-border-color; }
+      & > li + li {
+        border-top: 1px solid @navbar-border-color;
+      }
     }
     .istex__dropdown:hover > .istex__dropdown-menu {
       display: block;
