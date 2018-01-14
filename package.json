@@ -6,7 +6,8 @@
   "scripts": {
     "postinstall": "node ./lib/npm/postInstall.js",
     "static": "./node_modules/node-static/bin/cli.js -H '{\"Access-Control-Allow-Origin\":\"*\"}'",
-    "less-watcher": "node ./lib/scripts/watch.js"
+    "less-watcher": "node ./lib/scripts/watch.js",
+    "precommit": "lint-staged"
   },
   "dependencies": {
     "async": "^2.4.0",
@@ -20,12 +21,23 @@
   },
   "repository": {
     "type": "git",
-    "url": "ssh://istexdepl@vsistex.intra.inist.fr:22222/istex/web-header.git"
+    "url": "https://github.com/istex/istex-web-header"
   },
   "keywords": [
     "Istex",
     "header"
   ],
   "author": "Istex API",
-  "license": "ISC"
+  "license": "MIT",
+  "lint-staged": {
+    "*.{js,less}": [
+      "prettier --write *.js less/*.less",
+      "git add"
+    ]
+  },
+  "devDependencies": {
+    "husky": "^0.14.3",
+    "lint-staged": "^5.0.0",
+    "prettier": "^1.7.4"
+  }
 }
