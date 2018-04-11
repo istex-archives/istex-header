@@ -31,18 +31,44 @@ function loadHeader(){
       document.getElementById("header_app").addEventListener("click",function(){
         displayApp();
       });
+      loadApp();
     }
     else
       alert("Erreur chargement header : error "+code);
   });
 }
 
+//Permet d'afficher ou non les apps
 function displayApp(){
-  var frame= document.getElementById("header_frame");
+  var frame= document.getElementById("header_block_app");
   if(frame.style.display=="block")
     frame.style.display="none";
   else
     frame.style.display="block";
+}
+
+function loadApp(){
+   nanoajax.ajax({
+        url:'https://istex-services.data.istex.fr/api/run/all-documents',
+        method: 'GET',
+        headers: {'Content-Type':'application/json'}
+    }, function (code, responseText) {
+    if(code==200){
+      integrateApp(responseText);
+    }
+    else
+      alert("Erreur chargement header : error "+code);
+  });
+}
+
+function integrateApp(json){
+  var app=JSON.parse(json);
+  var html="<ul>";
+  for (var i = 0; i < app.total-1; i++) {
+    html+="<li><a href='"+app.data[i].QoTd+"'><div><img src='"+app.data[i].Cl2W+"'/><p>"+app.data[i].z351+"</p></div></a></li>";
+  }
+  html+="</ul>";
+   document.getElementById("frame_app").innerHTML=html;
 }
 
 //On lance les fonctions.
