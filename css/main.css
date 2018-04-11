@@ -72,7 +72,6 @@ nav img{
 	border: solid 1px #FFFFFF;
 	background-color: #242B32;
 	color:#FFFFFF;
-	font-family: Monserrat;
 }
 
 #frame_app ul{
@@ -95,20 +94,27 @@ nav img{
 	width: 100px;
 	height: 150px;
 	
-	padding: 5px;
+	padding: 4px;
 	margin:5px;
+	border: solid 1px #FFFFFF;
+	transition-duration: 0.5s;
 }
 
 #frame_app div:hover{
-	padding: 4px;
+	background-color: #458CA5;
 	border: solid 1px #FFFFFF;
-	border-radius: 10px;
 }
 
 #frame_app a{
 	text-decoration: none;
+	color: #C4D733;
+	font-family: Monserrat;
+	transition-duration: 0.5s;
+}
+
+#frame_app a:hover{
+	text-decoration: underline;
 	color: #FFFFFF;
-	
 }
 
 #frame_app img{
