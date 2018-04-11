@@ -1,35 +1,35 @@
 //Permets de charger le header et tous ses fichiers nécessaires.
-function charger(){
-  chargerCSS();
-  chargerHeader();
+function load(){
+  loadCSS();
+  loadNanoAjax();
 }
 
-function chargerCSS(){
+function loadCSS(){
   //Chargement css.
   var css=document.createElement("link");
   css.rel="stylesheet";
-  css.href="public/css/main.css";
+  css.href="css/main.css";
   document.head.appendChild(css);
 }
 
-function chargerNanoAjax(){
+function loadNanoAjax(){
   //Chargement nanoAjax.
   var script = document.createElement("script");
-  script.src = "public/js/nanoajax.min.js";
+  script.src = "node_modules/nanoajax/nanoajax.min.js";
   script.onload = function() {
     //chargement du header après l'installation de nanoAjax.
-    chargerHeader();
+    loadHeader();
   };
   document.head.appendChild(script);
 }
 
 //Utilisé après le chargement de nanoAjax.
-function chargerHeader(){
-  nanoajax.ajax({url:"public/views/header.html"}, function (code, responseText) {
+function loadHeader(){
+  nanoajax.ajax({url:"views/header.html"}, function (code, responseText) {
     if(code==200){
       document.body.innerHTML = responseText+document.body.innerHTML;
       document.getElementById("header_app").addEventListener("click",function(){
-        affichageApp();
+        displayApp();
       });
     }
     else
@@ -37,7 +37,7 @@ function chargerHeader(){
   });
 }
 
-function affichageApp(){
+function displayApp(){
   var frame= document.getElementById("header_frame");
   if(frame.style.display=="block")
     frame.style.display="none";
@@ -46,4 +46,4 @@ function affichageApp(){
 }
 
 //On lance les fonctions.
-charger()
+load()
