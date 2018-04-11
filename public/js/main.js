@@ -1,7 +1,7 @@
 //Permets de charger le header et tous ses fichiers nécessaires.
 function charger(){
   chargerCSS();
-  chargerNanoAjax();
+  chargerHeader();
 }
 
 function chargerCSS(){

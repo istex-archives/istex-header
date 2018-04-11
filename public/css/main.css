@@ -54,8 +54,8 @@ nav img{
 
 #header_frame{
 	position: absolute;
-	right: 0;
+	right: 2%;
 	top:60px;
 	display: none;
-	height: 50%;
+	border: solid 1px #FFFFFF;
 }
