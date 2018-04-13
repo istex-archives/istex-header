@@ -34,17 +34,17 @@ function loadHeader(){
       loadServices();
     }
     else
-      loadError("header",code);
+      document.body.innerHTML = loadError("header",code)+document.body.innerHTML;
   });
 }
 
 //Permet d'afficher ou non le menu des services
 function displayServices(){
-  var frame= document.getElementById("header_block_services");
-  if(frame.style.display=="block")
-    frame.style.display="none";
+  var popin= document.getElementById("header_block_services");
+  if(popin.style.display=="block")
+    popin.style.display="none";
   else
-    frame.style.display="block";
+    popin.style.display="block";
 }
 
 //Permet de charger les services à intégrer
@@ -57,7 +57,7 @@ function loadServices(){
   if(code==200)
     integrateServices(responseText);
   else
-    loadError("services_header",code);
+    document.getElementById("popin_services").innerHTML=loadError("popin_services",code);
 });
 }
 
@@ -70,9 +70,9 @@ function integrateServices(json){
       html+="<li><a href='"+services.data[i].QoTd+"'><div><img src='"+services.data[i].Cl2W+"'/><p>"+services.data[i].z351+"</p></div></a></li>";
     }
     html+="</ul>";
-    document.getElementById("frame_services").innerHTML=html;
+    document.getElementById("popin_services").innerHTML=html;
   }catch(error){
-    alert("Intégration des services au menu impossible : "+error);
+    document.getElementById("popin_services").innerHTML="Intégration des services au menu impossible : "+error;
   }
 }
 
@@ -81,25 +81,25 @@ function loadError(objet,code){
   var debErr="Le chargement de '"+objet+"' a échoué : ";
   switch(code){
     case 400:
-    alert(debErr+"contenu de la requête invalide : error 400");
+      return(debErr+"contenu de la requête invalide : error 400");
     break;
     case 403:
-    alert(debErr+"ressources interdites d'accès : error 403");
+      return(debErr+"ressources interdites d'accès : error 403");
     break;
     case 401:
-    alert(debErr+"accès aux ressources refusé : error 401");
+      return(debErr+"accès aux ressources refusé : error 401");
     break;
     case 404:
-    alert(debErr+"ressources non trouvées : error 404");
+      return(debErr+"ressources non trouvées : error 404");
     break;
     case 500:
-    alert(debErr+"erreur serveur interne : error 500");
+      return(debErr+"erreur serveur interne : error 500");
     break;
     case 503:
-    alert(debErr+"serveur indisponible : error 503");
+      return(debErr+"serveur indisponible : error 503");
     break;
     default:
-    alert(debErr+"error : "+code);
+      return(debErr+"error : "+code);
     break;
   }
 }
