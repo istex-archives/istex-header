@@ -26,49 +26,82 @@ function loadNanoAjax(){
 //Utilisé après le chargement de nanoAjax.
 function loadHeader(){
   nanoajax.ajax({url:"views/header.html"}, function (code, responseText) {
-    if(code==200){
+    if(code==200){ 
       document.body.innerHTML = responseText+document.body.innerHTML;
-      document.getElementById("header_app").addEventListener("click",function(){
-        displayApp();
+      document.getElementById("header_services").addEventListener("click",function(){
+        displayServices();
       });
-      loadApp();
+      loadServices();
     }
     else
-      alert("Erreur chargement header : error "+code);
+      loadError("header",code);
   });
 }
 
-//Permet d'afficher ou non les apps
-function displayApp(){
-  var frame= document.getElementById("header_block_app");
+//Permet d'afficher ou non le menu des services
+function displayServices(){
+  var frame= document.getElementById("header_block_services");
   if(frame.style.display=="block")
     frame.style.display="none";
   else
     frame.style.display="block";
 }
 
-function loadApp(){
-   nanoajax.ajax({
-        url:'https://istex-services.data.istex.fr/api/run/all-documents',
-        method: 'GET',
-        headers: {'Content-Type':'application/json'}
-    }, function (code, responseText) {
-    if(code==200){
-      integrateApp(responseText);
-    }
-    else
-      alert("Erreur chargement header : error "+code);
-  });
+//Permet de charger les services à intégrer
+function loadServices(){
+ nanoajax.ajax({
+  url:"https://istex-services.data.istex.fr/api/run/all-documents?maxSize=20",
+  method: 'GET',
+  headers: {'Content-Type':'application/json'}
+}, function (code, responseText) {
+  if(code==200)
+    integrateServices(responseText);
+  else
+    loadError("services_header",code);
+});
 }
 
-function integrateApp(json){
-  var app=JSON.parse(json);
-  var html="<ul>";
-  for (var i = 0; i < app.total-1; i++) {
-    html+="<li><a href='"+app.data[i].QoTd+"'><div><img src='"+app.data[i].Cl2W+"'/><p>"+app.data[i].z351+"</p></div></a></li>";
+//permet d'intégrer les services au menu
+function integrateServices(json){
+  try{
+    var services=JSON.parse(json);
+    var html="<ul>";
+    for (var i = 0; i < services.total; i++) {
+      html+="<li><a href='"+services.data[i].QoTd+"'><div><img src='"+services.data[i].Cl2W+"'/><p>"+services.data[i].z351+"</p></div></a></li>";
+    }
+    html+="</ul>";
+    document.getElementById("frame_services").innerHTML=html;
+  }catch(error){
+    alert("Intégration des services au menu impossible : "+error);
   }
-  html+="</ul>";
-   document.getElementById("frame_app").innerHTML=html;
+}
+
+//permet de gérer les erreurs de chargement
+function loadError(objet,code){
+  var debErr="Le chargement de '"+objet+"' a échoué : ";
+  switch(code){
+    case 400:
+    alert(debErr+"contenu de la requête invalide : error 400");
+    break;
+    case 403:
+    alert(debErr+"ressources interdites d'accès : error 403");
+    break;
+    case 401:
+    alert(debErr+"accès aux ressources refusé : error 401");
+    break;
+    case 404:
+    alert(debErr+"ressources non trouvées : error 404");
+    break;
+    case 500:
+    alert(debErr+"erreur serveur interne : error 500");
+    break;
+    case 503:
+    alert(debErr+"serveur indisponible : error 503");
+    break;
+    default:
+    alert(debErr+"error : "+code);
+    break;
+  }
 }
 
 //On lance les fonctions.

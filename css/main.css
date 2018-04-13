@@ -3,7 +3,6 @@ html,body,header,nav,nav ul{
 }
 
 html, body{
-	padding: 0;
 	margin: 0;
 }
 
@@ -14,7 +13,6 @@ body{
 header{ 
 	background-color:#242B32;
 	height: 48px;
-	margin:auto;
 	display: flex;
 	border-bottom: solid 2px #FFFFFF;
 }
@@ -26,7 +24,6 @@ nav,nav ul {
 nav ul {
 	list-style-type: none;
 	margin: 0;
-	padding: 0;
 }
 
 #header_logo{
@@ -37,11 +34,16 @@ nav ul {
 	margin-left: -32px;
 }
 
-#header_app,#header_notif{
+#header_services,#header_notif{
 	margin-top:12px;
 	height: 25px;
 	margin-right: 3%;
 }
+
+#header_services:hover{
+	cursor: pointer;
+}
+
 #header_notif{
 	margin-left: auto;
 }
@@ -50,31 +52,30 @@ nav img{
 	height: 100%;
 }
 
-#header_block_app{
+#header_block_services{
 	display: none;
 }
 
-#fleche_app{
+#fleche_services{
 	position: absolute;
 	right: 3%;
 	margin-right: 2.5px;
 	top:50px;
-  	border-left: 10px solid transparent;
-  	border-right: 10px solid transparent;
-  	border-bottom: 10px solid #FFFFFF;
+	border-left: 10px solid transparent;
+	border-right: 10px solid transparent;
+	border-bottom: 10px solid #FFFFFF;
 }
 
-#frame_app{
+#frame_services{
 	position: absolute;
 	right: 2%;
 	top:60px;
 	width: 360px;
 	border: solid 1px #FFFFFF;
 	background-color: #242B32;
-	color:#FFFFFF;
 }
 
-#frame_app ul{
+#frame_services ul{
 	width: 100%;
 	height: 100%;
 
@@ -82,15 +83,14 @@ nav img{
 	margin: 0;
 }
 
-#frame_app li{
+#frame_services li{
 	list-style: none;
 	display: inline-block;
 	vertical-align: top;
-	text-align: center;
-	
+	text-align: center;	
 }
 
-#frame_app div{
+#frame_services div{
 	width: 100px;
 	height: 150px;
 	
@@ -100,24 +100,25 @@ nav img{
 	transition-duration: 0.5s;
 }
 
-#frame_app div:hover{
-	background-color: #458CA5;
-	border: solid 1px #FFFFFF;
-}
-
-#frame_app a{
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+#frame_services a{
 	text-decoration: none;
 	color: #C4D733;
-	font-family: Monserrat;
-	transition-duration: 0.5s;
+	font-family: 'Montserrat', sans-serif;
 }
 
-#frame_app a:hover{
+#frame_services a:hover{
 	text-decoration: underline;
 	color: #FFFFFF;
 }
 
-#frame_app img{
+#frame_services a:hover div{
+	background-color: #458CA5;
+	border: solid 1px #FFFFFF;
+}
+
+
+#frame_services img{
 	width: 64px;
 	height: 64px;
 }
