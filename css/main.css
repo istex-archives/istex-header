@@ -1,0 +1,61 @@
+html,body,header,nav,nav ul{
+	width: 100%;
+}
+
+html, body{
+	padding: 0;
+	margin: 0;
+}
+
+body{
+	background-color:gray;
+}
+
+header{ 
+	background-color:#242B32;
+	height: 48px;
+	margin:auto;
+	display: flex;
+	border-bottom: solid 2px #FFFFFF;
+}
+
+nav,nav ul {
+    display: inherit;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+#header_logo{
+	margin-top:17px;
+	height: 15px;
+	position: absolute;
+  	left: 50%;
+ 	margin-left: -32px;
+}
+
+#header_app,#header_notif{
+	margin-top:12px;
+	height: 25px;
+	margin-right: 3%;
+}
+#header_notif{
+	margin-left: auto;
+}
+
+nav img{
+	height: 100%;
+}
+
+
+
+#header_frame{
+	position: absolute;
+	right: 2%;
+	top:60px;
+	display: none;
+	border: solid 1px #FFFFFF;
+}
