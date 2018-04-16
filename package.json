@@ -3,9 +3,7 @@
   "version": "1.0.0",
   "description": "Bootstrap, template and assets to display Istex galaxy header.",
   "main": "main.js",
-  "scripts": {
-    "precommit": "lint-staged"
-  },
+  "scripts": {},
   "dependencies": {
     "nanoajax": "^0.4.3"
   },
@@ -18,14 +16,5 @@
     "header"
   ],
   "author": "Istex API",
-  "license": "MIT",
-  "lint-staged": {
-    "*.{js,less,html}": [
-      "prettier --write /js/*.js /views/*.html",
-      "git add"
-    ]
-  },
-  "devDependencies": {
-    "prettier": "^1.10.2"
-  }
+  "license": "MIT"
 }
