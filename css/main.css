@@ -1,3 +1,7 @@
+#istex_web_header,#header_nav,#header_ul,#header_logo,#header_services,#header_notif,#header_services:hover,#header_notif,#header_nav img,#header_block_services>div, #header_block_services>span,
+#fleche_services,#popin_services,#popin_services_ul,.services,.services_lien,.services_lien div,.services_lien:hover,#popin_services img{
+	box-sizing: content-box;
+}
 
 html,body,#istex_web_header,#header_nav,#header_ul{
 	width: 100%;
@@ -6,7 +10,6 @@ html,body,#istex_web_header,#header_nav,#header_ul{
 html, body{
 	margin: 0;
 }
-
 
 #istex_web_header{ 
 	background-color:#242B32;
@@ -17,6 +20,17 @@ html, body{
 
 #header_nav,#header_ul {
 	display: inherit;
+	height: 100%;
+}
+
+#header_nav a{
+	display: inline;
+	padding: 0
+}
+
+#header_nav a::after{
+	content: "";
+	display: inline-block;
 }
 
 #header_ul {
@@ -25,11 +39,13 @@ html, body{
 }
 
 #header_logo{
+	padding: 0;
 	margin-top:17px;
 	height: 15px;
 	position: absolute;
 	left: 50%;
 	margin-left: -32px;
+		font-size: 1rem;
 }
 
 #header_services,#header_notif{
@@ -61,10 +77,12 @@ html, body{
 
 #header_block_services.on>div,#header_block_services.on>span{
 	opacity: 1;
+	visibility: visible;
 }
 
 #header_block_services.off>div,#header_block_services.off>span{
   opacity: 0;
+  visibility: hidden;
 }
 
 #fleche_services{
@@ -81,7 +99,7 @@ html, body{
 	position: absolute;
 	right: 2%;
 	top:60px;
-	width: 300px;
+	width: 295px;
 	border: solid 1px #FFFFFF;
 	background-color: #242B32;
 	color: #FFFFFF;
@@ -101,7 +119,7 @@ html, body{
 }
 
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
-.services_lien{
+.services_lien:link,.services_lien:visited,.services_lien:active{
 	display: block;
 	width: 75px;
 	height: 75px;
@@ -114,15 +132,14 @@ html, body{
 }
 
 .services_lien div{
-	margin-top: 50%; 
-  	transform: translateY(-50%); 
+  	transform: translateY(15%);
 }
 
 .services_lien:hover{
+	color: #FFFFFF;
 	text-decoration: underline;
 	text-decoration-color: #C4D733;
 	padding: 4px;
-	color: #FFFFFF;
 	border: solid 1px #FFFFFF;
 	background-color: #458CA5;
 	border-radius: 2px; 
