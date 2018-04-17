@@ -1,3 +1,6 @@
+ var ressourceUrl =
+      "http://192.168.31.29:49193/istex-web-header/";
+
 //Permets de charger le header et tous ses fichiers nécessaires.
 function load(){
   loadCSS();
@@ -8,14 +11,14 @@ function loadCSS(){
   //Chargement css.
   var css=document.createElement("link");
   css.rel="stylesheet";
-  css.href="css/main.css";
+  css.href=ressourceUrl+"css/main.css";
   document.head.appendChild(css);
 }
 
 function loadNanoAjax(){
   //Chargement nanoAjax.
   var script = document.createElement("script");
-  script.src = "node_modules/nanoajax/nanoajax.min.js";
+  script.src = ressourceUrl+"node_modules/nanoajax/nanoajax.min.js";
   script.onload = function() {
     //chargement du header après l'installation de nanoAjax.
     loadHeader();
@@ -25,9 +28,10 @@ function loadNanoAjax(){
 
 //Utilisé après le chargement de nanoAjax.
 function loadHeader(){
-  nanoajax.ajax({url:"views/header.html"}, function (code, responseText) {
+  nanoajax.ajax({url:ressourceUrl+"views/header.html",cors:true}, function (code, responseText) {
     if(code==200){ 
       document.body.innerHTML = responseText+document.body.innerHTML;
+      rebaseImgUrl();
       document.getElementById("header_services").addEventListener("click",function(){
         displayServices();
       });
@@ -38,13 +42,22 @@ function loadHeader(){
   });
 }
 
+//Permet de mettre à jour le lien des images
+function rebaseImgUrl(){
+  var images=document.querySelectorAll("#istex_web_header img");
+  images.forEach(function(image)
+    {
+      image.src=ressourceUrl+"/img/"+image.src.split("/").pop();
+    });
+}
+
 //Permet d'afficher ou non le menu des services
 function displayServices(){
   var popin= document.getElementById("header_block_services");
-  if(popin.style.display=="block")
-    popin.style.display="none";
+  if(popin.className=="on")
+    popin.className="off";
   else
-    popin.style.display="block";
+    popin.className="on";
 }
 
 //Permet de charger les services à intégrer
@@ -65,9 +78,9 @@ function loadServices(){
 function integrateServices(json){
   try{
     var services=JSON.parse(json);
-    var html="<ul>";
+    var html="<ul id='popin_services_ul'>";
     for (var i = 0; i < services.total; i++) {
-      html+="<li><a href='"+services.data[i].QoTd+"'><div><img src='"+services.data[i].Cl2W+"'/><p>"+services.data[i].z351+"</p></div></a></li>";
+      html+="<li class='services'><a href='"+services.data[i].QoTd+"' class='services_lien'><div><img src='"+services.data[i].Cl2W+"'/><p>"+services.data[i].z351+"</p></div></a></li>";
     }
     html+="</ul>";
     document.getElementById("popin_services").innerHTML=html;
