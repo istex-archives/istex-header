@@ -41,10 +41,10 @@ function loadHeader(){
 //Permet d'afficher ou non le menu des services
 function displayServices(){
   var popin= document.getElementById("header_block_services");
-  if(popin.style.display=="block")
-    popin.style.display="none";
+  if(popin.className=="on")
+    popin.className="off";
   else
-    popin.style.display="block";
+    popin.className="on";
 }
 
 //Permet de charger les services à intégrer

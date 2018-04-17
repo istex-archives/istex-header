@@ -52,8 +52,20 @@ nav img{
 	height: 100%;
 }
 
-#header_block_services{
-	display: none;
+#header_block_services>div, #header_block_services>span{
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -ms-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+}
+
+#header_block_services.on>div,#header_block_services.on>span{
+	opacity: 1;
+}
+
+#header_block_services.off>div,#header_block_services.off>span{
+  opacity: 0;
 }
 
 #fleche_services{
