@@ -1,7 +1,4 @@
-#istex_web_header,#iwh_header_nav,#iwh_header_ul,#iwh_header_logo,#iwh_header_services,#iwh_header_notif,#iwh_header_services:hover,
-#iwh_header_notif,#iwh_header_nav img,#iwh_header_block_services>div, #iwh_header_block_services>span,
-#iwh_fleche_services,#iwh_popin_services,#iwh_popin_services_ul,.iwh_popin_services,.iwh_services_lien,
-.iwh_services_lien div,.iwh_services_lien:hover,#iwh_popin_services img{
+#istex_web_header *{
 	box-sizing: content-box;
 }
 
@@ -14,6 +11,12 @@
 	height: 48px;
 	display: flex;
 	border-bottom: solid 2px #FFFFFF;
+	font-size: 12px;
+	line-height: 0;
+}
+
+#istex_web_header *:hover{
+opacity: 1;
 }
 
 #istex_web_header *::after,#istex_web_header *::before{
@@ -29,17 +32,11 @@
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
-	font-size: 1rem;
-	line-height: 1;
 }
 
 #iwh_header_ul a{
 	display: inline;
 	padding: 0;
-}
-
-#iwh_header_ul a:hover {
-	opacity:1;
 }
 
 #iwh_header_logo{
@@ -122,7 +119,6 @@
 	text-align: center;	
 }
 
-@import url('https://fonts.googleapis.com/css?family=Montserrat');
 .iwh_services_lien:link,.iwh_services_lien:visited,.iwh_services_lien:active{
 	display: block;
 	width: 75px;
@@ -130,9 +126,7 @@
 	padding: 5px;
 	margin:5px;
 	color: #FFFFFF;
-	font-family: 'Montserrat', sans-serif;
 	text-decoration: none;
-	font-size: 0.75em;
 }
 
 .iwh_services_lien div{
@@ -152,5 +146,10 @@
 #iwh_popin_services img{
 	width: 32px;
 	height: 32px;
+}
+
+#iwh_popin_services p{
+	margin:1em 0;
+	font-family: 'Montserrat', sans-serif;
 }
 
