@@ -5,8 +5,7 @@
   "main": "main.js",
   "scripts": {},
   "dependencies": {
-    "nanoajax": "^0.4.3",
-    "normalize.css": "^8.0.0"
+    "nanoajax": "^0.4.3"
   },
   "repository": {
     "type": "git",
