@@ -1,5 +1,4 @@
- var ressourceUrl =
-      "http://192.168.31.29:49193/istex-web-header/";
+ var ressourceUrl =document.getElementById("iwh_script").src.split("js/main.js")[0];
 
 //Permets de charger le header et tous ses fichiers nécessaires.
 function load(){
@@ -32,7 +31,7 @@ function loadHeader(){
     if(code==200){ 
       document.body.innerHTML = responseText+document.body.innerHTML;
       rebaseImgUrl();
-      document.getElementById("header_services").addEventListener("click",function(){
+      document.getElementById("iwh_header_services").addEventListener("click",function(){
         displayServices();
       });
       loadServices();
@@ -53,7 +52,7 @@ function rebaseImgUrl(){
 
 //Permet d'afficher ou non le menu des services
 function displayServices(){
-  var popin= document.getElementById("header_block_services");
+  var popin= document.getElementById("iwh_header_block_services");
   if(popin.className=="on")
     popin.className="off";
   else
@@ -70,7 +69,7 @@ function loadServices(){
   if(code==200)
     integrateServices(responseText);
   else
-    document.getElementById("popin_services").innerHTML=loadError("popin_services",code);
+    document.getElementById("iwh_popin_services").innerHTML=loadError("iwh_popin_services",code);
 });
 }
 
@@ -78,14 +77,14 @@ function loadServices(){
 function integrateServices(json){
   try{
     var services=JSON.parse(json);
-    var html="<ul id='popin_services_ul'>";
+    var html="<ul id='iwh_popin_services_ul'>";
     for (var i = 0; i < services.total; i++) {
-      html+="<li class='services'><a href='"+services.data[i].QoTd+"' class='services_lien'><div><img src='"+services.data[i].Cl2W+"'/><p>"+services.data[i].z351+"</p></div></a></li>";
+      html+="<li class='iwh_popin_services'><a href='"+services.data[i].QoTd+"' class='iwh_services_lien'><div><img src='"+services.data[i].Cl2W+"'/><p>"+services.data[i].z351+"</p></div></a></li>";
     }
     html+="</ul>";
-    document.getElementById("popin_services").innerHTML=html;
+    document.getElementById("iwh_popin_services").innerHTML=html;
   }catch(error){
-    document.getElementById("popin_services").innerHTML="Intégration des services au menu impossible : "+error;
+    document.getElementById("iwh_popin_services").innerHTML="Intégration des services au menu impossible : "+error;
   }
 }
 

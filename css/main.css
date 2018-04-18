@@ -1,14 +1,12 @@
-#istex_web_header,#header_nav,#header_ul,#header_logo,#header_services,#header_notif,#header_services:hover,#header_notif,#header_nav img,#header_block_services>div, #header_block_services>span,
-#fleche_services,#popin_services,#popin_services_ul,.services,.services_lien,.services_lien div,.services_lien:hover,#popin_services img{
+#istex_web_header,#iwh_header_nav,#iwh_header_ul,#iwh_header_logo,#iwh_header_services,#iwh_header_notif,#iwh_header_services:hover,
+#iwh_header_notif,#iwh_header_nav img,#iwh_header_block_services>div, #iwh_header_block_services>span,
+#iwh_fleche_services,#iwh_popin_services,#iwh_popin_services_ul,.iwh_popin_services,.iwh_services_lien,
+.iwh_services_lien div,.iwh_services_lien:hover,#iwh_popin_services img{
 	box-sizing: content-box;
 }
 
-html,body,#istex_web_header,#header_nav,#header_ul{
+#istex_web_header,#iwh_header_nav,#iwh_header_ul{
 	width: 100%;
-}
-
-html, body{
-	margin: 0;
 }
 
 #istex_web_header{ 
@@ -18,55 +16,62 @@ html, body{
 	border-bottom: solid 2px #FFFFFF;
 }
 
-#header_nav,#header_ul {
+#iwh_header_nav,#iwh_header_ul {
 	display: inherit;
 	height: 100%;
 }
 
-#header_nav a{
+#iwh_header_nav a{
 	display: inline;
 	padding: 0
 }
 
-#header_nav a::after{
-	content: "";
+#iwh_header_nav a::after{
+	content: none;
 	display: inline-block;
 }
 
-#header_ul {
+#iwh_header_ul {
 	list-style-type: none;
 	margin: 0;
+	font-size: 1rem;
+	line-height: 1;
 }
 
-#header_logo{
+#iwh_header_ul::after {
+	content: none;
+	display: inline-block;
+}
+
+#iwh_header_logo{
 	padding: 0;
 	margin-top:17px;
 	height: 15px;
 	position: absolute;
 	left: 50%;
 	margin-left: -32px;
-		font-size: 1rem;
+	
 }
 
-#header_services,#header_notif{
+#iwh_header_services,#iwh_header_notif{
 	margin-top:12px;
 	height: 25px;
 	margin-right: 3%;
 }
 
-#header_services:hover{
+#iwh_header_services:hover{
 	cursor: pointer;
 }
 
-#header_notif{
+#iwh_header_notif{
 	margin-left: auto;
 }
 
-#header_nav img{
+#iwh_header_nav img{
 	height: 100%;
 }
 
-#header_block_services>div, #header_block_services>span{
+#iwh_header_block_services>div, #iwh_header_block_services>span{
   -webkit-transition: all 0.5s ease-in-out;
   -moz-transition: all 0.5s ease-in-out;
   -ms-transition: all 0.5s ease-in-out;
@@ -75,17 +80,17 @@ html, body{
   z-index: 99999;
 }
 
-#header_block_services.on>div,#header_block_services.on>span{
+#iwh_header_block_services.on>div,#iwh_header_block_services.on>span{
 	opacity: 1;
 	visibility: visible;
 }
 
-#header_block_services.off>div,#header_block_services.off>span{
+#iwh_header_block_services.off>div,#iwh_header_block_services.off>span{
   opacity: 0;
   visibility: hidden;
 }
 
-#fleche_services{
+#iwh_fleche_services{
 	position: absolute;
 	right: 3%;
 	margin-right: 2.5px;
@@ -95,7 +100,7 @@ html, body{
 	border-bottom: 10px solid #FFFFFF;
 }
 
-#popin_services{
+#iwh_popin_services{
 	position: absolute;
 	right: 2%;
 	top:60px;
@@ -105,21 +110,21 @@ html, body{
 	color: #FFFFFF;
 }
 
-#popin_services_ul{
+#iwh_popin_services_ul{
 	width: 100%;
 	height: 100%;
 	padding: 5px;
 	margin: 0;
 }
 
-.services{
+.iwh_popin_services{
 	list-style: none;
 	display: inline-block;
 	text-align: center;	
 }
 
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
-.services_lien:link,.services_lien:visited,.services_lien:active{
+.iwh_services_lien:link,.iwh_services_lien:visited,.iwh_services_lien:active{
 	display: block;
 	width: 75px;
 	height: 75px;
@@ -131,11 +136,11 @@ html, body{
 	font-size: 0.75em;
 }
 
-.services_lien div{
+.iwh_services_lien div{
   	transform: translateY(15%);
 }
 
-.services_lien:hover{
+.iwh_services_lien:hover{
 	color: #FFFFFF;
 	text-decoration: underline;
 	text-decoration-color: #C4D733;
@@ -145,7 +150,7 @@ html, body{
 	border-radius: 2px; 
 }
 
-#popin_services img{
+#iwh_popin_services img{
 	width: 32px;
 	height: 32px;
 }
