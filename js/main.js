@@ -5,7 +5,6 @@ var ressourceUrl = document
 //Permets de charger le header et tous ses fichiers nécessaires.
 function load() {
   loadCSS();
-  loadNanoAjax();
 }
 
 function loadCSS() {
@@ -13,6 +12,10 @@ function loadCSS() {
   var css = document.createElement("link");
   css.rel = "stylesheet";
   css.href = ressourceUrl + "css/main.css";
+  css.onload = function() {
+    //chargement de nanoajax et du header après l'installation du css.
+    loadNanoAjax();
+  };
   document.head.appendChild(css);
 }
 
