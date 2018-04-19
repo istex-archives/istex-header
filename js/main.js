@@ -12,9 +12,6 @@ function loadCSS(){
   css.rel="stylesheet";
   css.href=ressourceUrl+"css/main.css";
   document.head.appendChild(css);
-  var font=document.createElement("style");
-  font.innerHTML="@import url('https://fonts.googleapis.com/css?family=Montserrat')";
-  document.head.appendChild(font);
 }
 
 function loadNanoAjax(){
