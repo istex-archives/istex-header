@@ -4,7 +4,7 @@
   "description": "Bootstrap, template and assets to display Istex galaxy header.",
   "private": true,
   "scripts": {
-    "prettier": "prettier --write js/*.js views/*.html css/*.css",
+    "prettier": "prettier --write src/js/*.js public/css/*.css",
     "webpack": "webpack --config webpack.config.js"
   },
   "dependencies": {

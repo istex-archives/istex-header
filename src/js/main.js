@@ -1,4 +1,4 @@
-import nanoajax from 'nanoajax';
+import nanoajax from "nanoajax";
 
 var ressourceUrl = document
   .getElementById("iwh_script")
