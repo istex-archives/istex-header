@@ -163,3 +163,28 @@
   margin: 1em 0;
   font-family: "Montserrat", sans-serif;
 }
+
+.ihw_services_text_hover {
+  position: absolute;
+  visibility: hidden;
+  opacity: 0;
+  line-height: 1;
+  font-size: 0.75em;
+  transform: translate(5px, -15px);
+  width: 75px;
+  padding: 4px;
+  border: solid 1px #ffffff;
+  background-color: #242b32;
+  border-radius: 2px;
+  z-index: 1;
+}
+
+.iwh_services_lien:hover ~ .ihw_services_text_hover {
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -ms-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+  visibility: visible;
+  opacity: 1;
+}
