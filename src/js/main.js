@@ -30,7 +30,7 @@ function loadHeader() {
         document.body.innerHTML = responseText + document.body.innerHTML;
         rebaseImgUrl();
         document.addEventListener("click", function(e) {
-           if (clickOutsidePopin(e.target)) {
+          if (clickOutsidePopin(e.target)) {
             var popin = document.getElementById("iwh_header_block_services");
             if (popin.className == "on") popin.className = "off";
           }
@@ -119,7 +119,7 @@ function integrateServices(json) {
         services.data[i].Cl2W +
         "'/></div><p>" +
         services.data[i].z351 +
-        "</p></div></a><span class='ihw_services_text_hover'>"+
+        "</p></div></a><span class='ihw_services_text_hover'>" +
         services.data[i].BNzf +
         "</span></li>";
     }
