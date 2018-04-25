@@ -1,9 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat");
 
-#istex_web_header * {
-  box-sizing: content-box;
-}
-
 #istex_web_header,
 #iwh_header_nav,
 #iwh_header_ul {
@@ -109,69 +105,90 @@
   position: absolute;
   right: 2%;
   top: 60px;
-  width: 295px;
+  width: 300px;
   border: solid 1px #ffffff;
   background-color: #242b32;
   color: #ffffff;
 }
 
 #iwh_popin_services_ul {
-  width: 100%;
+  width: auto;
   height: 100%;
   padding: 5px;
-  margin: 0;
+  margin: 0 auto;
 }
 
 .iwh_popin_services {
+  position: relative;
   list-style: none;
   display: inline-block;
   text-align: center;
+  margin: 5px;
+  box-sizing: content-box;
+  width: calc(100%/3 - 10px);
+  padding-top: calc(100%/3 - 10px);
 }
 
 .iwh_services_lien:link,
 .iwh_services_lien:visited,
 .iwh_services_lien:active {
-  display: block;
-  width: 75px;
-  height: 75px;
-  padding: 5px;
-  margin: 5px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  padding: 4px;
+  border: solid 1px transparent;
   color: #ffffff;
+  width: auto;
   text-decoration: none;
-}
-
-.iwh_services_lien div {
-  transform: translateY(15%);
+  overflow: hidden;
 }
 
 .iwh_services_lien:hover {
   color: #ffffff;
   text-decoration: underline;
   text-decoration-color: #c4d733;
-  padding: 4px;
   border: solid 1px #ffffff;
   background-color: #458ca5;
   border-radius: 2px;
 }
 
-#iwh_popin_services img {
-  width: 32px;
-  height: 32px;
+.iwh_services_lien_block {
+  width: 100%;
+  height: 100%;
+  transform: translateY(10%);
 }
 
-#iwh_popin_services p {
-  margin: 1em 0;
+.iwh_services_lien_block_img{
+  position: relative;
+  width: 50%;
+  padding-top: 50%;
+  height: 0;
+  margin: auto;
+}
+
+.iwh_services_lien_block_img img {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+
+.iwh_services_lien p {
+  margin: 20% 0 0 0;
   font-family: "Montserrat", sans-serif;
 }
 
 .ihw_services_text_hover {
-  position: absolute;
   visibility: hidden;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  left: 0;
   opacity: 0;
   line-height: 1;
-  font-size: 0.75em;
-  transform: translate(5px, -15px);
-  width: 75px;
+  font-size: 1em;
   padding: 4px;
   border: solid 1px #ffffff;
   background-color: #242b32;
@@ -188,3 +205,8 @@
   visibility: visible;
   opacity: 1;
 }
+
+.ihw_services_text_hover:hover {
+  visibility: hidden;
+  opacity: 0;
+  }

@@ -75,7 +75,7 @@ function clickOutsidePopin(elem) {
 function rebaseImgUrl() {
   var images = document.querySelectorAll("#istex_web_header img");
   images.forEach(function(image) {
-    image.src = ressourceUrl + "/img/" + image.src.split("/").pop();
+    image.src = ressourceUrl + "img/" + image.src.split("/").pop();
   });
 }
 
@@ -115,9 +115,9 @@ function integrateServices(json) {
       html +=
         "<li class='iwh_popin_services'><a href='" +
         services.data[i].QoTd +
-        "' class='iwh_services_lien'><div><img src='" +
+        "' class='iwh_services_lien'><div class='iwh_services_lien_block'><div class='iwh_services_lien_block_img'><img src='" +
         services.data[i].Cl2W +
-        "'/><p>" +
+        "'/></div><p>" +
         services.data[i].z351 +
         "</p></div></a><span class='ihw_services_text_hover'>"+
         services.data[i].BNzf +
