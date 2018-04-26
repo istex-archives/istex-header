@@ -1,25 +1,9 @@
 import nanoajax from "nanoajax";
+import './../css/main.css';
 
 var ressourceUrl = document
   .getElementById("iwh_script")
   .src.split("js/bundle.js")[0];
-
-//Permets de charger le header et tous ses fichiers nécessaires.
-function load() {
-  loadCSS();
-}
-
-function loadCSS() {
-  //Chargement css.
-  var css = document.createElement("link");
-  css.rel = "stylesheet";
-  css.href = ressourceUrl + "css/main.css";
-  css.onload = function() {
-    //chargement du header après l'installation du css.
-    loadHeader();
-  };
-  document.head.appendChild(css);
-}
 
 //Utilisé après le chargement de nanoAjax.
 function loadHeader() {
@@ -160,4 +144,4 @@ function loadError(objet, code) {
 }
 
 //On lance les fonctions.
-load();
+loadHeader();
