@@ -204,6 +204,7 @@
   transition: all 0.5s ease-in-out;
   visibility: visible;
   opacity: 1;
+  z-index: 1;
 }
 
 .ihw_services_text_hover:hover {
