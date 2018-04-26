@@ -5,7 +5,7 @@ COPY ./package.json /app/
 RUN npm install
 COPY . /app
 RUN mkdir -p /app/build
-RUN npm run build
+RUN npm run webpack
 
 # -------------------
 
@@ -19,8 +19,6 @@ RUN apt-get -y update && apt-get -y install vim curl apache2-utils
 COPY --from=build-deps /app/build /app/public
 
 COPY ./nginx.prod.conf /etc/nginx/nginx.conf.orig
-RUN mkdir -p /var/log/nginx/ezmaster-front/
-RUN chmod go+rwX -R /var /run
 
 COPY entrypoint.sh /
 ENTRYPOINT ["/entrypoint.sh"]
