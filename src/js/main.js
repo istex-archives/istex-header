@@ -50,7 +50,7 @@ function clickOutsidePopin(elem) {
 function rebaseImgUrl() {
   var images = document.querySelectorAll("#istex_web_header img");
   images.forEach(function(image) {
-    image.src = ressourceUrl + "img/" + image.title + ".svg";
+    image.src = ressourceUrl + "img/" + image.dataset.filename + ".svg";
   });
 }
 
