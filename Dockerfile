@@ -9,8 +9,7 @@ RUN npm run webpack
 # use the ngnix server to serve the built stuff
 FROM nginx:1.13.3
 
-# to help docker debugging
-ENV DEBIAN_FRONTEND noninteractive
-RUN apt-get -y update && apt-get -y install vim curl apache2-utils
+COPY --from=build-deps /app/public /app/public
+COPY --from=build-deps /app/index.html /app/index.html
 
-COPY ./nginx.conf /etc/nginx/nginx.conf.orig
+COPY ./nginx.conf etc/nginx/conf.d/default.conf
