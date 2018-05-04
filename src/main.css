@@ -192,11 +192,12 @@
   left: 0;
   opacity: 0;
   line-height: 1;
-  font-size: 0.9em;
+  font-size: 0.8em;
   padding: 4px;
   border: solid 1px #ffffff;
   background-color: #242b32;
   border-radius: 2px;
+  overflow: hidden;
 }
 
 .iwh_services_lien:hover ~ .ihw_services_text_hover {

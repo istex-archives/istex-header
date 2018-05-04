@@ -1,6 +1,6 @@
 import nanoajax from "nanoajax";
-import "./../css/main.css";
-import htmlHeader from "./../views/header.html";
+import "./main.css";
+import htmlHeader from "./header.html";
 
 var ressourceUrl = document
   .getElementById("iwh_script")
