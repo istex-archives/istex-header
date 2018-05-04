@@ -1,10 +1,10 @@
 import nanoajax from "nanoajax";
-import "./main.css";
+import "./header.css";
 import htmlHeader from "./header.html";
 
 var ressourceUrl = document
   .getElementById("iwh_script")
-  .src.split("js/bundle.js")[0];
+  .src.split("bundle.js")[0];
 
 function loadHeader() {
   document.body.innerHTML = htmlHeader + document.body.innerHTML;
