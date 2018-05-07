@@ -25,25 +25,12 @@ function loadHeader() {
 
 //Permet de savoir si on clique sur un element de la popin ou non
 function clickOutsidePopin(elem) {
-  var bool = true;
   var icone = document.querySelector("#iwh_header_services");
-  if (elem == icone) bool = false;
-  else {
-    var iconeChild = document.querySelectorAll("#iwh_header_services *");
-    iconeChild.forEach(function(child) {
-      if (elem == child) bool = false;
-    });
-  }
-
   var popin = document.querySelector("#iwh_header_block_services");
-  if (elem == popin) bool = false;
-  else {
-    var popinChild = document.querySelectorAll("#iwh_header_block_services *");
-    popinChild.forEach(function(child) {
-      if (elem == child) bool = false;
-    });
-  }
-  return bool;
+  if(elem == icone || elem == popin || icone.contains(elem) || popin.contains(elem))
+  return false;
+  else
+  return true;
 }
 
 //Permet de mettre à jour le lien des images
