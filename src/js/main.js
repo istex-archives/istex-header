@@ -30,8 +30,10 @@ function loadHeader() {
         document.body.innerHTML = responseText + document.body.innerHTML;
         rebaseImgUrl();
         document.addEventListener("click", function(e) {
-          console.log(e);
-          console.log(e.target);
+          if (clickOutsidePopin(e.target)) {
+            var popin = document.getElementById("iwh_header_block_services");
+            if (popin.className == "on") popin.className = "off";
+          }
         });
         document
           .getElementById("iwh_header_services")
@@ -46,11 +48,34 @@ function loadHeader() {
   );
 }
 
+//Permet de savoir si on clique sur un element de la popin ou non
+function clickOutsidePopin(elem) {
+  var bool = true;
+  var icone = document.querySelector("#iwh_header_services");
+  if (elem == icone) bool = false;
+  else {
+    var iconeChild = document.querySelectorAll("#iwh_header_services *");
+    iconeChild.forEach(function(child) {
+      if (elem == child) bool = false;
+    });
+  }
+
+  var popin = document.querySelector("#iwh_header_block_services");
+  if (elem == popin) bool = false;
+  else {
+    var popinChild = document.querySelectorAll("#iwh_header_block_services *");
+    popinChild.forEach(function(child) {
+      if (elem == child) bool = false;
+    });
+  }
+  return bool;
+}
+
 //Permet de mettre à jour le lien des images
 function rebaseImgUrl() {
   var images = document.querySelectorAll("#istex_web_header img");
   images.forEach(function(image) {
-    image.src = ressourceUrl + "/img/" + image.src.split("/").pop();
+    image.src = ressourceUrl + "img/" + image.src.split("/").pop();
   });
 }
 
@@ -90,11 +115,13 @@ function integrateServices(json) {
       html +=
         "<li class='iwh_popin_services'><a href='" +
         services.data[i].QoTd +
-        "' class='iwh_services_lien'><div><img src='" +
+        "' class='iwh_services_lien'><div class='iwh_services_lien_block'><div class='iwh_services_lien_block_img'><img src='" +
         services.data[i].Cl2W +
-        "'/><p>" +
+        "'/></div><p>" +
         services.data[i].z351 +
-        "</p></div></a></li>";
+        "</p></div></a><span class='ihw_services_text_hover'>" +
+        services.data[i].BNzf +
+        "</span></li>";
     }
     html += "</ul>";
     document.getElementById("iwh_popin_services").innerHTML = html;
