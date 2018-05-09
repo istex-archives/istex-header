@@ -7,7 +7,8 @@
     "prettier": "prettier --write src/*.js src/*.css",
     "webpack": "webpack -p --config webpack.config.js",
     "build": "npm run prettier && npm run webpack",
-    "watch": "webpack-dev-server"
+    "watch": "webpack-dev-server",
+    "postversion": "git push && git push --tags"
   },
   "dependencies": {
     "nanoajax": "^0.4.3"
