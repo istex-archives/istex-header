@@ -1,51 +1,26 @@
 import nanoajax from "nanoajax";
+import "./../css/main.css";
+import htmlHeader from "./../views/header.html";
 
 var ressourceUrl = document
   .getElementById("iwh_script")
   .src.split("js/bundle.js")[0];
 
-//Permets de charger le header et tous ses fichiers nécessaires.
-function load() {
-  loadCSS();
-}
-
-function loadCSS() {
-  //Chargement css.
-  var css = document.createElement("link");
-  css.rel = "stylesheet";
-  css.href = ressourceUrl + "css/main.css";
-  css.onload = function() {
-    //chargement du header après l'installation du css.
-    loadHeader();
-  };
-  document.head.appendChild(css);
-}
-
-//Utilisé après le chargement de nanoAjax.
 function loadHeader() {
-  nanoajax.ajax(
-    { url: ressourceUrl + "views/header.html", cors: true },
-    function(code, responseText) {
-      if (code == 200) {
-        document.body.innerHTML = responseText + document.body.innerHTML;
-        rebaseImgUrl();
-        document.addEventListener("click", function(e) {
-          if (clickOutsidePopin(e.target)) {
-            var popin = document.getElementById("iwh_header_block_services");
-            if (popin.className == "on") popin.className = "off";
-          }
-        });
-        document
-          .getElementById("iwh_header_services")
-          .addEventListener("click", function() {
-            displayServices();
-          });
-        loadServices();
-      } else
-        document.body.innerHTML =
-          loadError("header", code) + document.body.innerHTML;
+  document.body.innerHTML = htmlHeader + document.body.innerHTML;
+  rebaseImgUrl();
+  document.addEventListener("click", function(e) {
+    if (clickOutsidePopin(e.target)) {
+      var popin = document.getElementById("iwh_header_block_services");
+      if (popin.className == "on") popin.className = "off";
     }
-  );
+  });
+  document
+    .getElementById("iwh_header_services")
+    .addEventListener("click", function() {
+      displayServices();
+    });
+  loadServices();
 }
 
 //Permet de savoir si on clique sur un element de la popin ou non
@@ -75,7 +50,7 @@ function clickOutsidePopin(elem) {
 function rebaseImgUrl() {
   var images = document.querySelectorAll("#istex_web_header img");
   images.forEach(function(image) {
-    image.src = ressourceUrl + "img/" + image.src.split("/").pop();
+    image.src = ressourceUrl + "img/" + image.title + ".svg";
   });
 }
 
@@ -160,4 +135,4 @@ function loadError(objet, code) {
 }
 
 //On lance les fonctions.
-load();
+window.onload = loadHeader();

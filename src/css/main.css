@@ -1,4 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat");
+#istex_web_header * {
+  box-sizing: border-box;
+}
 
 #istex_web_header,
 #iwh_header_nav,
