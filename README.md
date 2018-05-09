@@ -9,7 +9,7 @@ Le header web affiché sur tous les sites de  la Galaxy Istex
 Intégrer simplement la balise présentée ci-dessous à la fin du body de votre page html :
 
 ```
-<script id="iwh_script" src="https://web-header.delivery.istex.fr/public/js/bundle.js" ></script>
+<script id="iwh_script" src="https://web-header.delivery.istex.fr/public/bundle.js" ></script>
 ```
 
 ### En utilisant votre serveur
@@ -25,5 +25,5 @@ Déposer les fichiers nécessaires dans votre serveur :
 Il ne vous restera plus qu'à intégrer la balise suivante à la fin du body de votre page html :
 
 ```
-<script id="iwh_script" src="[chemin d'accès]/public/js/bundle.js" ></script>
+<script id="iwh_script" src="[chemin d'accès]/public/bundle.js" ></script>
 ```

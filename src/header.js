@@ -1,10 +1,10 @@
 import nanoajax from "nanoajax";
-import "./../css/main.css";
-import htmlHeader from "./../views/header.html";
+import "./header.css";
+import htmlHeader from "./header.html";
 
 var ressourceUrl = document
   .getElementById("iwh_script")
-  .src.split("js/bundle.js")[0];
+  .src.split("bundle.js")[0];
 
 function loadHeader() {
   document.body.innerHTML = htmlHeader + document.body.innerHTML;
@@ -25,32 +25,19 @@ function loadHeader() {
 
 //Permet de savoir si on clique sur un element de la popin ou non
 function clickOutsidePopin(elem) {
-  var bool = true;
   var icone = document.querySelector("#iwh_header_services");
-  if (elem == icone) bool = false;
-  else {
-    var iconeChild = document.querySelectorAll("#iwh_header_services *");
-    iconeChild.forEach(function(child) {
-      if (elem == child) bool = false;
-    });
-  }
-
   var popin = document.querySelector("#iwh_header_block_services");
-  if (elem == popin) bool = false;
-  else {
-    var popinChild = document.querySelectorAll("#iwh_header_block_services *");
-    popinChild.forEach(function(child) {
-      if (elem == child) bool = false;
-    });
-  }
-  return bool;
+  if(elem == icone || elem == popin || icone.contains(elem) || popin.contains(elem))
+  return false;
+  else
+  return true;
 }
 
 //Permet de mettre à jour le lien des images
 function rebaseImgUrl() {
   var images = document.querySelectorAll("#istex_web_header img");
   images.forEach(function(image) {
-    image.src = ressourceUrl + "img/" + image.title + ".svg";
+    image.src = ressourceUrl + "img/" + image.dataset.filename + ".svg";
   });
 }
 
