@@ -9,21 +9,27 @@ Le header web affiché sur tous les sites de  la Galaxy Istex
 Intégrer simplement la balise présentée ci-dessous à la fin du body de votre page html :
 
 ```
-<script id="iwh_script" src="https://web-header.delivery.istex.fr/public/bundle.js" ></script>
+<script id="iwh_script" src="//web-header.delivery.istex.fr/public/bundle.js" ></script>
 ```
 
-### En utilisant votre serveur
+### Développeur
 
-Déposer les fichiers nécessaires dans votre serveur :
+Prérequis: nodejs
 
+Pour installer les dépendances nécessaires :
 ```
 - npm install
-- npm run webpack
-- copier/coller le fichier 'public' dans votre serveur à l'endroit voulu
 ```
 
-Il ne vous restera plus qu'à intégrer la balise suivante à la fin du body de votre page html :
+Pour modifier en temps réel le header:
+```
+- npm run watch
+  Le résultat est visible sur localhost:8080
+```
 
+Pour build le projet:
 ```
-<script id="iwh_script" src="[chemin d'accès]/public/bundle.js" ></script>
+- npm run build
+  Les fichiers buildés se trouvent dans le dossier public.
 ```
+
