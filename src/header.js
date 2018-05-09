@@ -27,10 +27,14 @@ function loadHeader() {
 function clickOutsidePopin(elem) {
   var icone = document.querySelector("#iwh_header_services");
   var popin = document.querySelector("#iwh_header_block_services");
-  if(elem == icone || elem == popin || icone.contains(elem) || popin.contains(elem))
-  return false;
-  else
-  return true;
+  if (
+    elem == icone ||
+    elem == popin ||
+    icone.contains(elem) ||
+    popin.contains(elem)
+  )
+    return false;
+  else return true;
 }
 
 //Permet de mettre à jour le lien des images
@@ -120,7 +124,6 @@ function loadError(objet, code) {
       break;
   }
 }
-
 
 //On lance les fonctions.
 window.onload = loadHeader();
