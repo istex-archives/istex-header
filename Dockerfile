@@ -12,4 +12,3 @@ FROM nginx:1.13.12
 COPY nginx.conf /etc/nginx/nginx.conf
 
 COPY --from=build-deps /app/public /app/public
-COPY --from=build-deps /app/index.html /app/index.html
