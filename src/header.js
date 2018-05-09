@@ -121,5 +121,6 @@ function loadError(objet, code) {
   }
 }
 
+
 //On lance les fonctions.
 window.onload = loadHeader();
