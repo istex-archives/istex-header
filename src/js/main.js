@@ -29,6 +29,13 @@ function loadHeader() {
       if (code == 200) {
         document.body.innerHTML = responseText + document.body.innerHTML;
         rebaseImgUrl();
+        document.addEventListener("click", function(e) {
+          if (clickOutsidePopin(e.target)) {
+            var popin = document.getElementById("iwh_header_block_services");
+            if (popin.className == "on") popin.className = "off";
+          }
+        });
+        
         document
           .getElementById("iwh_header_services")
           .addEventListener("click", function() {
@@ -40,6 +47,29 @@ function loadHeader() {
           loadError("header", code) + document.body.innerHTML;
     }
   );
+}
+
+//Permet de savoir si on clique sur un element de la popin ou non
+function clickOutsidePopin(elem) {
+  var bool = true;
+  var icone = document.querySelector("#iwh_header_services");
+  if (elem == icone) bool = false;
+  else {
+    var iconeChild = document.querySelectorAll("#iwh_header_services *");
+    iconeChild.forEach(function(child) {
+      if (elem == child) bool = false;
+    });
+  }
+
+  var popin = document.querySelector("#iwh_header_block_services");
+  if (elem == popin) bool = false;
+  else {
+    var popinChild = document.querySelectorAll("#iwh_header_block_services *");
+    popinChild.forEach(function(child) {
+      if (elem == child) bool = false;
+    });
+  }
+  return bool;
 }
 
 //Permet de mettre à jour le lien des images
