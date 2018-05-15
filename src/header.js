@@ -40,7 +40,7 @@ function clickOutsidePopin(elem) {
 //Permet de mettre à jour le lien des images
 function rebaseImgUrl() {
   var images = document.querySelectorAll("#istex_web_header img");
-  for(var i= 0; i < images.length; i++){
+  for (var i = 0; i < images.length; i++) {
     images[i].src = ressourceUrl + "img/" + images[i].dataset.filename + ".svg";
   }
 }
@@ -126,11 +126,10 @@ function loadError(objet, code) {
 }
 
 //On lance le chargement du header
-if (window.addEventListener) // W3C standard
-{
-  window.addEventListener('load', loadHeader(), false); // NB **not** 'onload'
-} 
-else if (window.attachEvent) // Microsoft
-{
-  window.attachEvent('onload', loadHeader());
+if (window.addEventListener) {
+  // W3C standard
+  window.addEventListener("load", loadHeader(), false); // NB **not** 'onload'
+} else if (window.attachEvent) {
+  // Microsoft
+  window.attachEvent("onload", loadHeader());
 }
