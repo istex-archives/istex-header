@@ -125,5 +125,12 @@ function loadError(objet, code) {
   }
 }
 
-//On lance les fonctions.
-window.onload = loadHeader();
+//On lance le chargement du header
+if (window.addEventListener) // W3C standard
+{
+  window.addEventListener('load', loadHeader(), false); // NB **not** 'onload'
+} 
+else if (window.attachEvent) // Microsoft
+{
+  window.attachEvent('onload', loadHeader());
+}
