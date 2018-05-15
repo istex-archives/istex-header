@@ -10,30 +10,36 @@ function loadHeader() {
   document.body.innerHTML = htmlHeader + document.body.innerHTML;
   rebaseImgUrl();
   document.addEventListener("click", function(e) {
-    if (clickOutsidePopin(e.target)) {
-      var popin = document.getElementById("iwh_header_block_services");
-      if (popin.className == "on") popin.className = "off";
+    if (
+      clickOutsideNode(e.target, "iwh_header_block_services") &&
+      clickOutsideNode(e.target, "iwh_header_services")
+    ) {
+      closeNode("iwh_header_block_services");
+    }
+    if (
+      clickOutsideNode(e.target, "iwh_popin_menu") &&
+      clickOutsideNode(e.target, "iwh_header_menu")
+    ) {
+      closeNode("iwh_popin_menu");
     }
   });
   document
     .getElementById("iwh_header_services")
     .addEventListener("click", function() {
-      displayServices();
+      displayNode("iwh_header_block_services");
+    });
+  document
+    .getElementById("iwh_header_menu")
+    .addEventListener("click", function() {
+      displayNode("iwh_popin_menu");
     });
   loadServices();
 }
 
-//Permet de savoir si on clique sur un element de la popin ou non
-function clickOutsidePopin(elem) {
-  var icone = document.querySelector("#iwh_header_services");
-  var popin = document.querySelector("#iwh_header_block_services");
-  if (
-    elem == icone ||
-    elem == popin ||
-    icone.contains(elem) ||
-    popin.contains(elem)
-  )
-    return false;
+//Permet de savoir si on clique sur un element du node choisit
+function clickOutsideNode(elem, node) {
+  var node = document.getElementById(node);
+  if (elem == node || node.contains(elem)) return false;
   else return true;
 }
 
@@ -45,11 +51,16 @@ function rebaseImgUrl() {
   }
 }
 
-//Permet d'afficher ou non le menu des services
-function displayServices() {
-  var popin = document.getElementById("iwh_header_block_services");
+//Permet d'afficher ou non le node
+function displayNode(node) {
+  var popin = document.getElementById(node);
   if (popin.className == "on") popin.className = "off";
   else popin.className = "on";
+}
+
+//Permet de fermer directement le node
+function closeNode(node) {
+  document.getElementById(node).className = "off";
 }
 
 //Permet de charger les services à intégrer

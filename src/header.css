@@ -60,7 +60,8 @@
   margin-right: 3%;
 }
 
-#iwh_header_services:hover {
+#iwh_header_services:hover,
+#iwh_header_menu:hover {
   cursor: pointer;
 }
 
@@ -79,6 +80,11 @@
 }
 
 #iwh_popin_menu {
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -ms-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
   position: absolute;
   left: 0;
   top: 49px;
@@ -86,6 +92,14 @@
   margin: 0;
   display: flex;
   align-items: center;
+}
+
+#iwh_popin_menu.on {
+  transform: translateX(0);
+}
+
+#iwh_popin_menu.off {
+  transform: translateX(-100%);
 }
 
 #iwh_popin_menu_ul {
