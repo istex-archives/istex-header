@@ -8,6 +8,8 @@
     "webpack": "webpack -p --config webpack.config.js",
     "build": "npm run prettier && npm run webpack",
     "watch": "webpack-dev-server -d",
+    "insertversion:js": "cross-var sed -i \"s#\\(version \\)\\([\\.a-z0-9]\\+\\)#\\1$npm_package_version#g\" src/header.js",
+    "version": "npm run insertversion:js && git add src/header.js",
     "postversion": "git push && git push --tags"
   },
   "dependencies": {
