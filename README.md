@@ -7,7 +7,6 @@ Le header web affiché sur tous les sites de  la Galaxy Istex
 ### En utilisant le serveur web-header.delivery.istex.fr
 
 Intégrer simplement la balise présentée ci-dessous à la fin du body de votre page html :
-
 ```html
 <script id="iwh_script" src="//web-header.delivery.istex.fr/bundle.js" ></script>
 ```
