@@ -81,7 +81,7 @@ function integrateServices(json) {
       html +=
         "<li class='iwh_popin_services'><a title=\"" +
         services.data[i].BNzf +
-        '" href=\'' +
+        "\" href='" +
         services.data[i].QoTd +
         "' class='iwh_services_lien'><div class='iwh_services_lien_block'><div class='iwh_services_lien_block_img'><img src='" +
         services.data[i].Cl2W +
