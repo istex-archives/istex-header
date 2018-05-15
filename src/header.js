@@ -79,15 +79,15 @@ function integrateServices(json) {
     var html = "<ul id='iwh_popin_services_ul'>";
     for (var i = 0; i < services.total; i++) {
       html +=
-        "<li class='iwh_popin_services'><a href='" +
+        "<li class='iwh_popin_services'><a title=\"" +
+        services.data[i].BNzf +
+        '" href=' +
         services.data[i].QoTd +
         "' class='iwh_services_lien'><div class='iwh_services_lien_block'><div class='iwh_services_lien_block_img'><img src='" +
         services.data[i].Cl2W +
         "'/></div><p>" +
         services.data[i].z351 +
-        "</p></div></a><span class='ihw_services_text_hover'>" +
-        services.data[i].BNzf +
-        "</span></li>";
+        "</p></div></a></li>";
     }
     html += "</ul>";
     document.getElementById("iwh_popin_services").innerHTML = html;
