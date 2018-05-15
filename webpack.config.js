@@ -1,6 +1,7 @@
 const path = require('path');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const webpack = require('webpack');
+const WebpackAutoInject = require('webpack-auto-inject-version');
 
 module.exports = {
   entry: {
@@ -15,6 +16,7 @@ module.exports = {
      hot: true
     },
   plugins: [
+    new WebpackAutoInject(),
     new CopyWebpackPlugin([{ from: 'src/img', to: 'img' }]),
     new CopyWebpackPlugin([{ from: 'src/index.html', to: './' }]),
     new webpack.NamedModulesPlugin(),
