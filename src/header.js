@@ -99,11 +99,11 @@ function loadServices() {
 
 //Permet de charger le menu
 function loadMenu() {
-  if(nomMenu=="" || nomMenu==undefined){
+  if (nomMenu == "" || nomMenu == undefined) {
     var icmenu = document.getElementById("iwh_header_menu");
     icmenu.parentNode.removeChild(icmenu);
   }
-  try{
+  try {
     var menu = require("./menu/" + nomMenu + ".json");
     var html = "<ul id='iwh_popin_menu_ul'>";
     for (var i = 0; i < menu.menu.length; i++) {
@@ -111,27 +111,25 @@ function loadMenu() {
         '<li class="iwh_popin_menu_li"><a class="iwh_popin_menu_a" href="' +
         menu.menu[i].lien +
         '">';
-        
-        if(menu.menu[i].icone != "")
-        html +='<img src="' +
-        ressourceUrl +
-        "img/menu/" +
-        nomMenu +
-        "/" +
-        menu.menu[i].icone +
-        '.svg"/>' ;
 
-        html +=menu.menu[i].titre +
-        " ></a></li>";
+      if (menu.menu[i].icone != "")
+        html +=
+          '<img src="' +
+          ressourceUrl +
+          "img/menu/" +
+          nomMenu +
+          "/" +
+          menu.menu[i].icone +
+          '.svg"/>';
+
+      html += menu.menu[i].titre + " &#8250</a></li>";
     }
     html += "</ul>";
     document.getElementById("iwh_popin_menu").innerHTML = html;
+  } catch (error) {
+    document.getElementById("iwh_popin_menu").innerHTML =
+      "<p >Menu non trouvé : " + error + "</p>";
   }
-
-catch(error){
-  document.getElementById("iwh_popin_menu").innerHTML =
-            "<p >Menu non trouvé : " + error +"</p>";
-}
 }
 
 //permet de gérer les erreurs de chargement
