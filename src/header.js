@@ -5,7 +5,6 @@ var nomMenu = script.dataset.menu;
 import nanoajax from "nanoajax";
 import "./header.css";
 import htmlHeader from "./header.html";
-var menu = require("./menu/" + nomMenu + ".json");
 
 function loadHeader() {
   document.body.innerHTML = htmlHeader + document.body.innerHTML;
@@ -104,6 +103,7 @@ function loadMenu() {
     var icmenu = document.getElementById("iwh_header_menu");
     icmenu.parentNode.removeChild(icmenu);
   } else {
+    var menu = require("./menu/" + nomMenu + ".json");
     var html = "<ul id='iwh_popin_menu_ul'>";
     for (var i = 0; i < menu.menu.length; i++) {
       html +=
