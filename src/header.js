@@ -8,6 +8,10 @@ import htmlHeader from "./header.html";
 
 function loadHeader() {
   document.body.innerHTML = htmlHeader + document.body.innerHTML;
+  if (script.dataset.logo == "hide") {
+    var iclogo = document.getElementById("iwh_header_logo");
+    iclogo.parentNode.removeChild(iclogo);
+  }
   var images = document.querySelectorAll("#iwh_header_ul img");
   for (var i = 0; i < images.length; i++) {
     images[i].src = ressourceUrl + "img/" + images[i].dataset.filename + ".svg";
