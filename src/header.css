@@ -15,7 +15,7 @@
   display: flex;
   border-bottom: solid 2px #ffffff;
   font-size: 12px;
-  line-height: 0;
+  line-height: 1;
 }
 
 #istex_web_header *:hover {
@@ -92,6 +92,7 @@
   margin: 0;
   display: flex;
   align-items: center;
+  color: #ffffff;
 }
 
 #iwh_popin_menu.on {
@@ -116,7 +117,6 @@
   text-decoration: none;
   color: #c4d733;
   padding: 20px;
-  line-height: 1;
   font-size: 1.6em;
   font-family: Montserrat;
   z-index: 99999;
