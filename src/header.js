@@ -1,10 +1,12 @@
+var script=document
+  .getElementById("iwh_script");
+
 import nanoajax from "nanoajax";
 import "./header.css";
 import htmlHeader from "./header.html";
 import menu from "./istex.json";
 
-var ressourceUrl = document
-  .getElementById("iwh_script")
+var ressourceUrl = script
   .src.split("bundle.js")[0];
 
 function loadHeader() {
@@ -100,6 +102,12 @@ function loadServices() {
 
 //Permet de charger le menu
 function loadMenu() {
+  console.log( script.dataset.menu);
+  if(script.dataset.menu == undefined || script.dataset.menu ==""){
+    var icmenu=document.getElementById("iwh_header_menu");
+    icmenu.parentNode.removeChild(icmenu);
+  }
+  else{
   var html = "<ul id='iwh_popin_menu_ul'>";
   for (var i = 0; i < menu.menu.length; i++) {
     html +=
@@ -115,6 +123,7 @@ function loadMenu() {
   }
   html += "</ul>";
   document.getElementById("iwh_popin_menu").innerHTML = html;
+}
 }
 
 //permet de gérer les erreurs de chargement
