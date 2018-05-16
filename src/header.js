@@ -99,29 +99,39 @@ function loadServices() {
 
 //Permet de charger le menu
 function loadMenu() {
-  if (nomMenu == undefined || nomMenu == "") {
+  if(nomMenu=="" || nomMenu==undefined){
     var icmenu = document.getElementById("iwh_header_menu");
     icmenu.parentNode.removeChild(icmenu);
-  } else {
+  }
+  try{
     var menu = require("./menu/" + nomMenu + ".json");
     var html = "<ul id='iwh_popin_menu_ul'>";
     for (var i = 0; i < menu.menu.length; i++) {
       html +=
         '<li class="iwh_popin_menu_li"><a class="iwh_popin_menu_a" href="' +
         menu.menu[i].lien +
-        '"><img src="' +
+        '">';
+        
+        if(menu.menu[i].icone != "")
+        html +='<img src="' +
         ressourceUrl +
         "img/menu/" +
         nomMenu +
         "/" +
         menu.menu[i].icone +
-        '.svg"/>' +
-        menu.menu[i].titre +
+        '.svg"/>' ;
+
+        html +=menu.menu[i].titre +
         " ></a></li>";
     }
     html += "</ul>";
     document.getElementById("iwh_popin_menu").innerHTML = html;
   }
+
+catch(error){
+  document.getElementById("iwh_popin_menu").innerHTML =
+            "<p >Menu non trouvé : " + error +"</p>";
+}
 }
 
 //permet de gérer les erreurs de chargement
