@@ -1,0 +1,25 @@
+{"menu": 
+	[
+      {
+      	"titre": "Home",
+      	"icone": "ic_Home",
+  		"lien" : "lol"
+  	  },
+      {
+       	"titre": "Chercheur",
+       	"icone": "ic_Chercheur",
+       	"lien" : "ok"
+      },
+      {
+       	"titre": "Responsable", 
+  		"icone": "ic_Responsable",
+   		"lien" : "pq"
+	  },
+      {
+      	"titre": "Curieux",
+       	"icone": "ic_Curieux",
+        "lien" : "lol"
+      }
+    ]
+}
+

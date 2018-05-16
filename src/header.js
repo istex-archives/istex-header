@@ -1,6 +1,7 @@
 import nanoajax from "nanoajax";
 import "./header.css";
 import htmlHeader from "./header.html";
+import menu from "./istex.json";
 
 var ressourceUrl = document
   .getElementById("iwh_script")
@@ -8,7 +9,7 @@ var ressourceUrl = document
 
 function loadHeader() {
   document.body.innerHTML = htmlHeader + document.body.innerHTML;
-  var images = document.querySelectorAll("#istex_web_header img");
+  var images = document.querySelectorAll("#iwh_header_ul img");
   for (var i = 0; i < images.length; i++) {
     images[i].src = ressourceUrl + "img/" + images[i].dataset.filename + ".svg";
   }
@@ -53,6 +54,7 @@ function loadHeader() {
       else popin.className = "on";
     });
   loadServices();
+  loadMenu();
 }
 
 //Permet de charger les services
@@ -94,6 +96,25 @@ function loadServices() {
         );
     }
   );
+}
+
+//Permet de charger le menu
+function loadMenu() {
+  var html = "<ul id='iwh_popin_menu_ul'>";
+  for (var i = 0; i < menu.menu.length; i++) {
+    html +=
+      '<li class="iwh_popin_menu_li"><a class="iwh_popin_menu_a" href="' +
+      menu.menu[i].lien +
+      '"><img src="' +
+      ressourceUrl +
+      "img/menuIstex/" +
+      menu.menu[i].icone +
+      '.svg"/>' +
+      menu.menu[i].titre +
+      " ></a></li>";
+  }
+  html += "</ul>";
+  document.getElementById("iwh_popin_menu").innerHTML = html;
 }
 
 //permet de gérer les erreurs de chargement
