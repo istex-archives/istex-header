@@ -3,22 +3,22 @@
     {
       "titre": "Home",
       "icone": "ic_Home",
-      "lien": "lol"
+      "lien": "//www.istex.fr"
     },
     {
       "titre": "Chercheur",
       "icone": "ic_Chercheur",
-      "lien": "ok"
+      "lien": "//www.istex.fr/chercheur/"
     },
     {
       "titre": "Responsable",
       "icone": "ic_Responsable",
-      "lien": "pq"
+      "lien": "//www.istex.fr/responsable/"
     },
     {
       "titre": "Curieux",
       "icone": "ic_Curieux",
-      "lien": "lol"
+      "lien": "//www.istex.fr/curieux/"
     }
   ]
 }
