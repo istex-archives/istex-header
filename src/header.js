@@ -146,25 +146,26 @@ function stateIstex() {
         "https://api.uptimerobot.com/getMonitors?format=json&apiKey=m776418461-ff1f20a5aa934776fbafc596"
     },
     function(code, responseText) {
-      if (code == 200) {
+      if (code == 200) { 
         try {
           var json = JSON.parse(
             responseText.replace("jsonUptimeRobotApi(", "").replace(")", "")
           );
           if (json.stat == "ok")
-            document.getElementById("iwh_header_status_img").src =
-              ressourceUrl + "img/ic_status_ok.svg";
+            document.getElementById("iwh_header_status").innerHTML =
+              '<img src="'+ressourceUrl + 'img/ic_status_ok.svg"/>';
           else
-            document.getElementById("iwh_header_status_img").src =
-              ressourceUrl + "img/ic_status_down.svg";
+            document.getElementById("iwh_header_status").innerHTML =
+              '<img src="'+ressourceUrl + 'img/ic_status_down.svg"/>';
         } catch (error) {
-          document.getElementById("iwh_header_status_img").src =
-            ressourceUrl + "img/ic_status_unknow.svg";
+          document.getElementById("iwh_header_status").innerHTML =
+              '<img src="'+ressourceUrl + 'img/ic_status_unknow.svg"/>';
         }
       } else
-        document.getElementById("iwh_header_status_img").src =
-          ressourceUrl + "img/ic_status_unknow.svg";
+        document.getElementById("iwh_header_status").innerHTML =
+              '<img src="'+ressourceUrl + 'img/ic_status_unknow.svg"/>';
     }
+    
   );
 }
 
