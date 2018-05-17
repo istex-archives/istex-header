@@ -8,6 +8,8 @@ import htmlHeader from "./header.html";
 
 function loadHeader() {
   document.body.innerHTML = htmlHeader + document.body.innerHTML;
+  stateIstex();
+  setInterval(stateIstex, 60000);
   if (script.dataset.logo == "hide") {
     var iclogo = document.getElementById("iwh_header_logo");
     iclogo.parentNode.removeChild(iclogo);
@@ -58,8 +60,6 @@ function loadHeader() {
     });
   loadServices();
   loadMenu();
-  stateIstex();
-  setInterval(stateIstex, 10000);
 }
 
 //Permet de charger les services
