@@ -54,25 +54,38 @@
 }
 
 #iwh_header_services,
-#iwh_header_notif {
+#iwh_header_notif,
+#iwh_header_status,
+#iwh_header_menu{
   margin-top: 12px;
-  height: 25px;
-  margin-right: 3%;
+  height: 24px;
 }
+
+#iwh_header_services img,
+#iwh_header_notif img,
+#iwh_header_status img,
+#iwh_header_menu img{
+  width: 24px;
+}
+
 
 #iwh_header_services:hover,
 #iwh_header_menu:hover {
   cursor: pointer;
 }
 
-#iwh_header_notif {
+#iwh_header_services,
+#iwh_header_notif,
+#iwh_header_status{
+  margin-right: 3%;
+}
+
+#iwh_header_status {
   margin-left: auto;
 }
 
 #iwh_header_menu {
   margin-left: 3%;
-  margin-top: 15px;
-  height: 19px;
 }
 
 #iwh_header_nav img {
@@ -265,7 +278,8 @@
     width: 400px;
   }
   #iwh_header_services,
-  #iwh_header_notif {
+  #iwh_header_notif,
+  #iwh_header_status{
     margin-right: 5%;
   }
   #iwh_header_menu {
@@ -284,7 +298,8 @@
     width: 100%;
   }
   #iwh_header_services,
-  #iwh_header_notif {
+  #iwh_header_notif,
+  #iwh_header_status {
     margin-right: 5%;
   }
 
@@ -309,7 +324,8 @@
     width: 100%;
   }
   #iwh_header_services,
-  #iwh_header_notif {
+  #iwh_header_notif,
+  #iwh_header_status {
     margin-right: 5%;
   }
 
@@ -339,8 +355,13 @@
     margin-right: 7%;
   }
 
+  #iwh_header_status, 
   #iwh_header_menu {
     margin-left: 7%;
+  }
+
+  #iwh_header_notif {
+    margin-left: auto;
   }
 
   #iwh_arrow_services,
@@ -357,6 +378,6 @@
   .iwh_popin_menu_a {
     text-align: center;
     border-right: none;
-    padding: 40px;
+    padding: 30px;
   }
 }
