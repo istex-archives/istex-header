@@ -56,7 +56,7 @@
 #iwh_header_services,
 #iwh_header_notif,
 #iwh_header_status,
-#iwh_header_menu{
+#iwh_header_menu {
   margin-top: 12px;
   height: 24px;
 }
@@ -64,10 +64,9 @@
 #iwh_header_services img,
 #iwh_header_notif img,
 #iwh_header_status img,
-#iwh_header_menu img{
+#iwh_header_menu img {
   width: 24px;
 }
-
 
 #iwh_header_services:hover,
 #iwh_header_menu:hover {
@@ -76,7 +75,7 @@
 
 #iwh_header_services,
 #iwh_header_notif,
-#iwh_header_status{
+#iwh_header_status {
   margin-right: 3%;
 }
 
@@ -279,7 +278,7 @@
   }
   #iwh_header_services,
   #iwh_header_notif,
-  #iwh_header_status{
+  #iwh_header_status {
     margin-right: 5%;
   }
   #iwh_header_menu {
@@ -355,7 +354,7 @@
     margin-right: 7%;
   }
 
-  #iwh_header_status, 
+  #iwh_header_status,
   #iwh_header_menu {
     margin-left: 7%;
   }

@@ -58,6 +58,8 @@ function loadHeader() {
     });
   loadServices();
   loadMenu();
+  stateIstex();
+  setInterval(stateIstex, 10000);
 }
 
 //Permet de charger les services
@@ -134,6 +136,35 @@ function loadMenu() {
     document.getElementById("iwh_popin_menu").innerHTML =
       "<p >Menu non trouvé : " + error + "</p>";
   }
+}
+
+function stateIstex() {
+  nanoajax.ajax(
+    {
+      url:
+        "https://api.uptimerobot.com/getMonitors?format=json&apiKey=m776418461-ff1f20a5aa934776fbafc596"
+    },
+    function(code, responseText) {
+      if (code == 200) {
+        try {
+          var json = JSON.parse(
+            responseText.replace("jsonUptimeRobotApi(", "").replace(")", "")
+          );
+          if (json.stat == "ok")
+            document.getElementById("iwh_header_status_img").src =
+              ressourceUrl + "img/ic_status_ok.svg";
+          else
+            document.getElementById("iwh_header_status_img").src =
+              ressourceUrl + "img/ic_status_down.svg";
+        } catch (error) {
+          document.getElementById("iwh_header_status_img").src =
+            ressourceUrl + "img/ic_status_unknow.svg";
+        }
+      } else
+        document.getElementById("iwh_header_status_img").src =
+          ressourceUrl + "img/ic_status_unknow.svg";
+    }
+  );
 }
 
 //permet de gérer les erreurs de chargement
