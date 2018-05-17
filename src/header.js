@@ -1,6 +1,6 @@
 var script = document.getElementById("iwh_script");
 var ressourceUrl = script.src.split("bundle.js")[0];
-var nomMenu = script.dataset.menu;
+var menuName = script.dataset.menu;
 
 import nanoajax from "nanoajax";
 import "./header.css";
@@ -80,7 +80,7 @@ function loadServices() {
               services.data[i].BNzf +
               "\" href='" +
               services.data[i].QoTd +
-              "' class='iwh_services_lien'><div class='iwh_services_lien_block'><div class='iwh_services_lien_block_img'><img src='" +
+              "' class='iwh_services_link'><div class='iwh_services_link_block'><div class='iwh_services_link_block_img'><img src='" +
               services.data[i].Cl2W +
               "'/></div><p>" +
               services.data[i].z351 +
@@ -103,30 +103,30 @@ function loadServices() {
 
 //Permet de charger le menu
 function loadMenu() {
-  if (nomMenu == "" || nomMenu == undefined) {
+  if (menuName == "" || menuName == undefined) {
     var icmenu = document.getElementById("iwh_header_menu");
     icmenu.parentNode.removeChild(icmenu);
   }
   try {
-    var menu = require("./menu/" + nomMenu + ".json");
+    var menu = require("./menu/" + menuName + ".json");
     var html = "<ul id='iwh_popin_menu_ul'>";
     for (var i = 0; i < menu.menu.length; i++) {
       html +=
         '<li class="iwh_popin_menu_li"><a class="iwh_popin_menu_a" href="' +
-        menu.menu[i].lien +
+        menu.menu[i].link +
         '">';
 
-      if (menu.menu[i].icone != "")
+      if (menu.menu[i].icon != "")
         html +=
           '<img src="' +
           ressourceUrl +
           "img/menu/" +
-          nomMenu +
+          menuName +
           "/" +
-          menu.menu[i].icone +
+          menu.menu[i].icon +
           '.svg"/>';
 
-      html += menu.menu[i].titre + " &#8250</a></li>";
+      html += menu.menu[i].title + " &#8250</a></li>";
     }
     html += "</ul>";
     document.getElementById("iwh_popin_menu").innerHTML = html;

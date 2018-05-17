@@ -1,24 +1,24 @@
 {
   "menu": [
     {
-      "titre": "Home",
-      "icone": "ic_Home",
-      "lien": "//www.istex.fr"
+      "title": "Home",
+      "icon": "ic_Home",
+      "link": "//www.istex.fr"
     },
     {
-      "titre": "Chercheur",
-      "icone": "ic_Chercheur",
-      "lien": "//www.istex.fr/chercheur/"
+      "title": "Chercheur",
+      "icon": "ic_Chercheur",
+      "link": "//www.istex.fr/chercheur/"
     },
     {
-      "titre": "Responsable",
-      "icone": "ic_Responsable",
-      "lien": "//www.istex.fr/responsable/"
+      "title": "Responsable",
+      "icon": "ic_Responsable",
+      "link": "//www.istex.fr/responsable/"
     },
     {
-      "titre": "Curieux",
-      "icone": "ic_Curieux",
-      "lien": "//www.istex.fr/curieux/"
+      "title": "Curieux",
+      "icon": "ic_Curieux",
+      "link": "//www.istex.fr/curieux/"
     }
   ]
 }

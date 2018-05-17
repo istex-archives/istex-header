@@ -158,22 +158,22 @@
   visibility: hidden;
 }
 
-#iwh_fleche_services,
-#iwh_fleche_services_border {
+#iwh_arrow_services,
+#iwh_arrow_services_border {
   position: absolute;
   right: 3%;
   border-style: solid;
   border-top: none;
 }
 
-#iwh_fleche_services {
+#iwh_arrow_services {
   top: 51px;
   margin-right: 1.5px;
   border-color: transparent transparent #242b32 transparent;
   border-width: 11px;
 }
 
-#iwh_fleche_services_border {
+#iwh_arrow_services_border {
   top: 50px;
   margin-right: 1.5px;
   border-color: transparent transparent #ffffff transparent;
@@ -208,9 +208,9 @@
   padding-top: calc(100% / 3 - 10px);
 }
 
-.iwh_services_lien:link,
-.iwh_services_lien:visited,
-.iwh_services_lien:active {
+.iwh_services_link:link,
+.iwh_services_link:visited,
+.iwh_services_link:active {
   position: absolute;
   top: 0;
   bottom: 0;
@@ -224,7 +224,7 @@
   overflow: hidden;
 }
 
-.iwh_services_lien:hover {
+.iwh_services_link:hover {
   color: #ffffff;
   text-decoration: underline;
   text-decoration-color: #c4d733;
@@ -233,13 +233,13 @@
   border-radius: 2px;
 }
 
-.iwh_services_lien_block {
+.iwh_services_link_block {
   width: 100%;
   height: 100%;
   transform: translateY(10%);
 }
 
-.iwh_services_lien_block_img {
+.iwh_services_link_block_img {
   position: relative;
   width: 50%;
   padding-top: 50%;
@@ -247,14 +247,14 @@
   margin: auto;
 }
 
-.iwh_services_lien_block_img img {
+.iwh_services_link_block_img img {
   position: absolute;
   bottom: 0;
   right: 0;
   left: 0;
 }
 
-.iwh_services_lien p {
+.iwh_services_link p {
   line-height: 1;
   margin: 20% 0 0 0;
   font-family: "Montserrat", sans-serif;
@@ -272,8 +272,8 @@
     margin-left: 5%;
   }
 
-  #iwh_fleche_services,
-  #iwh_fleche_services_border {
+  #iwh_arrow_services,
+  #iwh_arrow_services_border {
     right: 5%;
   }
 }
@@ -292,8 +292,8 @@
     margin-left: 5%;
   }
 
-  #iwh_fleche_services,
-  #iwh_fleche_services_border {
+  #iwh_arrow_services,
+  #iwh_arrow_services_border {
     right: 5%;
   }
 
@@ -317,8 +317,8 @@
     margin-left: 5%;
   }
 
-  #iwh_fleche_services,
-  #iwh_fleche_services_border {
+  #iwh_arrow_services,
+  #iwh_arrow_services_border {
     right: 5%;
   }
 
@@ -343,8 +343,8 @@
     margin-left: 7%;
   }
 
-  #iwh_fleche_services,
-  #iwh_fleche_services_border {
+  #iwh_arrow_services,
+  #iwh_arrow_services_border {
     right: 7%;
   }
   .iwh_popin_services {
