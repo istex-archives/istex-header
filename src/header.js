@@ -85,6 +85,8 @@ function loadServices() {
               services.data[i].QoTd +
               "' class='iwh_services_link'><div class='iwh_services_link_block'><div class='iwh_services_link_block_img'><img src='" +
               services.data[i].Cl2W +
+              "' alt='"+
+              services.data[i].z351 +
               "'/></div><p>" +
               services.data[i].z351 +
               "</p></div></a></li>";
@@ -152,18 +154,18 @@ function stateIstex() {
             responseText.replace("jsonUptimeRobotApi(", "").replace(")", "")
           );
           if (json.stat == "ok")
-            document.getElementById("iwh_header_status").innerHTML =
-              '<img src="'+ressourceUrl + 'img/ic_status_ok.svg"/>';
+            document.getElementById("iwh_header_status_a").innerHTML =
+              '<img src="'+ressourceUrl + 'img/ic_status_ok.svg" alt="statut"/>';
           else
-            document.getElementById("iwh_header_status").innerHTML =
-              '<img src="'+ressourceUrl + 'img/ic_status_down.svg"/>';
+            document.getElementById("iwh_header_status_a").innerHTML =
+              '<img src="'+ressourceUrl + 'img/ic_status_down.svg" alt="statut"/>';
         } catch (error) {
-          document.getElementById("iwh_header_status").innerHTML =
-              '<img src="'+ressourceUrl + 'img/ic_status_unknow.svg"/>';
+          document.getElementById("iwh_header_status_a").innerHTML =
+              '<img src="'+ressourceUrl + 'img/ic_status_unknow.svg" alt="statut"/>';
         }
       } else
-        document.getElementById("iwh_header_status").innerHTML =
-              '<img src="'+ressourceUrl + 'img/ic_status_unknow.svg"/>';
+        document.getElementById("iwh_header_status_a").innerHTML =
+              '<img src="'+ressourceUrl + 'img/ic_status_unknow.svg" alt="statut"/>';
     }
     
   );
