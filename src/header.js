@@ -35,6 +35,7 @@ function loadHeader() {
     var menu = document.getElementById("iwh_popin_menu");
     if (
       !(
+        icmenu==null ||
         e.target == menu ||
         menu.contains(e.target) ||
         e.target == icmenu ||
