@@ -10,12 +10,6 @@ Intégrer simplement la balise présentée ci-dessous à la fin du body de votre
 ```html
 <script id="iwh_script" src="//web-header.delivery.istex.fr/bundle.js" ></script>
 ```
-Vous pouvez choisir d'ajouter un menu personnalisé existant ou d'enlever le logo en y intégrant respectivement l'attribut `data-menu="{nom du menu}"` et `data-logo="hide"`.
-
-Exemple d'utilisation pour la page d'accueil istex (menu personnalisé istex sans logo) :
-```html
-<script id="iwh_script" data-menu="istex" data-logo="hide" src="//web-header.delivery.istex.fr/bundle.js" ></script>
-```
 
 ### Développeur
 
