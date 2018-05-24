@@ -1,0 +1,19 @@
+version: '3.6'
+
+services:
+
+  istex-web-header:
+    container_name: istex-web-header
+    build:
+            context: .
+            args:
+                - http_proxy
+                - https_proxy
+    environment:
+            - HTTP_PROXY=${http_proxy}
+            - HTTPS_PROXY=${https_proxy}
+            - DEBUG=1
+    ports:
+        - "8000:80"
+    volumes:
+        - ./src:/app/src:rw
