@@ -2,6 +2,7 @@ const path = require('path');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const webpack = require('webpack');
 const WebpackAutoInject = require('webpack-auto-inject-version');
+const markdownPlugin = require('markdown-html-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -16,11 +17,16 @@ module.exports = {
      hot: true
     },
   plugins: [
+  new CopyWebpackPlugin([{ from: 'src/img', to: 'img' }]),
     new WebpackAutoInject(),
-    new CopyWebpackPlugin([{ from: 'src/img', to: 'img' }]),
-    new CopyWebpackPlugin([{ from: 'src/index.html', to: './' }]),
     new webpack.NamedModulesPlugin(),
-    new webpack.HotModuleReplacementPlugin()
+    new markdownPlugin({
+        filePath: '../src/markdown/',
+        exportPath: '../public',
+        isEncodeName: false, // if need to encode file name, like chinese
+        template: '../src/index.html'
+      }),
+     new webpack.HotModuleReplacementPlugin()
   ],
   module:{
         rules:[
