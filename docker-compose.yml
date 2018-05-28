@@ -4,6 +4,11 @@ services:
 
   istex-web-header:
     container_name: istex-web-header
+    build:
+            context: .
+            args:
+                - http_proxy
+                - https_proxy
     environment:
             - HTTP_PROXY=${http_proxy}
             - HTTPS_PROXY=${https_proxy}
