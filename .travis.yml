@@ -1,4 +1,3 @@
-os: "linux",
 sudo: required
 services:
   - docker
@@ -16,7 +15,6 @@ before_install:
   - sudo apt-get update
   - sudo apt-get -y install docker-ce
   # build an run ezmaster as in prod
-  - docker-compose -f ./docker-compose.debug.yml build
   - docker-compose -f ./docker-compose.yml up -d
   - sleep 120 ; docker-compose logs
 script:
