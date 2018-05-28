@@ -17,6 +17,7 @@
   width: 80%;
   margin-left: 10%;
   margin-right: 10%;
+  overflow: hidden;
 }
 #iwh_readme a,
 #iwh_readme {
@@ -32,6 +33,7 @@
 }
 #iwh_readme code {
   color: #c4d733;
+  white-space: pre-wrap;
 }
 
 #istex_web_header {
