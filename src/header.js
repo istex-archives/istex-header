@@ -40,9 +40,9 @@ function clickOutsidePopin(elem) {
 //Permet de mettre à jour le lien des images
 function rebaseImgUrl() {
   var images = document.querySelectorAll("#istex_web_header img");
-  images.forEach(function(image) {
-    image.src = ressourceUrl + "img/" + image.dataset.filename + ".svg";
-  });
+  for(var i= 0; i < images.length; i++){
+    images[i].src = ressourceUrl + "img/" + images[i].dataset.filename + ".svg";
+  }
 }
 
 //Permet d'afficher ou non le menu des services
