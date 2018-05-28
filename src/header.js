@@ -1,58 +1,62 @@
+var script = document.getElementById("iwh_script");
+var ressourceUrl = script.src.split("bundle.js")[0];
+var nomMenu = script.dataset.menu;
+
 import nanoajax from "nanoajax";
 import "./header.css";
 import htmlHeader from "./header.html";
 
-var ressourceUrl = document
-  .getElementById("iwh_script")
-  .src.split("bundle.js")[0];
-
 function loadHeader() {
   document.body.innerHTML = htmlHeader + document.body.innerHTML;
-  rebaseImgUrl();
+  var images = document.querySelectorAll("#iwh_header_ul img");
+  for (var i = 0; i < images.length; i++) {
+    images[i].src = ressourceUrl + "img/" + images[i].dataset.filename + ".svg";
+  }
   document.addEventListener("click", function(e) {
-    if (clickOutsidePopin(e.target)) {
-      var popin = document.getElementById("iwh_header_block_services");
-      if (popin.className == "on") popin.className = "off";
+    var services = document.getElementById("iwh_header_block_services");
+    var icservices = document.getElementById("iwh_header_services");
+    if (
+      !(
+        e.target == services ||
+        services.contains(e.target) ||
+        e.target == icservices ||
+        icservices.contains(e.target)
+      )
+    ) {
+      document.getElementById("iwh_header_block_services").className = "off";
+    }
+    var icmenu = document.getElementById("iwh_header_menu");
+    var menu = document.getElementById("iwh_popin_menu");
+    if (
+      !(
+        e.target == menu ||
+        menu.contains(e.target) ||
+        e.target == icmenu ||
+        icmenu.contains(e.target)
+      )
+    ) {
+      document.getElementById("iwh_popin_menu").className = "off";
     }
   });
   document
     .getElementById("iwh_header_services")
     .addEventListener("click", function() {
-      displayServices();
+      var popin = document.getElementById("iwh_header_block_services");
+      if (popin.className == "on") popin.className = "off";
+      else popin.className = "on";
+    });
+  document
+    .getElementById("iwh_header_menu")
+    .addEventListener("click", function() {
+      var popin = document.getElementById("iwh_popin_menu");
+      if (popin.className == "on") popin.className = "off";
+      else popin.className = "on";
     });
   loadServices();
+  loadMenu();
 }
 
-//Permet de savoir si on clique sur un element de la popin ou non
-function clickOutsidePopin(elem) {
-  var icone = document.querySelector("#iwh_header_services");
-  var popin = document.querySelector("#iwh_header_block_services");
-  if (
-    elem == icone ||
-    elem == popin ||
-    icone.contains(elem) ||
-    popin.contains(elem)
-  )
-    return false;
-  else return true;
-}
-
-//Permet de mettre à jour le lien des images
-function rebaseImgUrl() {
-  var images = document.querySelectorAll("#istex_web_header img");
-  for(var i= 0; i < images.length; i++){
-    images[i].src = ressourceUrl + "img/" + images[i].dataset.filename + ".svg";
-  }
-}
-
-//Permet d'afficher ou non le menu des services
-function displayServices() {
-  var popin = document.getElementById("iwh_header_block_services");
-  if (popin.className == "on") popin.className = "off";
-  else popin.className = "on";
-}
-
-//Permet de charger les services à intégrer
+//Permet de charger les services
 function loadServices() {
   nanoajax.ajax(
     {
@@ -62,8 +66,29 @@ function loadServices() {
       headers: { "Content-Type": "application/json" }
     },
     function(code, responseText) {
-      if (code == 200) integrateServices(responseText);
-      else
+      if (code == 200) {
+        try {
+          var services = JSON.parse(responseText);
+          var html = "<ul id='iwh_popin_services_ul'>";
+          for (var i = 0; i < services.total; i++) {
+            html +=
+              "<li class='iwh_popin_services'><a title=\"" +
+              services.data[i].BNzf +
+              "\" href='" +
+              services.data[i].QoTd +
+              "' class='iwh_services_lien'><div class='iwh_services_lien_block'><div class='iwh_services_lien_block_img'><img src='" +
+              services.data[i].Cl2W +
+              "'/></div><p>" +
+              services.data[i].z351 +
+              "</p></div></a></li>";
+          }
+          html += "</ul>";
+          document.getElementById("iwh_popin_services").innerHTML = html;
+        } catch (error) {
+          document.getElementById("iwh_popin_services").innerHTML =
+            "Intégration des services au menu impossible : " + error;
+        }
+      } else
         document.getElementById("iwh_popin_services").innerHTML = loadError(
           "iwh_popin_services",
           code
@@ -72,28 +97,38 @@ function loadServices() {
   );
 }
 
-//permet d'intégrer les services au menu
-function integrateServices(json) {
+//Permet de charger le menu
+function loadMenu() {
+  if (nomMenu == "" || nomMenu == undefined) {
+    var icmenu = document.getElementById("iwh_header_menu");
+    icmenu.parentNode.removeChild(icmenu);
+  }
   try {
-    var services = JSON.parse(json);
-    var html = "<ul id='iwh_popin_services_ul'>";
-    for (var i = 0; i < services.total; i++) {
+    var menu = require("./menu/" + nomMenu + ".json");
+    var html = "<ul id='iwh_popin_menu_ul'>";
+    for (var i = 0; i < menu.menu.length; i++) {
       html +=
-        "<li class='iwh_popin_services'><a title=\"" +
-        services.data[i].BNzf +
-        "\" href='" +
-        services.data[i].QoTd +
-        "' class='iwh_services_lien'><div class='iwh_services_lien_block'><div class='iwh_services_lien_block_img'><img src='" +
-        services.data[i].Cl2W +
-        "'/></div><p>" +
-        services.data[i].z351 +
-        "</p></div></a></li>";
+        '<li class="iwh_popin_menu_li"><a class="iwh_popin_menu_a" href="' +
+        menu.menu[i].lien +
+        '">';
+
+      if (menu.menu[i].icone != "")
+        html +=
+          '<img src="' +
+          ressourceUrl +
+          "img/menu/" +
+          nomMenu +
+          "/" +
+          menu.menu[i].icone +
+          '.svg"/>';
+
+      html += menu.menu[i].titre + " &#8250</a></li>";
     }
     html += "</ul>";
-    document.getElementById("iwh_popin_services").innerHTML = html;
+    document.getElementById("iwh_popin_menu").innerHTML = html;
   } catch (error) {
-    document.getElementById("iwh_popin_services").innerHTML =
-      "Intégration des services au menu impossible : " + error;
+    document.getElementById("iwh_popin_menu").innerHTML =
+      "<p >Menu non trouvé : " + error + "</p>";
   }
 }
 
@@ -126,11 +161,10 @@ function loadError(objet, code) {
 }
 
 //On lance le chargement du header
-if (window.addEventListener) // W3C standard
-{
-  window.addEventListener('load', loadHeader(), false); // NB **not** 'onload'
-} 
-else if (window.attachEvent) // Microsoft
-{
-  window.attachEvent('onload', loadHeader());
+if (window.addEventListener) {
+  // W3C standard
+  window.addEventListener("load", loadHeader(), false); // NB **not** 'onload'
+} else if (window.attachEvent) {
+  // Microsoft
+  window.attachEvent("onload", loadHeader());
 }

@@ -1,0 +1,24 @@
+{
+  "menu": [
+    {
+      "titre": "Home",
+      "icone": "ic_Home",
+      "lien": "//www.istex.fr"
+    },
+    {
+      "titre": "Chercheur",
+      "icone": "ic_Chercheur",
+      "lien": "//www.istex.fr/chercheur/"
+    },
+    {
+      "titre": "Responsable",
+      "icone": "ic_Responsable",
+      "lien": "//www.istex.fr/responsable/"
+    },
+    {
+      "titre": "Curieux",
+      "icone": "ic_Curieux",
+      "lien": "//www.istex.fr/curieux/"
+    }
+  ]
+}
