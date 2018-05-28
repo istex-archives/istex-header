@@ -1,14 +1,14 @@
 {
   "menu": [
     {
-      "titre": "Corpus",
-      "icone": "ic_Corpus",
-      "lien": "//www.istex.fr"
+      "title": "Corpus",
+      "icon": "ic_Corpus",
+      "link": "//www.istex.fr"
     },
     {
-      "titre": "Etablissement",
-      "icone": "",
-      "lien": "//www.istex.fr/chercheur/"
+      "title": "Etablissement",
+      "icon": "",
+      "link": "//www.istex.fr/chercheur/"
     }
   ]
 }
