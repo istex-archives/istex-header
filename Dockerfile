@@ -1,23 +1,17 @@
-
-
-# use the ngnix server to serve the built stuff
-FROM nginx:1.13.12
-
-# to help docker debugging
-ENV DEBIAN_FRONTEND noninteractive
-RUN apt-get -y update && apt-get -y install vim curl gnupg2 git jq
-
-# nodejs instalation used for startup scripts
-RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
-RUN apt-get install -y build-essential nodejs
-
+# build the vuejs app
+FROM node:10.0.0 as build-deps
 WORKDIR /app/
 COPY ./package.json /app/
 RUN npm install
 COPY . /app
 RUN npm run webpack
 
+# use the ngnix server to serve the built stuff
+FROM nginx:1.13.12
+
 COPY nginx.conf /etc/nginx/nginx.conf
+
+COPY --from=build-deps /app/public /app/public
 
 RUN echo '{ \
   "httpPort": 80, \

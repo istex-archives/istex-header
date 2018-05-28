@@ -7,7 +7,7 @@
     "prettier": "prettier --write src/*.js src/*.css src/menu/*.json",
     "webpack": "webpack -p --config webpack.config.js",
     "build": "npm run prettier && npm run webpack",
-    "watch": "webpack-dev-server -d",
+    "watch": "webpack-dev-server -d --host 0.0.0.0",
     "postversion": "git push && git push --tags"
   },
   "dependencies": {

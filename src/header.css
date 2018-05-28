@@ -9,8 +9,8 @@
   width: 100%;
 }
 
-#iwh_readme{
-  border:2px solid #ffffff;
+#iwh_readme {
+  border: 2px solid #ffffff;
   border-radius: 50px;
   background-color: #242b32;
   margin-top: 80px;
@@ -18,17 +18,20 @@
   margin-left: 10%;
   margin-right: 10%;
 }
-#iwh_readme a,#iwh_readme{
- text-align: center;
- color:#ffffff;
+#iwh_readme a,
+#iwh_readme {
+  text-align: center;
+  color: #ffffff;
 }
 
-#iwh_readme h1,#iwh_readme h2,#iwh_readme h3{
+#iwh_readme h1,
+#iwh_readme h2,
+#iwh_readme h3 {
   text-decoration: underline;
   color: #458ca5;
 }
-#iwh_readme code{
-  color:#c4d733;
+#iwh_readme code {
+  color: #c4d733;
 }
 
 #istex_web_header {
