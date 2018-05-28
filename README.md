@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/istex/istex-web-header.svg?branch=master)](https://travis-ci.org/istex/istex-web-header)
 # istex-web-header
 
 Le header web affiché sur tous les sites de  la Galaxy Istex
@@ -17,9 +18,9 @@ Exemple d'utilisation pour la page d'accueil istex (menu personnalisé istex san
 <script id="iwh_script" data-menu="istex" data-logo="hide" src="//web-header.delivery.istex.fr/bundle.js" ></script>
 ```
 
-### Développeur
+## Développeur
 
-Prérequis : nodejs
+### Via NodeJs
 
 Pour installer les dépendances nécessaires :
 ```
@@ -37,3 +38,11 @@ Pour tester le build du projet comme en prod (qui se fait via le dockerfile) tap
 npm run build
 ```
 Le résultat du build sera présent dans le répertoire `public/`
+
+### Via Docker
+
+Pour tester et développer en mode docker l'application :
+```
+docker-compose -f ./docker-compose.debug.yml up
+```
+Ouvrez alors votre navigateur sur http://localhost:8080 pour visualiser votre istex-web-header local.

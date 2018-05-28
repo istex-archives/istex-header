@@ -5,6 +5,7 @@ var menuName = script.dataset.menu;
 import nanoajax from "nanoajax";
 import "./header.css";
 import htmlHeader from "./header.html";
+import readme from "../README.md";
 
 // Permet de charger le header istex
 function loadHeader() {
@@ -62,6 +63,7 @@ function loadHeader() {
     });
   loadServices();
   loadMenu();
+  addReadme();
 }
 
 // Permet de charger les services
@@ -206,6 +208,11 @@ function loadError(objet, code) {
       return debErr + "error : " + code;
       break;
   }
+}
+
+function addReadme() {
+  var iwh_readme = document.getElementById("iwh_readme");
+  if (iwh_readme != null) iwh_readme.innerHTML = readme;
 }
 
 // On lance le chargement du header

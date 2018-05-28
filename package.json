@@ -1,13 +1,13 @@
 {
   "name": "web-header",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "Bootstrap, template and assets to display Istex galaxy header.",
   "private": true,
   "scripts": {
     "prettier": "prettier --write src/*.js src/*.css src/menu/*.json",
     "webpack": "webpack -p --config webpack.config.js",
     "build": "npm run prettier && npm run webpack",
-    "watch": "webpack-dev-server -d",
+    "watch": "webpack-dev-server -d --host 0.0.0.0",
     "postversion": "git push && git push --tags"
   },
   "dependencies": {
@@ -27,6 +27,7 @@
     "copy-webpack-plugin": "^4.5.1",
     "css-loader": "^0.28.11",
     "html-loader": "^0.5.5",
+    "markdown-loader": "^2.0.2",
     "prettier": "^1.12.1",
     "style-loader": "^0.21.0",
     "webpack": "^4.6.0",
