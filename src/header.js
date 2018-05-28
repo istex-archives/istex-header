@@ -6,6 +6,7 @@ import nanoajax from "nanoajax";
 import "./header.css";
 import htmlHeader from "./header.html";
 
+// Permet de charger le header istex
 function loadHeader() {
   document.body.innerHTML = htmlHeader + document.body.innerHTML;
   stateIstex();
@@ -35,6 +36,7 @@ function loadHeader() {
     var menu = document.getElementById("iwh_popin_menu");
     if (
       !(
+        icmenu == null ||
         e.target == menu ||
         menu.contains(e.target) ||
         e.target == icmenu ||
@@ -62,7 +64,7 @@ function loadHeader() {
   loadMenu();
 }
 
-//Permet de charger les services
+// Permet de charger les services
 function loadServices() {
   nanoajax.ajax(
     {
@@ -84,6 +86,8 @@ function loadServices() {
               services.data[i].QoTd +
               "' class='iwh_services_link'><div class='iwh_services_link_block'><div class='iwh_services_link_block_img'><img src='" +
               services.data[i].Cl2W +
+              "' alt='" +
+              services.data[i].z351 +
               "'/></div><p>" +
               services.data[i].z351 +
               "</p></div></a></li>";
@@ -103,7 +107,7 @@ function loadServices() {
   );
 }
 
-//Permet de charger le menu
+// Permet de charger le menu
 function loadMenu() {
   if (menuName == "" || menuName == undefined) {
     var icmenu = document.getElementById("iwh_header_menu");
@@ -138,6 +142,7 @@ function loadMenu() {
   }
 }
 
+// Permet de charger le statut de la plateforme istex
 function stateIstex() {
   nanoajax.ajax(
     {
@@ -151,23 +156,31 @@ function stateIstex() {
             responseText.replace("jsonUptimeRobotApi(", "").replace(")", "")
           );
           if (json.stat == "ok")
-            document.getElementById("iwh_header_status_img").src =
-              ressourceUrl + "img/ic_status_ok.svg";
+            document.getElementById("iwh_header_status_a").innerHTML =
+              '<img src="' +
+              ressourceUrl +
+              'img/ic_status_ok.svg" alt="statut"/>';
           else
-            document.getElementById("iwh_header_status_img").src =
-              ressourceUrl + "img/ic_status_down.svg";
+            document.getElementById("iwh_header_status_a").innerHTML =
+              '<img src="' +
+              ressourceUrl +
+              'img/ic_status_down.svg" alt="statut"/>';
         } catch (error) {
-          document.getElementById("iwh_header_status_img").src =
-            ressourceUrl + "img/ic_status_unknow.svg";
+          document.getElementById("iwh_header_status_a").innerHTML =
+            '<img src="' +
+            ressourceUrl +
+            'img/ic_status_unknow.svg" alt="statut"/>';
         }
       } else
-        document.getElementById("iwh_header_status_img").src =
-          ressourceUrl + "img/ic_status_unknow.svg";
+        document.getElementById("iwh_header_status_a").innerHTML =
+          '<img src="' +
+          ressourceUrl +
+          'img/ic_status_unknow.svg" alt="statut"/>';
     }
   );
 }
 
-//permet de gérer les erreurs de chargement
+// Permet de gérer les erreurs de chargement
 function loadError(objet, code) {
   var debErr = "Le chargement de '" + objet + "' a échoué : ";
   switch (code) {
@@ -195,7 +208,7 @@ function loadError(objet, code) {
   }
 }
 
-//On lance le chargement du header
+// On lance le chargement du header
 if (window.addEventListener) {
   // W3C standard
   window.addEventListener("load", loadHeader(), false); // NB **not** 'onload'
