@@ -210,10 +210,9 @@ function loadError(objet, code) {
   }
 }
 
-function addReadme(){
-  var iwh_readme=document.getElementById("iwh_readme");
-  if(iwh_readme!=null)
-    iwh_readme.innerHTML=readme;
+function addReadme() {
+  var iwh_readme = document.getElementById("iwh_readme");
+  if (iwh_readme != null) iwh_readme.innerHTML = readme;
 }
 
 // On lance le chargement du header
