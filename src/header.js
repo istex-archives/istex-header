@@ -5,7 +5,7 @@ var menuName = script.dataset.menu;
 import nanoajax from "nanoajax";
 import "./header.css";
 import htmlHeader from "./header.html";
-import readme from "./README.md";
+import readme from "../README.md";
 
 // Permet de charger le header istex
 function loadHeader() {
