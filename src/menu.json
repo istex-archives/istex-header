@@ -1,0 +1,142 @@
+{"total":9,"data":[{
+    "_id": "5acca78fa736dcf0f067685f",
+    "uri": "ark:/65376/DZ2-X6HC3XP9-F",
+    "z351": "Bouton",
+    "A2KZ": [
+        "doc"
+    ],
+    "QoTd": "https://addons.istex.fr/",
+    "Cl2W": "https://www.istex.fr/wp-content/uploads/2017/11/ic_Bouton_Istex2.svg",
+    "publicationDate": "2018-04-23T12:49:31.873Z",
+    "BNzf": "Bouton Chrome et/ou Firefox pour ISTEX",
+    "menu": []
+},
+{
+    "_id": "5acca78fa736dcf0f0676860",
+    "uri": "ark:/65376/DZ2-7PLKVK7J-6",
+    "z351": "Scholar",
+    "A2KZ": [
+        "doc"
+    ],
+    "QoTd": "https://doc.istex.fr/users/usage/googlescholar/",
+    "Cl2W": "https://www.istex.fr/wp-content/uploads/2017/11/ic_google_scholar-1.svg",
+    "publicationDate": "2018-04-23T12:52:47.894Z",
+    "BNzf": "OpenURL et diffusion d'ISTEX à travers Google Scholar",
+    "menu": []
+},
+{
+    "_id": "5acca78fa736dcf0f0676861",
+    "uri": "ark:/65376/DZ2-5ZDJ0MR2-V",
+    "z351": "Zotero",
+    "A2KZ": [
+        "doc"
+    ],
+    "QoTd": "https://doc.istex.fr/users/usage/bib/",
+    "Cl2W": "https://www.istex.fr/wp-content/uploads/2017/11/ic_istex_bibliographie-1.svg",
+    "publicationDate": "2018-04-23T12:52:03.020Z",
+    "BNzf": "Utiliser vos logiciels de Gestion Bibliographique avec ISTEX",
+    "menu": []
+},
+{
+    "_id": "5acca78fa736dcf0f0676862",
+    "uri": "ark:/65376/DZ2-BB7FGKBN-7",
+    "z351": "Télécharger",
+    "A2KZ": [
+        "tdm"
+    ],
+    "QoTd": "https://dl.istex.fr/",
+    "Cl2W": "https://www.istex.fr/wp-content/uploads/2017/11/ic_telecharger_corpus.svg",
+    "publicationDate": "2018-04-23T12:53:31.706Z",
+    "BNzf": "Téléchargez un sous-corpus ISTEX",
+    "menu": []
+},
+{
+    "_id": "5acca78fa736dcf0f0676863",
+    "uri": "ark:/65376/DZ2-ZBV0QVZ2-8",
+    "z351": "API",
+    "A2KZ": [
+        "tdm"
+    ],
+    "QoTd": "https://api.istex.fr/documentation/",
+    "Cl2W": "https://www.istex.fr/wp-content/uploads/2017/11/ic_Istex_API-1.svg",
+    "publicationDate": "2018-04-23T12:57:11.593Z",
+    "BNzf": "API ISTEX",
+    "menu": []
+},
+{
+    "_id": "5acca78fa736dcf0f0676864",
+    "uri": "ark:/65376/DZ2-5TGTD93L-X",
+    "z351": "Harvester",
+    "A2KZ": [
+        "tdm"
+    ],
+    "QoTd": "https://github.com/istex/istex-api-harvester",
+    "Cl2W": "https://www.istex.fr/wp-content/uploads/2017/11/ic_Harvester-1.svg",
+    "publicationDate": "2018-04-23T12:51:21.163Z",
+    "BNzf": "Programmes permettant de moissonner des sous-corpus proposés par l'API de la plateforme ISTEX.",
+    "menu": []
+},
+{
+    "_id": "5acca78fa736dcf0f0676865",
+    "uri": "ark:/65376/DZ2-VBJFW2Z0-S",
+    "z351": "SPARQL",
+    "A2KZ": [
+        "doc",
+        "tdm"
+    ],
+    "QoTd": "https://data.istex.fr/triplestore/sparql/",
+    "Cl2W": "https://www.istex.fr/wp-content/uploads/2017/11/ic_SPARKL-1.svg",
+    "publicationDate": "2018-04-23T12:55:23.253Z",
+    "BNzf": " Triple Store des données ISTEX interrogeable en SPARQL.",
+    "menu": []
+},
+{
+    "_id": "5acca78fa736dcf0f0676866",
+    "uri": "ark:/65376/DZ2-G44ZWGJS-3",
+    "z351": "data.istex.fr",
+    "A2KZ": [
+        "doct",
+        "dm"
+    ],
+    "QoTd": "https://data.istex.fr/",
+    "Cl2W": "https://www.istex.fr/wp-content/uploads/2017/11/ic_Data_ISTEX-2.svg",
+    "publicationDate": "2018-04-23T12:54:07.075Z",
+    "BNzf": "ISTEX Linked Data",
+    "menu": []
+},
+{
+    "_id": "5acca78fa736dcf0f0676867",
+    "uri": "ark:/65376/DZ2-1XP09DLT-M",
+    "z351": "Rechercher",
+    "A2KZ": [
+        "doc"
+    ],
+    "QoTd": "https://www.istex.fr/rechercher/",
+    "Cl2W": "https://www.istex.fr/wp-content/uploads/2017/11/ic_rechercher_dans_Istex.svg",
+    "publicationDate": "2018-04-23T12:50:40.350Z",
+    "BNzf": "Testez votre recherche dans ISTEX",
+    "menu": []
+}],"default":{
+  "menu": [
+    {
+      "title": "Home",
+      "icon": "https://www.istex.fr/wp-content/themes/istex/images/ic_home_menu.svg",
+      "link": "//www.istex.fr"
+    },
+    {
+      "title": "Chercheur",
+      "icon": "https://www.istex.fr/wp-content/themes/istex/images/ic_chercheur_menu.svg",
+      "link": "//www.istex.fr/chercheur/"
+    },
+    {
+      "title": "Responsable",
+      "icon": "https://www.istex.fr/wp-content/themes/istex/images/ic_responsable_menu.svg",
+      "link": "//www.istex.fr/responsable/"
+    },
+    {
+      "title": "Curieux",
+      "icon": "https://www.istex.fr/wp-content/themes/istex/images/ic_curieux_menu.svg",
+      "link": "//www.istex.fr/curieux/"
+    }
+  ]
+}}
