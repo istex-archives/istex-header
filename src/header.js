@@ -58,6 +58,7 @@ function loadHeader() {
       )
     ) {
       document.getElementById("iwh_header_block_tweets").className = "off";
+      document.querySelector("#iwh_tweets > iframe").style.visibility= "hidden";
     }
   });
   document
@@ -78,8 +79,13 @@ function loadHeader() {
     .getElementById("iwh_header_notif")
     .addEventListener("click", function() {
       var popin = document.getElementById("iwh_header_block_tweets");
-      if (popin.className == "on") popin.className = "off";
-      else popin.className = "on";
+      if (popin.className == "on"){ popin.className = "off"; 
+      document.querySelector("#iwh_tweets > iframe").style.visibility= "hidden";
+    }
+      else{
+       popin.className = "on";
+      document.querySelector("#iwh_tweets > iframe").style.visibility= "visible";
+    }
     });
   loadServices();
   addReadme();
@@ -105,7 +111,10 @@ function loadTweet() {
     {
       chrome: "nofooter noborders transparent noheader",
       theme: "dark",
-      linkColor: "#c4d733"
+      linkColor: "#c4d733",
+      tweetLimit: "6"
+    }).then(function (el){
+      document.querySelector("#iwh_tweets > iframe").style.visibility= "hidden";
     }
   );
 }
