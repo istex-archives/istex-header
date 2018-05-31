@@ -1,6 +1,6 @@
 {
   "name": "web-header",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "description": "Bootstrap, template and assets to display Istex galaxy header.",
   "private": true,
   "scripts": {
