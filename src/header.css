@@ -44,8 +44,10 @@
 }
 
 #iwh_tweets {
+  margin-top: 5px;
+  margin-bottom:  5px; 
   width: 100%;
-  height: 100%;
+  height: calc(100% - 10px);
   overflow-y: scroll;
   padding-right: 50px;
   box-sizing: content-box;
@@ -474,12 +476,12 @@
 
   #iwh_header_services,
   #iwh_header_notif {
-    margin-right: 7%;
+    margin-right: 24px;
   }
 
   #iwh_header_status,
   #iwh_header_menu {
-    margin-left: 7%;
+    margin-left: 24px;
   }
 
   #iwh_header_notif {
@@ -521,8 +523,6 @@
 @media (min-device-width: 1281px) {
   #iwh_tweets {
     width: calc(100% + 60px);
-    height: 100%;
-    overflow-y: scroll;
     padding-right: 50px;
     box-sizing: border-box;
   }
