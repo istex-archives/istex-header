@@ -145,7 +145,6 @@ function newTweet() {
   var iframeDocument =
     document.querySelector("#iwh_tweets > iframe").contentDocument ||
     document.querySelector("#iwh_tweets > iframe").contentWindow.document;
-  console.log(iframeDocument);
   if (iframeDocument) {
     tweets = iframeDocument
       .getElementsByClassName("timeline-Tweet-text")[0]
@@ -160,8 +159,6 @@ function newTweet() {
       document.getElementById("iwh_header_notif_img").src =
         ressourceUrl + "img/ic_notifications.svg";
   }
-  console.log(tweets);
-  console.log(document.cookie);
 }
 
 // Permet de charger les services
