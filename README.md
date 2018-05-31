@@ -41,8 +41,26 @@ Le résultat du build sera présent dans le répertoire `public/`
 
 ### Via Docker
 
-Pour tester et développer en mode docker l'application :
+prérequis: Docker
+           Docker Compose
+           Pour le développement : Git et Make
+
+Pour installer et lancer en mode développement/debug :
 ```
-docker-compose -f ./docker-compose.debug.yml up
+make install
+make build
+make run-debug
 ```
 Ouvrez alors votre navigateur sur http://localhost:8080 pour visualiser votre istex-web-header local.
+
+Pour installer et lancer en mode production :
+```
+make install
+make build
+make run-prod
+```
+
+Pour connaître les autres commandes disponibles :
+```
+make help
+```
