@@ -1,7 +1,6 @@
 var script = document.getElementById("iwh_script");
 var ressourceUrl = script.src.split("bundle.js")[0];
 var url = document.location.href;
-var tweets = "";
 import nanoajax from "nanoajax";
 import "./header.css";
 import htmlHeader from "./header.html";
@@ -77,23 +76,7 @@ function loadHeader() {
       if (popin.className == "on") popin.className = "off";
       else popin.className = "on";
     });
-  document
-    .getElementById("iwh_header_notif")
-    .addEventListener("click", function() {
-      var popin = document.getElementById("iwh_header_block_tweets");
-      if (popin.className == "on") {
-        popin.className = "off";
-        document.querySelector("#iwh_tweets > iframe").style.visibility =
-          "hidden";
-      } else {
-        popin.className = "on";
-        document.querySelector("#iwh_tweets > iframe").style.visibility =
-          "visible";
-        document.cookie = "iwh_tweets=" + tweets;
-        document.getElementById("iwh_header_notif_img").src =
-          ressourceUrl + "img/ic_notifications.svg";
-      }
-    });
+
   loadServices();
   addReadme();
 }
@@ -104,6 +87,28 @@ function addTwitterScript() {
   s.onload = function() {
     loadTweet();
     setInterval(loadTweet, 60000);
+    document
+      .getElementById("iwh_header_notif")
+      .addEventListener("click", function() {
+        var popin = document.getElementById("iwh_header_block_tweets");
+        if (popin.className == "on") {
+          popin.className = "off";
+          document.querySelector("#iwh_tweets > iframe").style.visibility =
+            "hidden";
+        } else {
+          popin.className = "on";
+          document.querySelector("#iwh_tweets > iframe").style.visibility =
+            "visible";
+          var now = new Date();
+          var time = now.getTime();
+          time += 2592000 * 1000;
+          now.setTime(time);
+          document.cookie =
+            "iwh_tweets=" + tweets + ";expires=" + now.toUTCString();
+          document.getElementById("iwh_header_noif_img").src =
+            ressourceUrl + "img/ic_notifications.svg";
+        }
+      });
   };
   document.head.appendChild(s);
 }
