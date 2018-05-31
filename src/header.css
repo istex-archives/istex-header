@@ -21,15 +21,13 @@
 }
 
 #iwh_header_block_tweets.on > div,
-#iwh_header_block_tweets.on > span
-{
+#iwh_header_block_tweets.on > span {
   opacity: 1;
   visibility: visible;
 }
 
 #iwh_header_block_tweets.off > div,
-#iwh_header_block_tweets.off > span
-{
+#iwh_header_block_tweets.off > span {
   opacity: 0;
   visibility: hidden;
 }
@@ -375,13 +373,13 @@
   #iwh_popin_services {
     width: 400px;
   }
-  
+
   #iwh_header_notif,
   #iwh_header_status {
     margin-right: 48px;
   }
 
-  #iwh_header_services{
+  #iwh_header_services {
     margin-right: 24px;
   }
 
@@ -394,8 +392,8 @@
     right: 24px;
   }
 
-   #iwh_arrow_tweets,
-    #iwh_arrow_tweets_border {
+  #iwh_arrow_tweets,
+  #iwh_arrow_tweets_border {
     right: 96px;
   }
 }
@@ -405,14 +403,14 @@
     right: 0;
     width: 100%;
   }
-  
+
   #iwh_header_notif,
   #iwh_header_status {
     margin-right: 48px;
   }
-#iwh_header_services{
-  margin-right: 24px;
-}
+  #iwh_header_services {
+    margin-right: 24px;
+  }
   #iwh_header_menu {
     margin-left: 12px;
   }
@@ -422,8 +420,8 @@
     right: 24px;
   }
 
-   #iwh_arrow_tweets,
-    #iwh_arrow_tweets_border {
+  #iwh_arrow_tweets,
+  #iwh_arrow_tweets_border {
     right: 96px;
   }
 
@@ -434,18 +432,18 @@
 }
 
 @media all and (max-device-width: 800px) and (max-device-height: 512px) {
-   #iwh_popin_services {
+  #iwh_popin_services {
     right: 0;
     width: 100%;
   }
-  
+
   #iwh_header_notif,
   #iwh_header_status {
     margin-right: 48px;
   }
-#iwh_header_services{
-  margin-right: 24px;
-}
+  #iwh_header_services {
+    margin-right: 24px;
+  }
   #iwh_header_menu {
     margin-left: 12px;
   }
@@ -455,10 +453,10 @@
     right: 24px;
   }
 
-   #iwh_arrow_tweets,
-    #iwh_arrow_tweets_border {
+  #iwh_arrow_tweets,
+  #iwh_arrow_tweets_border {
     right: 96px;
-  } 
+  }
   .iwh_popin_services {
     width: calc(100% / 5 - 10px);
     padding-top: calc(100% / 5 - 10px);
@@ -471,7 +469,7 @@
     width: 100%;
     top: 50px;
     border: none;
-    border-bottom: solid 1px #ffffff; 
+    border-bottom: solid 1px #ffffff;
   }
 
   #iwh_header_services,
@@ -509,8 +507,8 @@
     width: 100%;
     right: 0;
     border: none;
-    border-bottom: solid 1px #ffffff; 
-    height:calc(100vh - 50px); 
+    border-bottom: solid 1px #ffffff;
+    height: calc(100vh - 50px);
     top: 50px;
   }
 

@@ -1,7 +1,7 @@
 var script = document.getElementById("iwh_script");
 var ressourceUrl = script.src.split("bundle.js")[0];
 var url = document.location.href;
-
+var tweets = "";
 import nanoajax from "nanoajax";
 import "./header.css";
 import htmlHeader from "./header.html";
@@ -13,6 +13,7 @@ function loadHeader() {
   document.body.innerHTML = htmlHeader + document.body.innerHTML;
   stateIstex();
   setInterval(stateIstex, 60000);
+  addTwitterScript();
   if (script.dataset.logo == "hide") {
     var iclogo = document.getElementById("iwh_header_logo");
     iclogo.parentNode.removeChild(iclogo);
@@ -58,7 +59,8 @@ function loadHeader() {
       )
     ) {
       document.getElementById("iwh_header_block_tweets").className = "off";
-      document.querySelector("#iwh_tweets > iframe").style.visibility= "hidden";
+      document.querySelector("#iwh_tweets > iframe").style.visibility =
+        "hidden";
     }
   });
   document
@@ -79,17 +81,21 @@ function loadHeader() {
     .getElementById("iwh_header_notif")
     .addEventListener("click", function() {
       var popin = document.getElementById("iwh_header_block_tweets");
-      if (popin.className == "on"){ popin.className = "off"; 
-      document.querySelector("#iwh_tweets > iframe").style.visibility= "hidden";
-    }
-      else{
-       popin.className = "on";
-      document.querySelector("#iwh_tweets > iframe").style.visibility= "visible";
-    }
+      if (popin.className == "on") {
+        popin.className = "off";
+        document.querySelector("#iwh_tweets > iframe").style.visibility =
+          "hidden";
+      } else {
+        popin.className = "on";
+        document.querySelector("#iwh_tweets > iframe").style.visibility =
+          "visible";
+        document.cookie = "iwh_tweets=" + tweets;
+        document.getElementById("iwh_header_notif_img").src =
+          ressourceUrl + "img/ic_notifications.svg";
+      }
     });
   loadServices();
   addReadme();
-  addTwitterScript();
 }
 
 function addTwitterScript() {
@@ -97,26 +103,65 @@ function addTwitterScript() {
   s.setAttribute("src", "https://platform.twitter.com/widgets.js");
   s.onload = function() {
     loadTweet();
+    setInterval(loadTweet, 60000);
   };
   document.head.appendChild(s);
 }
 
 function loadTweet() {
-  twttr.widgets.createTimeline(
-    {
-      sourceType: "profile",
-      screenName: "ISTEX_Platform"
-    },
-    document.getElementById("iwh_tweets"),
-    {
-      chrome: "nofooter noborders transparent noheader",
-      theme: "dark",
-      linkColor: "#c4d733",
-      tweetLimit: "6"
-    }).then(function (el){
-      document.querySelector("#iwh_tweets > iframe").style.visibility= "hidden";
-    }
-  );
+  if (
+    document.getElementById("iwh_header_block_tweets").className == "off" ||
+    document.getElementById("iwh_tweets").innerHTML == ""
+  ) {
+    document.getElementById("iwh_tweets").innerHTML = "";
+    twttr.widgets
+      .createTimeline(
+        {
+          sourceType: "profile",
+          screenName: "ISTEX_Platform"
+        },
+        document.getElementById("iwh_tweets"),
+        {
+          chrome: "nofooter noborders transparent noheader",
+          theme: "dark",
+          linkColor: "#c4d733",
+          tweetLimit: "6"
+        }
+      )
+      .then(function(el) {
+        document.querySelector("#iwh_tweets > iframe").style.visibility =
+          "hidden";
+        if (
+          document.getElementById("iwh_header_block_tweets").className == "on"
+        )
+          document.querySelector("#iwh_tweets > iframe").style.visibility =
+            "visible";
+        newTweet();
+      });
+  }
+}
+
+function newTweet() {
+  var iframeDocument =
+    document.querySelector("#iwh_tweets > iframe").contentDocument ||
+    document.querySelector("#iwh_tweets > iframe").contentWindow.document;
+  console.log(iframeDocument);
+  if (iframeDocument) {
+    tweets = iframeDocument
+      .getElementsByClassName("timeline-Tweet-text")[0]
+      .innerHTML.replace(/;/g, "");
+    if (
+      !document.cookie.includes("iwh_tweets=" + tweets) &&
+      document.getElementById("iwh_header_block_tweets").className == "off"
+    )
+      document.getElementById("iwh_header_notif_img").src =
+        ressourceUrl + "img/ic_notifications_new.svg";
+    else
+      document.getElementById("iwh_header_notif_img").src =
+        ressourceUrl + "img/ic_notifications.svg";
+  }
+  console.log(tweets);
+  console.log(document.cookie);
 }
 
 // Permet de charger les services
