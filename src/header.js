@@ -105,7 +105,11 @@ function addTwitterScript() {
           time += 2592000 * 1000;
           now.setTime(time);
           document.cookie =
-            "iwh_tweets=" + tweets + ";expires=" + now.toUTCString();
+            "iwh_tweets=" +
+            tweets +
+            ";expires=" +
+            now.toUTCString() +
+            ";path=/";
           document.getElementById("iwh_header_notif_img").src =
             ressourceUrl + "img/ic_notifications.svg";
         }
