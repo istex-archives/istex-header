@@ -1,6 +1,7 @@
 var script = document.getElementById("iwh_script");
 var ressourceUrl = script.src.split("bundle.js")[0];
 var url = document.location.href;
+var tweets = "";
 import nanoajax from "nanoajax";
 import "./header.css";
 import htmlHeader from "./header.html";
@@ -105,7 +106,7 @@ function addTwitterScript() {
           now.setTime(time);
           document.cookie =
             "iwh_tweets=" + tweets + ";expires=" + now.toUTCString();
-          document.getElementById("iwh_header_noif_img").src =
+          document.getElementById("iwh_header_notif_img").src =
             ressourceUrl + "img/ic_notifications.svg";
         }
       });
