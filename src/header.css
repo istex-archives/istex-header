@@ -1,4 +1,24 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat");
+
+#istex_web_header {
+  background-color: #242b32;
+  height: 48px;
+  display: flex;
+  border-bottom: solid 2px #ffffff;
+  font-size: 12px;
+  line-height: 1;
+  box-sizing: content-box;
+}
+
+#istex_web_header *:hover {
+  opacity: 1;
+}
+
+#istex_web_header *::after,
+#istex_web_header *::before {
+  content: none;
+}
+
 #istex_web_header * {
   box-sizing: border-box;
 }
@@ -104,24 +124,6 @@
 #iwh_readme_text code {
   white-space: pre-wrap;
   color: #c4d733;
-}
-
-#istex_web_header {
-  background-color: #242b32;
-  height: 48px;
-  display: flex;
-  border-bottom: solid 2px #ffffff;
-  font-size: 12px;
-  line-height: 1;
-}
-
-#istex_web_header *:hover {
-  opacity: 1;
-}
-
-#istex_web_header *::after,
-#istex_web_header *::before {
-  content: none;
 }
 
 #iwh_header_nav,
