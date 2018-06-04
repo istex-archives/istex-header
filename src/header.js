@@ -160,7 +160,7 @@ function newTweet() {
       .getElementsByClassName("timeline-Tweet-text")[0]
       .innerHTML.replace(/;/g, "");
     if (
-      !document.cookie.includes("iwh_tweets=" + tweets) &&
+      document.cookie.indexOf("iwh_tweets=" + tweets)==-1 &&
       document.getElementById("iwh_header_block_tweets").className == "off"
     )
       document.getElementById("iwh_header_notif_img").src =
@@ -177,7 +177,7 @@ function loadServices() {
     var menu = services.default.menu;
     var html = "<ul id='iwh_popin_services_ul'>";
     for (var i = 0; i < services.total; i++) {
-      if (!url.includes(services.data[i].QoTd)) {
+      if (url.indexOf(services.data[i].QoTd)==-1) {
         html +=
           "<li class='iwh_popin_services'><a title=\"" +
           services.data[i].BNzf +
