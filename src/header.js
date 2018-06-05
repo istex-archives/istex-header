@@ -2,6 +2,7 @@ var script = document.getElementById("iwh_script");
 var ressourceUrl = script.src.split("bundle.js")[0];
 var url = document.location.href;
 var tweets = "";
+var initweet = false;
 import nanoajax from "nanoajax";
 import "./header.css";
 import htmlHeader from "./header.html";
@@ -14,13 +15,15 @@ function loadHeader() {
   stateIstex();
   setInterval(stateIstex, 60000);
   addTwitterScript();
-  if (url=="https://www.istex.fr/") {
+  if (url == "https://www.istex.fr/") {
     var iclogo = document.getElementById("iwh_header_logo");
     iclogo.parentNode.removeChild(iclogo);
   }
   var images = document.querySelectorAll("#iwh_header_ul img");
   for (var i = 0; i < images.length; i++) {
-    images[i].src = ressourceUrl + "img/" + images[i].dataset.filename + ".svg";
+    if (images[i].dataset.filename != undefined)
+      images[i].src =
+        ressourceUrl + "img/" + images[i].dataset.filename + ".svg";
   }
   document.addEventListener("click", function(e) {
     var blockServices = document.getElementById("iwh_header_block_services");
@@ -79,34 +82,10 @@ function addTwitterScript() {
   var s = document.createElement("script");
   s.setAttribute("src", "https://platform.twitter.com/widgets.js");
   s.onload = function() {
-    loadTweet();
-    setInterval(loadTweet, 60000);
-    document
-      .getElementById("iwh_header_notif")
-      .addEventListener("click", function() {
-        var popin = document.getElementById("iwh_header_block_tweets");
-        if (popin.className == "on") {
-          popin.className = "off";
-          document.querySelector("#iwh_tweets > iframe").style.visibility =
-            "hidden";
-        } else {
-          popin.className = "on";
-          document.querySelector("#iwh_tweets > iframe").style.visibility =
-            "visible";
-          var now = new Date();
-          var time = now.getTime();
-          time += 2592000 * 1000;
-          now.setTime(time);
-          document.cookie =
-            "iwh_tweets=" +
-            tweets +
-            ";expires=" +
-            now.toUTCString() +
-            "Domain=.istex.fr;path=/";
-          document.getElementById("iwh_header_notif_img").src =
-            ressourceUrl + "img/ic_notifications.svg";
-        }
-      });
+    twttr.ready(function(twttr) {
+      loadTweet();
+      setInterval(loadTweet, 60000);
+    });
   };
   document.head.appendChild(s);
 }
@@ -132,14 +111,50 @@ function loadTweet() {
         }
       )
       .then(function(el) {
-        document.querySelector("#iwh_tweets > iframe").style.visibility =
-          "hidden";
         if (
           document.getElementById("iwh_header_block_tweets").className == "on"
         )
           document.querySelector("#iwh_tweets > iframe").style.visibility =
             "visible";
+        else
+          document.querySelector("#iwh_tweets > iframe").style.visibility =
+            "hidden";
         newTweet();
+        if (!initweet) {
+          initweet = true;
+          document
+            .getElementById("iwh_header_notif")
+            .addEventListener("click", function() {
+              var popin = document.getElementById("iwh_header_block_tweets");
+              if (popin.className == "on") {
+                popin.className = "off";
+                document.querySelector(
+                  "#iwh_tweets > iframe"
+                ).style.visibility =
+                  "hidden";
+              } else {
+                popin.className = "on";
+                document.querySelector(
+                  "#iwh_tweets > iframe"
+                ).style.visibility =
+                  "visible";
+                if (tweets != "") {
+                  var now = new Date();
+                  var time = now.getTime();
+                  time += 2592000 * 1000;
+                  now.setTime(time);
+                  document.cookie =
+                    "iwh_tweets=" +
+                    tweets +
+                    ";expires=" +
+                    now.toUTCString() +
+                    "Domain=.istex.fr;path=/";
+                }
+                document.getElementById("iwh_header_notif_img").src =
+                  ressourceUrl + "img/ic_notifications.svg";
+              }
+            });
+        };
       });
   }
 }
@@ -153,7 +168,7 @@ function newTweet() {
       .getElementsByClassName("timeline-Tweet-text")[0]
       .innerHTML.replace(/;/g, "");
     if (
-      document.cookie.indexOf("iwh_tweets=" + tweets)==-1 &&
+      document.cookie.indexOf("iwh_tweets=" + tweets) == -1 &&
       document.getElementById("iwh_header_block_tweets").className == "off"
     )
       document.getElementById("iwh_header_notif_img").src =
@@ -169,10 +184,9 @@ function loadServices() {
   try {
     var html = "<ul id='iwh_popin_services_ul'>";
     for (var i = 0; i < config.total; i++) {
-      if (url.indexOf(config.data[i].QoTd)!=-1) {
+      if (url.indexOf(config.data[i].QoTd) != -1) {
         loadMenu(config.data[i].menu);
-      }
-        else if(!config.data[i].hidden){
+      } else if (!config.data[i].hidden) {
         html +=
           "<li class='iwh_popin_services'><a title=\"" +
           config.data[i].BNzf +
@@ -185,8 +199,8 @@ function loadServices() {
           "'/></div><p>" +
           config.data[i].z351 +
           "</p></div></a></li>";
-  }
-}
+      }
+    }
     html += "</ul>";
     document.getElementById("iwh_popin_services").innerHTML = html;
   } catch (error) {
@@ -197,19 +211,21 @@ function loadServices() {
 
 // Permet de charger le menu
 function loadMenu(menu) {
-  if (menu.length!=0) {
+  if (menu.length != 0) {
     try {
-      var limenu=document.createElement("li");
-      limenu.innerHTML='<img title="menu du site" src="'+ressourceUrl+'img/ic_menu.svg" data-filename="ic_menu" alt="menu"/>';
-      limenu.id="iwh_header_menu";
-      limenu
-    .addEventListener("click", function() {
-      var popin = document.getElementById("iwh_header_popin_menu");
-      if (popin.className == "on") popin.className = "off";
-      else popin.className = "on";
-    });
-      var ulheader=document.getElementById("iwh_header_ul");
-      ulheader.insertBefore(limenu,ulheader.childNodes[0]);
+      var limenu = document.createElement("li");
+      limenu.innerHTML =
+        '<img title="menu du site" src="' +
+        ressourceUrl +
+        'img/ic_menu.svg" data-filename="ic_menu" alt="menu"/>';
+      limenu.id = "iwh_header_menu";
+      limenu.addEventListener("click", function() {
+        var popin = document.getElementById("iwh_header_popin_menu");
+        if (popin.className == "on") popin.className = "off";
+        else popin.className = "on";
+      });
+      var ulheader = document.getElementById("iwh_header_ul");
+      ulheader.insertBefore(limenu, ulheader.childNodes[0]);
       var html = "<ul id='iwh_header_popin_menu_ul'>";
       for (var i = 0; i < menu.length; i++) {
         html +=
