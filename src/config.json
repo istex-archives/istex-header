@@ -1,4 +1,4 @@
-{"total":9,"data":[{
+{"total":10,"data":[{
     "_id": "5acca78fa736dcf0f067685f",
     "uri": "ark:/65376/DZ2-X6HC3XP9-F",
     "z351": "Bouton",
@@ -9,6 +9,7 @@
     "Cl2W": "https://www.istex.fr/wp-content/uploads/2017/11/ic_Bouton_Istex2.svg",
     "publicationDate": "2018-04-23T12:49:31.873Z",
     "BNzf": "Bouton Chrome et/ou Firefox pour ISTEX",
+    "hidden": false,
     "menu": []
 },
 {
@@ -22,6 +23,7 @@
     "Cl2W": "https://www.istex.fr/wp-content/uploads/2017/11/ic_google_scholar-1.svg",
     "publicationDate": "2018-04-23T12:52:47.894Z",
     "BNzf": "OpenURL et diffusion d'ISTEX à travers Google Scholar",
+    "hidden": false,
     "menu": []
 },
 {
@@ -35,6 +37,7 @@
     "Cl2W": "https://www.istex.fr/wp-content/uploads/2017/11/ic_istex_bibliographie-1.svg",
     "publicationDate": "2018-04-23T12:52:03.020Z",
     "BNzf": "Utiliser vos logiciels de Gestion Bibliographique avec ISTEX",
+    "hidden": false,
     "menu": []
 },
 {
@@ -48,6 +51,7 @@
     "Cl2W": "https://www.istex.fr/wp-content/uploads/2017/11/ic_telecharger_corpus.svg",
     "publicationDate": "2018-04-23T12:53:31.706Z",
     "BNzf": "Téléchargez un sous-corpus ISTEX",
+    "hidden": false,
     "menu": []
 },
 {
@@ -61,6 +65,7 @@
     "Cl2W": "https://www.istex.fr/wp-content/uploads/2017/11/ic_Istex_API-1.svg",
     "publicationDate": "2018-04-23T12:57:11.593Z",
     "BNzf": "API ISTEX",
+    "hidden": false,
     "menu": []
 },
 {
@@ -74,6 +79,7 @@
     "Cl2W": "https://www.istex.fr/wp-content/uploads/2017/11/ic_Harvester-1.svg",
     "publicationDate": "2018-04-23T12:51:21.163Z",
     "BNzf": "Programmes permettant de moissonner des sous-corpus proposés par l'API de la plateforme ISTEX.",
+    "hidden": false,
     "menu": []
 },
 {
@@ -88,6 +94,7 @@
     "Cl2W": "https://www.istex.fr/wp-content/uploads/2017/11/ic_SPARKL-1.svg",
     "publicationDate": "2018-04-23T12:55:23.253Z",
     "BNzf": " Triple Store des données ISTEX interrogeable en SPARQL.",
+    "hidden": false,
     "menu": []
 },
 {
@@ -102,6 +109,7 @@
     "Cl2W": "https://www.istex.fr/wp-content/uploads/2017/11/ic_Data_ISTEX-2.svg",
     "publicationDate": "2018-04-23T12:54:07.075Z",
     "BNzf": "ISTEX Linked Data",
+    "hidden": false,
     "menu": []
 },
 {
@@ -115,10 +123,22 @@
     "Cl2W": "https://www.istex.fr/wp-content/uploads/2017/11/ic_rechercher_dans_Istex.svg",
     "publicationDate": "2018-04-23T12:50:40.350Z",
     "BNzf": "Testez votre recherche dans ISTEX",
+    "hidden": false,
     "menu": []
-}],"default":{
-  "menu": [
-    {
+},
+{
+    "_id": "5acca78fa736dcf0f0676868",
+    "uri": "ark:/65376/DZ2-1XP09DLT-M",
+    "z351": "www",
+    "A2KZ": [
+        "doc"
+    ],
+    "QoTd": "https://www.istex./",
+    "Cl2W": "",
+    "publicationDate": "2018-04-23T12:50:40.350Z",
+    "BNzf": "Acceuil ISTEX",
+    "hidden": true,
+    "menu": [{
       "title": "Home",
       "icon": "https://www.istex.fr/wp-content/themes/istex/images/ic_home_menu.svg",
       "link": "//www.istex.fr"
@@ -137,6 +157,6 @@
       "title": "Curieux",
       "icon": "https://www.istex.fr/wp-content/themes/istex/images/ic_curieux_menu.svg",
       "link": "//www.istex.fr/curieux/"
-    }
-  ]
-}}
+    }] 
+}]
+}

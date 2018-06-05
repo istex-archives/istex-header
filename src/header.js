@@ -6,7 +6,7 @@ import nanoajax from "nanoajax";
 import "./header.css";
 import htmlHeader from "./header.html";
 import readme from "../README.md";
-import services from "./menu.json";
+import config from "./config.json";
 
 // Permet de charger le header istex
 function loadHeader() {
@@ -14,7 +14,7 @@ function loadHeader() {
   stateIstex();
   setInterval(stateIstex, 60000);
   addTwitterScript();
-  if (script.dataset.logo == "hide") {
+  if (url == "https://www.istex.fr/") {
     var iclogo = document.getElementById("iwh_header_logo");
     iclogo.parentNode.removeChild(iclogo);
   }
@@ -67,13 +67,6 @@ function loadHeader() {
     .getElementById("iwh_header_services")
     .addEventListener("click", function() {
       var popin = document.getElementById("iwh_header_block_services");
-      if (popin.className == "on") popin.className = "off";
-      else popin.className = "on";
-    });
-  document
-    .getElementById("iwh_header_menu")
-    .addEventListener("click", function() {
-      var popin = document.getElementById("iwh_header_popin_menu");
       if (popin.className == "on") popin.className = "off";
       else popin.className = "on";
     });
@@ -160,7 +153,7 @@ function newTweet() {
       .getElementsByClassName("timeline-Tweet-text")[0]
       .innerHTML.replace(/;/g, "");
     if (
-      document.cookie.indexOf("iwh_tweets=" + tweets)==-1 &&
+      document.cookie.indexOf("iwh_tweets=" + tweets) == -1 &&
       document.getElementById("iwh_header_block_tweets").className == "off"
     )
       document.getElementById("iwh_header_notif_img").src =
@@ -174,28 +167,27 @@ function newTweet() {
 // Permet de charger les services
 function loadServices() {
   try {
-    var menu = services.default.menu;
     var html = "<ul id='iwh_popin_services_ul'>";
-    for (var i = 0; i < services.total; i++) {
-      if (url.indexOf(services.data[i].QoTd)==-1) {
+    for (var i = 0; i < config.total; i++) {
+      if (url.indexOf(config.data[i].QoTd) != -1) {
+        loadMenu(config.data[i].menu);
+      } else if (!config.data[i].hidden) {
         html +=
           "<li class='iwh_popin_services'><a title=\"" +
-          services.data[i].BNzf +
+          config.data[i].BNzf +
           "\" href='" +
-          services.data[i].QoTd +
+          config.data[i].QoTd +
           "' class='iwh_services_link'><div class='iwh_services_link_block'><div class='iwh_services_link_block_img'><img src='" +
-          services.data[i].Cl2W +
+          config.data[i].Cl2W +
           "' alt='" +
-          services.data[i].z351 +
+          config.data[i].z351 +
           "'/></div><p>" +
-          services.data[i].z351 +
+          config.data[i].z351 +
           "</p></div></a></li>";
-      } else if (services.data[i].menu.length != 0)
-        menu = services.data[i].menu;
+      }
     }
     html += "</ul>";
     document.getElementById("iwh_popin_services").innerHTML = html;
-    loadMenu(menu);
   } catch (error) {
     document.getElementById("iwh_popin_services").innerHTML =
       "Intégration des services au menu impossible : " + error;
@@ -204,11 +196,21 @@ function loadServices() {
 
 // Permet de charger le menu
 function loadMenu(menu) {
-  if (script.dataset.menu == "hide") {
-    var icmenu = document.getElementById("iwh_header_menu");
-    icmenu.parentNode.removeChild(icmenu);
-  } else
+  if (menu.length != 0) {
     try {
+      var limenu = document.createElement("li");
+      limenu.innerHTML =
+        '<img title="menu du site" src="' +
+        ressourceUrl +
+        'img/ic_menu.svg" data-filename="ic_menu" alt="menu"/>';
+      limenu.id = "iwh_header_menu";
+      limenu.addEventListener("click", function() {
+        var popin = document.getElementById("iwh_header_popin_menu");
+        if (popin.className == "on") popin.className = "off";
+        else popin.className = "on";
+      });
+      var ulheader = document.getElementById("iwh_header_ul");
+      ulheader.insertBefore(limenu, ulheader.childNodes[0]);
       var html = "<ul id='iwh_header_popin_menu_ul'>";
       for (var i = 0; i < menu.length; i++) {
         html +=
@@ -226,6 +228,7 @@ function loadMenu(menu) {
       document.getElementById("iwh_header_popin_menu").innerHTML =
         "<p >Menu non trouvé : " + error + "</p>";
     }
+  }
 }
 
 // Permet de charger le statut de la plateforme istex

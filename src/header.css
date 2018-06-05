@@ -120,9 +120,7 @@
   text-decoration: underline;
   color: #458ca5;
 }
-<<<<<<< HEAD
-=======
-#iwh_readme code {
+<<<<<<< head ======= #iwh_readme code {
   color: #c4d733;
   white-space: pre-wrap;
 }
@@ -139,9 +137,7 @@
 #istex_web_header *:hover {
   opacity: 1;
 }
->>>>>>> master
-
-#iwh_readme_text code {
+>>>>>>>master #iwh_readme_text code {
   white-space: pre-wrap;
   color: #c4d733;
 }
