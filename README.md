@@ -9,8 +9,10 @@ Intégrer simplement la balise présentée ci-dessous à la fin du body de votre
 ```html
 <script id="iwh_script" src="//web-header.delivery.istex.fr/bundle.js" ></script>
 ```
-Vous pouvez facilement modifier le comportement d'un service avec le header directement depuis le lodex dédié :
-Exemple pour le service www (Accueil ISTEX) qui correspond au site www.istex.fr, qui ne s'affiche pas dans la popin des services (hidden) et qui possède un menu à gauche.
+
+Vous pouvez facilement modifier le comportement d'un service avec le header directement depuis le lodex dédié.
+
+Exemple pour le service www (Accueil ISTEX) qui correspond au site www.istex.fr, qui ne s'affiche pas dans la popin des services (hidden) et qui possède un menu à gauche:
 ```json
 {
     "_id": "5acca78fa736dcf0f0676868",
