@@ -247,23 +247,23 @@ function stateIstex() {
             document.getElementById("iwh_header_status_a").innerHTML =
               '<img src="' +
               ressourceUrl +
-              'img/ic_status_ok.svg" alt="statut"/>';
+              'img/ic_status_ok.svg" alt="statut" title="statut ok"/>';
           else
             document.getElementById("iwh_header_status_a").innerHTML =
               '<img src="' +
               ressourceUrl +
-              'img/ic_status_down.svg" alt="statut"/>';
+              'img/ic_status_down.svg" alt="statut" title="statut hors service"/> ';
         } catch (error) {
           document.getElementById("iwh_header_status_a").innerHTML =
             '<img src="' +
             ressourceUrl +
-            'img/ic_status_unknow.svg" alt="statut"/>';
+            'img/ic_status_unknow.svg" alt="statut" title="statut inconnu"/>';
         }
       } else
         document.getElementById("iwh_header_status_a").innerHTML =
           '<img src="' +
           ressourceUrl +
-          'img/ic_status_unknow.svg" alt="statut"/>';
+          'img/ic_status_unknow.svg" alt="statut" title="statut inconnu"/>';
     }
   );
 }
