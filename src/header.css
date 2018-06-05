@@ -120,24 +120,8 @@
   text-decoration: underline;
   color: #458ca5;
 }
-<<<<<<< head ======= #iwh_readme code {
-  color: #c4d733;
-  white-space: pre-wrap;
-}
 
-#istex_web_header {
-  background-color: #242b32;
-  height: 48px;
-  display: flex;
-  border-bottom: solid 2px #ffffff;
-  font-size: 12px;
-  line-height: 1;
-}
-
-#istex_web_header *:hover {
-  opacity: 1;
-}
->>>>>>>master #iwh_readme_text code {
+#iwh_readme_text code {
   white-space: pre-wrap;
   color: #c4d733;
 }
