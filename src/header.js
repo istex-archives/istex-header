@@ -1,7 +1,7 @@
 var script = document.getElementById("iwh_script");
 var ressourceUrl = script.src.split("bundle.js")[0];
 var url = document.location.href;
-
+var tweets = "";
 import nanoajax from "nanoajax";
 import "./header.css";
 import htmlHeader from "./header.html";
@@ -13,6 +13,7 @@ function loadHeader() {
   document.body.innerHTML = htmlHeader + document.body.innerHTML;
   stateIstex();
   setInterval(stateIstex, 60000);
+  addTwitterScript();
   if (script.dataset.logo == "hide") {
     var iclogo = document.getElementById("iwh_header_logo");
     iclogo.parentNode.removeChild(iclogo);
@@ -35,7 +36,7 @@ function loadHeader() {
       document.getElementById("iwh_header_block_services").className = "off";
     }
     var icmenu = document.getElementById("iwh_header_menu");
-    var blockMenu = document.getElementById("iwh_popin_menu");
+    var blockMenu = document.getElementById("iwh_header_popin_menu");
     if (
       !(
         icmenu == null ||
@@ -45,7 +46,21 @@ function loadHeader() {
         icmenu.contains(e.target)
       )
     ) {
-      document.getElementById("iwh_popin_menu").className = "off";
+      document.getElementById("iwh_header_popin_menu").className = "off";
+    }
+    var icnotif = document.getElementById("iwh_header_notif");
+    var blockTweet = document.getElementById("iwh_header_block_tweets");
+    if (
+      !(
+        e.target == blockTweet ||
+        blockTweet.contains(e.target) ||
+        e.target == icnotif ||
+        icnotif.contains(e.target)
+      )
+    ) {
+      document.getElementById("iwh_header_block_tweets").className = "off";
+      document.querySelector("#iwh_tweets > iframe").style.visibility =
+        "hidden";
     }
   });
   document
@@ -58,12 +73,102 @@ function loadHeader() {
   document
     .getElementById("iwh_header_menu")
     .addEventListener("click", function() {
-      var popin = document.getElementById("iwh_popin_menu");
+      var popin = document.getElementById("iwh_header_popin_menu");
       if (popin.className == "on") popin.className = "off";
       else popin.className = "on";
     });
+
   loadServices();
   addReadme();
+}
+
+function addTwitterScript() {
+  var s = document.createElement("script");
+  s.setAttribute("src", "https://platform.twitter.com/widgets.js");
+  s.onload = function() {
+    loadTweet();
+    setInterval(loadTweet, 60000);
+    document
+      .getElementById("iwh_header_notif")
+      .addEventListener("click", function() {
+        var popin = document.getElementById("iwh_header_block_tweets");
+        if (popin.className == "on") {
+          popin.className = "off";
+          document.querySelector("#iwh_tweets > iframe").style.visibility =
+            "hidden";
+        } else {
+          popin.className = "on";
+          document.querySelector("#iwh_tweets > iframe").style.visibility =
+            "visible";
+          var now = new Date();
+          var time = now.getTime();
+          time += 2592000 * 1000;
+          now.setTime(time);
+          document.cookie =
+            "iwh_tweets=" +
+            tweets +
+            ";expires=" +
+            now.toUTCString() +
+            ";path=/";
+          document.getElementById("iwh_header_notif_img").src =
+            ressourceUrl + "img/ic_notifications.svg";
+        }
+      });
+  };
+  document.head.appendChild(s);
+}
+
+function loadTweet() {
+  if (
+    document.getElementById("iwh_header_block_tweets").className == "off" ||
+    document.getElementById("iwh_tweets").innerHTML == ""
+  ) {
+    document.getElementById("iwh_tweets").innerHTML = "";
+    twttr.widgets
+      .createTimeline(
+        {
+          sourceType: "profile",
+          screenName: "ISTEX_Platform"
+        },
+        document.getElementById("iwh_tweets"),
+        {
+          chrome: "nofooter noborders transparent noheader",
+          theme: "dark",
+          linkColor: "#c4d733",
+          tweetLimit: "6"
+        }
+      )
+      .then(function(el) {
+        document.querySelector("#iwh_tweets > iframe").style.visibility =
+          "hidden";
+        if (
+          document.getElementById("iwh_header_block_tweets").className == "on"
+        )
+          document.querySelector("#iwh_tweets > iframe").style.visibility =
+            "visible";
+        newTweet();
+      });
+  }
+}
+
+function newTweet() {
+  var iframeDocument =
+    document.querySelector("#iwh_tweets > iframe").contentDocument ||
+    document.querySelector("#iwh_tweets > iframe").contentWindow.document;
+  if (iframeDocument) {
+    tweets = iframeDocument
+      .getElementsByClassName("timeline-Tweet-text")[0]
+      .innerHTML.replace(/;/g, "");
+    if (
+      document.cookie.indexOf("iwh_tweets=" + tweets)==-1 &&
+      document.getElementById("iwh_header_block_tweets").className == "off"
+    )
+      document.getElementById("iwh_header_notif_img").src =
+        ressourceUrl + "img/ic_notifications_new.svg";
+    else
+      document.getElementById("iwh_header_notif_img").src =
+        ressourceUrl + "img/ic_notifications.svg";
+  }
 }
 
 // Permet de charger les services
@@ -72,7 +177,7 @@ function loadServices() {
     var menu = services.default.menu;
     var html = "<ul id='iwh_popin_services_ul'>";
     for (var i = 0; i < services.total; i++) {
-      if (!url.includes(services.data[i].QoTd)) {
+      if (url.indexOf(services.data[i].QoTd)==-1) {
         html +=
           "<li class='iwh_popin_services'><a title=\"" +
           services.data[i].BNzf +
@@ -85,7 +190,8 @@ function loadServices() {
           "'/></div><p>" +
           services.data[i].z351 +
           "</p></div></a></li>";
-      } else if (services.data[i].menu.length != 0) menu = services.data[i].menu;
+      } else if (services.data[i].menu.length != 0)
+        menu = services.data[i].menu;
     }
     html += "</ul>";
     document.getElementById("iwh_popin_services").innerHTML = html;
@@ -103,10 +209,10 @@ function loadMenu(menu) {
     icmenu.parentNode.removeChild(icmenu);
   } else
     try {
-      var html = "<ul id='iwh_popin_menu_ul'>";
+      var html = "<ul id='iwh_header_popin_menu_ul'>";
       for (var i = 0; i < menu.length; i++) {
         html +=
-          '<li class="iwh_popin_menu_li"><a class="iwh_popin_menu_a" href="' +
+          '<li class="iwh_header_popin_menu_li"><a class="iwh_header_popin_menu_a" href="' +
           menu[i].link +
           '">';
 
@@ -115,9 +221,9 @@ function loadMenu(menu) {
         html += menu[i].title + " &#8250</a></li>";
       }
       html += "</ul>";
-      document.getElementById("iwh_popin_menu").innerHTML = html;
+      document.getElementById("iwh_header_popin_menu").innerHTML = html;
     } catch (error) {
-      document.getElementById("iwh_popin_menu").innerHTML =
+      document.getElementById("iwh_header_popin_menu").innerHTML =
         "<p >Menu non trouvé : " + error + "</p>";
     }
 }
@@ -162,7 +268,8 @@ function stateIstex() {
 
 function addReadme() {
   var iwh_readme = document.getElementById("iwh_readme");
-  if (iwh_readme != null) iwh_readme.innerHTML = readme;
+  if (iwh_readme != null)
+    iwh_readme.innerHTML = '<div id="iwh_readme_text">' + readme + "</div>";
 }
 
 // On lance le chargement du header
