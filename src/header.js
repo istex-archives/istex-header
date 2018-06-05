@@ -2,12 +2,11 @@ var script = document.getElementById("iwh_script");
 var ressourceUrl = script.src.split("bundle.js")[0];
 var url = document.location.href;
 var tweets = "";
-var initweet = false;
+var initweet = true;
 import nanoajax from "nanoajax";
 import "./header.css";
 import htmlHeader from "./header.html";
 import readme from "../README.md";
-import config from "./config.json";
 
 // Permet de charger le header istex
 function loadHeader() {
@@ -50,20 +49,6 @@ function loadHeader() {
       )
     ) {
       document.getElementById("iwh_header_popin_menu").className = "off";
-    }
-    var icnotif = document.getElementById("iwh_header_notif");
-    var blockTweet = document.getElementById("iwh_header_block_tweets");
-    if (
-      !(
-        e.target == blockTweet ||
-        blockTweet.contains(e.target) ||
-        e.target == icnotif ||
-        icnotif.contains(e.target)
-      )
-    ) {
-      document.getElementById("iwh_header_block_tweets").className = "off";
-      document.querySelector("#iwh_tweets > iframe").style.visibility =
-        "hidden";
     }
   });
   document
@@ -120,8 +105,8 @@ function loadTweet() {
           document.querySelector("#iwh_tweets > iframe").style.visibility =
             "hidden";
         newTweet();
-        if (!initweet) {
-          initweet = true;
+        if (initweet) {
+          initweet = false;
           document
             .getElementById("iwh_header_notif")
             .addEventListener("click", function() {
@@ -154,7 +139,24 @@ function loadTweet() {
                   ressourceUrl + "img/ic_notifications.svg";
               }
             });
-        };
+          document.addEventListener("click", function(e) {
+            var icnotif = document.getElementById("iwh_header_notif");
+            var blockTweet = document.getElementById("iwh_header_block_tweets");
+            if (
+              !(
+                e.target == blockTweet ||
+                blockTweet.contains(e.target) ||
+                e.target == icnotif ||
+                icnotif.contains(e.target)
+              )
+            ) {
+              document.getElementById("iwh_header_block_tweets").className =
+                "off";
+              document.querySelector("#iwh_tweets > iframe").style.visibility =
+                "hidden";
+            }
+          });
+        }
       });
   }
 }
@@ -181,32 +183,45 @@ function newTweet() {
 
 // Permet de charger les services
 function loadServices() {
-  try {
-    var html = "<ul id='iwh_popin_services_ul'>";
-    for (var i = 0; i < config.total; i++) {
-      if (url.indexOf(config.data[i].QoTd) != -1) {
-        loadMenu(config.data[i].menu);
-      } else if (!config.data[i].hidden) {
-        html +=
-          "<li class='iwh_popin_services'><a title=\"" +
-          config.data[i].BNzf +
-          "\" href='" +
-          config.data[i].QoTd +
-          "' class='iwh_services_link'><div class='iwh_services_link_block'><div class='iwh_services_link_block_img'><img src='" +
-          config.data[i].Cl2W +
-          "' alt='" +
-          config.data[i].z351 +
-          "'/></div><p>" +
-          config.data[i].z351 +
-          "</p></div></a></li>";
+  nanoajax.ajax(
+    {
+      url: ressourceUrl + "/config.json"
+    },
+    function(code, responseText) {
+      if (code == 200) {
+        try {
+          var config = JSON.parse(responseText);
+          var html = "<ul id='iwh_popin_services_ul'>";
+          for (var i = 0; i < config.total; i++) {
+            if (url.indexOf(config.data[i].QoTd) != -1) {
+              loadMenu(config.data[i].menu);
+            } else if (!config.data[i].hidden) {
+              html +=
+                "<li class='iwh_popin_services'><a title=\"" +
+                config.data[i].BNzf +
+                "\" href='" +
+                config.data[i].QoTd +
+                "' class='iwh_services_link'><div class='iwh_services_link_block'><div class='iwh_services_link_block_img'><img src='" +
+                config.data[i].Cl2W +
+                "' alt='" +
+                config.data[i].z351 +
+                "'/></div><p>" +
+                config.data[i].z351 +
+                "</p></div></a></li>";
+            }
+          }
+          html += "</ul>";
+          document.getElementById("iwh_popin_services").innerHTML = html;
+        } catch (error) {
+          document.getElementById("iwh_popin_services").innerHTML =
+            "Intégration des services au menu impossible : " + error;
+        }
+      } else {
+        document.getElementById("iwh_popin_services").innerHTML =
+          "Intégration des services au menu impossible : error" + code;
       }
     }
-    html += "</ul>";
-    document.getElementById("iwh_popin_services").innerHTML = html;
-  } catch (error) {
-    document.getElementById("iwh_popin_services").innerHTML =
-      "Intégration des services au menu impossible : " + error;
-  }
+  );
 }
 
 // Permet de charger le menu

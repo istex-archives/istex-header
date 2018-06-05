@@ -8,6 +8,7 @@
   font-size: 12px;
   line-height: 1;
   box-sizing: content-box;
+  z-index: 99999;
 }
 
 #istex_web_header *:hover {
@@ -37,7 +38,6 @@
   -ms-transition: all 0.25s ease-in-out;
   -o-transition: all 0.25s ease-in-out;
   transition: all 0.25s ease-in-out;
-  z-index: 99999;
 }
 
 #iwh_header_block_tweets.on > div,
@@ -232,7 +232,6 @@
   padding: 20px;
   font-size: 1.6em;
   font-family: Montserrat;
-  z-index: 99999;
 }
 
 .iwh_header_popin_menu_a:hover {
@@ -256,7 +255,6 @@
   -ms-transition: all 0.25s ease-in-out;
   -o-transition: all 0.25s ease-in-out;
   transition: all 0.25s ease-in-out;
-  z-index: 99999;
 }
 
 #iwh_header_block_services.on > div,

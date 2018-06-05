@@ -20,6 +20,7 @@ module.exports = {
     new webpack.NamedModulesPlugin(),
     new CopyWebpackPlugin([{ from: 'src/img', to: 'img' }]),
     new CopyWebpackPlugin([{ from: 'src/index.html', to: './' }]),
+    new CopyWebpackPlugin([{ from: 'src/config.json', to: './' }]),
     new webpack.HotModuleReplacementPlugin()
   ],
   module:{
