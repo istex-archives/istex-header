@@ -263,23 +263,23 @@ function stateIstex() {
             document.getElementById("iwh_header_status_a").innerHTML =
               '<img src="' +
               ressourceUrl +
-              'img/ic_status_ok.svg" alt="statut" title="statut ok"/>';
+              'img/ic_status_ok.svg" alt="statut" title="plateforme ISTEX en ligne"/>';
           else
             document.getElementById("iwh_header_status_a").innerHTML =
               '<img src="' +
               ressourceUrl +
-              'img/ic_status_down.svg" alt="statut" title="statut hors service"/> ';
+              'img/ic_status_down.svg" alt="statut" title="plateforme ISTEX momentanément hors service"/> ';
         } catch (error) {
           document.getElementById("iwh_header_status_a").innerHTML =
             '<img src="' +
             ressourceUrl +
-            'img/ic_status_unknow.svg" alt="statut" title="statut inconnu"/>';
+            'img/ic_status_unknow.svg" alt="statut" title="état de la plateforme ISTEX inconnu"/>';
         }
       } else
         document.getElementById("iwh_header_status_a").innerHTML =
           '<img src="' +
           ressourceUrl +
-          'img/ic_status_unknow.svg" alt="statut" title="statut inconnu"/>';
+          'img/ic_status_unknow.svg" alt="statut" title="état de la plateforme ISTEX inconnu"/>';
     }
   );
 }
