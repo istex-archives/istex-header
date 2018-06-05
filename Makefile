@@ -6,7 +6,7 @@ help:
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
 # If the first argument is one of the supported commands...
-SUPPORTED_COMMANDS := version
+SUPPORTED_COMMANDS := npm
 SUPPORTS_MAKE_ARGS := $(findstring $(firstword $(MAKECMDGOALS)), $(SUPPORTED_COMMANDS))
 ifneq "$(SUPPORTS_MAKE_ARGS)" ""
     # use the rest as arguments for the command
@@ -17,7 +17,7 @@ endif
 
 
 install: ## install dependencies thanks to a dockerized npm install
-	@docker run -it --rm -v $$(pwd):/app -w /app --net=host -e NODE_ENV -e http_proxy -e https_proxy node:10.0	.0 npm install --unsafe-perm
+	@docker run -it --rm -v $$(pwd):/app -w /app --net=host -e NODE_ENV -e http_proxy -e https_proxy node:10.0.0 npm install --unsafe-perm
 	@make chown
 
 build: ## build the docker inistcnrs/ezmaster images localy
@@ -48,13 +48,5 @@ npm: ## npm wrapper. example: make npm install --save mongodb-querystring
 	@docker run -it --rm -v $$(pwd):/app -w /app --net=host -e NODE_ENV -e http_proxy -e https_proxy node:10.0.0 npm $(filter-out $@,$(MAKECMDGOALS))
 	@make chown
 
-clean: ## remove node_modules and temp files
-	@rm -Rf ./node_modules/ ./npm-debug.log
-
-version: ## creates a new istex-web-header version (same way npm version works)
-ifdef COMMAND_ARGS
-	@npm version $(COMMAND_ARGS)
-else
-	@echo "Usage: make version <arg> (same as npm syntax)"
-	@npm version --help
-endif
+clean: ## remove node_modules
+	@rm -Rf ./node_modules/
