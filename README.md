@@ -48,14 +48,12 @@ prérequis:
 Pour installer et lancer en mode développement/debug :
 ```
 make install
-make build
 make run-debug
 ```
 Ouvrez alors votre navigateur sur http://localhost:8080 pour visualiser votre istex-web-header local.
 
 Pour installer et lancer en mode production :
 ```
-make install
 make build
 make run-prod
 ```
