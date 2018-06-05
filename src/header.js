@@ -14,7 +14,7 @@ function loadHeader() {
   stateIstex();
   setInterval(stateIstex, 60000);
   addTwitterScript();
-  if (url == "https://www.istex.fr/") {
+  if (url=="https://www.istex.fr/") {
     var iclogo = document.getElementById("iwh_header_logo");
     iclogo.parentNode.removeChild(iclogo);
   }
@@ -102,7 +102,7 @@ function addTwitterScript() {
             tweets +
             ";expires=" +
             now.toUTCString() +
-            ";path=/";
+            "Domain=.istex.fr;path=/";
           document.getElementById("iwh_header_notif_img").src =
             ressourceUrl + "img/ic_notifications.svg";
         }
@@ -153,7 +153,7 @@ function newTweet() {
       .getElementsByClassName("timeline-Tweet-text")[0]
       .innerHTML.replace(/;/g, "");
     if (
-      document.cookie.indexOf("iwh_tweets=" + tweets) == -1 &&
+      document.cookie.indexOf("iwh_tweets=" + tweets)==-1 &&
       document.getElementById("iwh_header_block_tweets").className == "off"
     )
       document.getElementById("iwh_header_notif_img").src =
@@ -169,9 +169,10 @@ function loadServices() {
   try {
     var html = "<ul id='iwh_popin_services_ul'>";
     for (var i = 0; i < config.total; i++) {
-      if (url.indexOf(config.data[i].QoTd) != -1) {
+      if (url.indexOf(config.data[i].QoTd)!=-1) {
         loadMenu(config.data[i].menu);
-      } else if (!config.data[i].hidden) {
+      }
+        else if(!config.data[i].hidden){
         html +=
           "<li class='iwh_popin_services'><a title=\"" +
           config.data[i].BNzf +
@@ -184,8 +185,8 @@ function loadServices() {
           "'/></div><p>" +
           config.data[i].z351 +
           "</p></div></a></li>";
-      }
-    }
+  }
+}
     html += "</ul>";
     document.getElementById("iwh_popin_services").innerHTML = html;
   } catch (error) {
@@ -196,21 +197,19 @@ function loadServices() {
 
 // Permet de charger le menu
 function loadMenu(menu) {
-  if (menu.length != 0) {
+  if (menu.length!=0) {
     try {
-      var limenu = document.createElement("li");
-      limenu.innerHTML =
-        '<img title="menu du site" src="' +
-        ressourceUrl +
-        'img/ic_menu.svg" data-filename="ic_menu" alt="menu"/>';
-      limenu.id = "iwh_header_menu";
-      limenu.addEventListener("click", function() {
-        var popin = document.getElementById("iwh_header_popin_menu");
-        if (popin.className == "on") popin.className = "off";
-        else popin.className = "on";
-      });
-      var ulheader = document.getElementById("iwh_header_ul");
-      ulheader.insertBefore(limenu, ulheader.childNodes[0]);
+      var limenu=document.createElement("li");
+      limenu.innerHTML='<img title="menu du site" src="'+ressourceUrl+'img/ic_menu.svg" data-filename="ic_menu" alt="menu"/>';
+      limenu.id="iwh_header_menu";
+      limenu
+    .addEventListener("click", function() {
+      var popin = document.getElementById("iwh_header_popin_menu");
+      if (popin.className == "on") popin.className = "off";
+      else popin.className = "on";
+    });
+      var ulheader=document.getElementById("iwh_header_ul");
+      ulheader.insertBefore(limenu,ulheader.childNodes[0]);
       var html = "<ul id='iwh_header_popin_menu_ul'>";
       for (var i = 0; i < menu.length; i++) {
         html +=
