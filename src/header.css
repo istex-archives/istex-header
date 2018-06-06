@@ -53,6 +53,12 @@
   visibility: hidden;
 }
 
+#iwh_header_block_tweets.off iframe {
+  visibility: hidden !important;
+}
+#iwh_header_block_tweets.on iframe {
+  visibility: visible !important;
+}
 #iwh_tweets_parent {
   background-color: #242b32;
   border: 1px solid #ffffff;

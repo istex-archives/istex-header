@@ -96,14 +96,6 @@ function loadTweet() {
         }
       )
       .then(function(el) {
-        if (
-          document.getElementById("iwh_header_block_tweets").className == "on"
-        )
-          document.querySelector("#iwh_tweets > iframe").style.visibility =
-            "visible";
-        else
-          document.querySelector("#iwh_tweets > iframe").style.visibility =
-            "hidden";
         newTweet();
         if (initweet) {
           initweet = false;
@@ -113,16 +105,8 @@ function loadTweet() {
               var popin = document.getElementById("iwh_header_block_tweets");
               if (popin.className == "on") {
                 popin.className = "off";
-                document.querySelector(
-                  "#iwh_tweets > iframe"
-                ).style.visibility =
-                  "hidden";
               } else {
                 popin.className = "on";
-                document.querySelector(
-                  "#iwh_tweets > iframe"
-                ).style.visibility =
-                  "visible";
                 if (tweets != "") {
                   var now = new Date();
                   var time = now.getTime();
@@ -152,8 +136,6 @@ function loadTweet() {
             ) {
               document.getElementById("iwh_header_block_tweets").className =
                 "off";
-              document.querySelector("#iwh_tweets > iframe").style.visibility =
-                "hidden";
             }
           });
         }
