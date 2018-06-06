@@ -133,7 +133,7 @@ function loadTweet() {
                     tweets +
                     ";expires=" +
                     now.toUTCString() +
-                    "Domain=.istex.fr;path=/";
+                    ";domain=.istex.fr;path=/";
                 }
                 document.getElementById("iwh_header_notif_img").src =
                   ressourceUrl + "img/ic_notifications.svg";

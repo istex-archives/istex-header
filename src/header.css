@@ -38,6 +38,7 @@
   -ms-transition: all 0.25s ease-in-out;
   -o-transition: all 0.25s ease-in-out;
   transition: all 0.25s ease-in-out;
+  z-index: 99999;
 }
 
 #iwh_header_block_tweets.on > div,
@@ -206,6 +207,7 @@
   display: flex;
   align-items: center;
   color: #ffffff;
+  z-index: 99999;
 }
 
 #iwh_header_popin_menu.on {
@@ -255,6 +257,7 @@
   -ms-transition: all 0.25s ease-in-out;
   -o-transition: all 0.25s ease-in-out;
   transition: all 0.25s ease-in-out;
+  z-index: 99999;
 }
 
 #iwh_header_block_services.on > div,
