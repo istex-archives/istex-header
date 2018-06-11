@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.org/istex/istex-header.svg?branch=master)](https://travis-ci.org/istex/istex-header)
-# istex-web-header
+# istex-header
 
 Le header web affiché sur tous les sites de la Galaxy Istex
 
