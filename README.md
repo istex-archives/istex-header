@@ -74,9 +74,9 @@ Le résultat du build sera présent dans le répertoire `public/`
 
 prérequis: 
 
-    Docker
-    Docker Compose
-    Pour le développement : Git et Make
+* Docker
+* Docker Compose
+* Pour le développement : Git et Make
 
 Pour installer et lancer en mode développement/debug :
 ```
