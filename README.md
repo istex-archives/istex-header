@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.org/istex/istex-header.svg?branch=master)](https://travis-ci.org/istex/istex-header)
-# istex-web-header
+# istex-header
 
 Le header web affiché sur tous les sites de la Galaxy Istex
 
@@ -8,6 +8,45 @@ Le header web affiché sur tous les sites de la Galaxy Istex
 Intégrer simplement la balise présentée ci-dessous à la fin du body de votre page html :
 ```html
 <script id="iwh_script" src="//web-header.delivery.istex.fr/bundle.js" ></script>
+```
+
+Vous pouvez facilement modifier le comportement d'un service avec le header directement depuis le lodex dédié.
+
+Exemple pour le service www (Accueil ISTEX) qui correspond au site www.istex.fr, qui ne s'affiche pas dans la popin des services (hidden) et qui possède un menu à gauche:
+```json
+{
+    "_id": "5acca78fa736dcf0f0676868",
+    "uri": "ark:/12345/DZ2-1XP09DLT-M",
+    "z351": "www",
+    "A2KZ": [
+        "doc"
+    ],
+    "QoTd": "https://www.istex.fr/",
+    "Cl2W": "https://www.istex.fr/wp-content/themes/istex/images/istex_logo.svg",
+    "publicationDate": "2018-04-23T12:50:40.350Z",
+    "BNzf": "Accueil ISTEX",
+    "hidden": true,
+    "menu": [{
+      "title": "Home",
+      "icon": "https://www.istex.fr/wp-content/themes/istex/images/ic_home_menu.svg",
+      "link": "//www.istex.fr"
+    },
+    {
+      "title": "Chercheur",
+      "icon": "https://www.istex.fr/wp-content/themes/istex/images/ic_chercheur_menu.svg",
+      "link": "//www.istex.fr/chercheur/"
+    },
+    {
+      "title": "Responsable",
+      "icon": "https://www.istex.fr/wp-content/themes/istex/images/ic_responsable_menu.svg",
+      "link": "//www.istex.fr/responsable/"
+    },
+    {
+      "title": "Curieux",
+      "icon": "https://www.istex.fr/wp-content/themes/istex/images/ic_curieux_menu.svg",
+      "link": "//www.istex.fr/curieux/"
+    }] 
+}
 ```
 
 ## Développeur

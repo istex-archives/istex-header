@@ -128,15 +128,15 @@
 },
 {
     "_id": "5acca78fa736dcf0f0676868",
-    "uri": "ark:/65376/DZ2-1XP09DLT-M",
+    "uri": "ark:/12345/DZ2-1XP09DLT-M",
     "z351": "www",
     "A2KZ": [
         "doc"
     ],
-    "QoTd": "https://www.istex./",
-    "Cl2W": "",
+    "QoTd": "https://www.istex.fr/",
+    "Cl2W": "https://www.istex.fr/wp-content/themes/istex/images/istex_logo.svg",
     "publicationDate": "2018-04-23T12:50:40.350Z",
-    "BNzf": "Acceuil ISTEX",
+    "BNzf": "Accueil ISTEX",
     "hidden": true,
     "menu": [{
       "title": "Home",

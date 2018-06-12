@@ -2,11 +2,11 @@ var script = document.getElementById("iwh_script");
 var ressourceUrl = script.src.split("bundle.js")[0];
 var url = document.location.href;
 var tweets = "";
+var initweet = true;
 import nanoajax from "nanoajax";
 import "./header.css";
 import htmlHeader from "./header.html";
 import readme from "../README.md";
-import config from "./config.json";
 
 // Permet de charger le header istex
 function loadHeader() {
@@ -20,7 +20,9 @@ function loadHeader() {
   }
   var images = document.querySelectorAll("#iwh_header_ul img");
   for (var i = 0; i < images.length; i++) {
-    images[i].src = ressourceUrl + "img/" + images[i].dataset.filename + ".svg";
+    if (images[i].dataset.filename != undefined)
+      images[i].src =
+        ressourceUrl + "img/" + images[i].dataset.filename + ".svg";
   }
   document.addEventListener("click", function(e) {
     var blockServices = document.getElementById("iwh_header_block_services");
@@ -48,20 +50,6 @@ function loadHeader() {
     ) {
       document.getElementById("iwh_header_popin_menu").className = "off";
     }
-    var icnotif = document.getElementById("iwh_header_notif");
-    var blockTweet = document.getElementById("iwh_header_block_tweets");
-    if (
-      !(
-        e.target == blockTweet ||
-        blockTweet.contains(e.target) ||
-        e.target == icnotif ||
-        icnotif.contains(e.target)
-      )
-    ) {
-      document.getElementById("iwh_header_block_tweets").className = "off";
-      document.querySelector("#iwh_tweets > iframe").style.visibility =
-        "hidden";
-    }
   });
   document
     .getElementById("iwh_header_services")
@@ -79,34 +67,10 @@ function addTwitterScript() {
   var s = document.createElement("script");
   s.setAttribute("src", "https://platform.twitter.com/widgets.js");
   s.onload = function() {
-    loadTweet();
-    setInterval(loadTweet, 60000);
-    document
-      .getElementById("iwh_header_notif")
-      .addEventListener("click", function() {
-        var popin = document.getElementById("iwh_header_block_tweets");
-        if (popin.className == "on") {
-          popin.className = "off";
-          document.querySelector("#iwh_tweets > iframe").style.visibility =
-            "hidden";
-        } else {
-          popin.className = "on";
-          document.querySelector("#iwh_tweets > iframe").style.visibility =
-            "visible";
-          var now = new Date();
-          var time = now.getTime();
-          time += 2592000 * 1000;
-          now.setTime(time);
-          document.cookie =
-            "iwh_tweets=" +
-            tweets +
-            ";expires=" +
-            now.toUTCString() +
-            ";path=/";
-          document.getElementById("iwh_header_notif_img").src =
-            ressourceUrl + "img/ic_notifications.svg";
-        }
-      });
+    twttr.ready(function(twttr) {
+      loadTweet();
+      setInterval(loadTweet, 60000);
+    });
   };
   document.head.appendChild(s);
 }
@@ -132,14 +96,49 @@ function loadTweet() {
         }
       )
       .then(function(el) {
-        document.querySelector("#iwh_tweets > iframe").style.visibility =
-          "hidden";
-        if (
-          document.getElementById("iwh_header_block_tweets").className == "on"
-        )
-          document.querySelector("#iwh_tweets > iframe").style.visibility =
-            "visible";
         newTweet();
+        if (initweet) {
+          initweet = false;
+          document
+            .getElementById("iwh_header_notif")
+            .addEventListener("click", function() {
+              var popin = document.getElementById("iwh_header_block_tweets");
+              if (popin.className == "on") {
+                popin.className = "off";
+              } else {
+                popin.className = "on";
+                if (tweets != "") {
+                  var now = new Date();
+                  var time = now.getTime();
+                  time += 2592000 * 1000;
+                  now.setTime(time);
+                  document.cookie =
+                    "iwh_tweets=" +
+                    tweets +
+                    ";expires=" +
+                    now.toUTCString() +
+                    ";domain=.istex.fr;path=/";
+                }
+                document.getElementById("iwh_header_notif_img").src =
+                  ressourceUrl + "img/ic_notifications.svg";
+              }
+            });
+          document.addEventListener("click", function(e) {
+            var icnotif = document.getElementById("iwh_header_notif");
+            var blockTweet = document.getElementById("iwh_header_block_tweets");
+            if (
+              !(
+                e.target == blockTweet ||
+                blockTweet.contains(e.target) ||
+                e.target == icnotif ||
+                icnotif.contains(e.target)
+              )
+            ) {
+              document.getElementById("iwh_header_block_tweets").className =
+                "off";
+            }
+          });
+        }
       });
   }
 }
@@ -166,32 +165,45 @@ function newTweet() {
 
 // Permet de charger les services
 function loadServices() {
-  try {
-    var html = "<ul id='iwh_popin_services_ul'>";
-    for (var i = 0; i < config.total; i++) {
-      if (url.indexOf(config.data[i].QoTd) != -1) {
-        loadMenu(config.data[i].menu);
-      } else if (!config.data[i].hidden) {
-        html +=
-          "<li class='iwh_popin_services'><a title=\"" +
-          config.data[i].BNzf +
-          "\" href='" +
-          config.data[i].QoTd +
-          "' class='iwh_services_link'><div class='iwh_services_link_block'><div class='iwh_services_link_block_img'><img src='" +
-          config.data[i].Cl2W +
-          "' alt='" +
-          config.data[i].z351 +
-          "'/></div><p>" +
-          config.data[i].z351 +
-          "</p></div></a></li>";
+  nanoajax.ajax(
+    {
+      url: ressourceUrl + "/config.json"
+    },
+    function(code, responseText) {
+      if (code == 200) {
+        try {
+          var config = JSON.parse(responseText);
+          var html = "<ul id='iwh_popin_services_ul'>";
+          for (var i = 0; i < config.total; i++) {
+            if (url.indexOf(config.data[i].QoTd) != -1) {
+              loadMenu(config.data[i].menu);
+            } else if (!config.data[i].hidden) {
+              html +=
+                "<li class='iwh_popin_services'><a title=\"" +
+                config.data[i].BNzf +
+                "\" href='" +
+                config.data[i].QoTd +
+                "' class='iwh_services_link'><div class='iwh_services_link_block'><div class='iwh_services_link_block_img'><img src='" +
+                config.data[i].Cl2W +
+                "' alt='" +
+                config.data[i].z351 +
+                "'/></div><p>" +
+                config.data[i].z351 +
+                "</p></div></a></li>";
+            }
+          }
+          html += "</ul>";
+          document.getElementById("iwh_popin_services").innerHTML = html;
+        } catch (error) {
+          document.getElementById("iwh_popin_services").innerHTML =
+            "Intégration des services au menu impossible : " + error;
+        }
+      } else {
+        document.getElementById("iwh_popin_services").innerHTML =
+          "Intégration des services au menu impossible : error" + code;
       }
     }
-    html += "</ul>";
-    document.getElementById("iwh_popin_services").innerHTML = html;
-  } catch (error) {
-    document.getElementById("iwh_popin_services").innerHTML =
-      "Intégration des services au menu impossible : " + error;
-  }
+  );
 }
 
 // Permet de charger le menu
@@ -248,23 +260,23 @@ function stateIstex() {
             document.getElementById("iwh_header_status_a").innerHTML =
               '<img src="' +
               ressourceUrl +
-              'img/ic_status_ok.svg" alt="statut"/>';
+              'img/ic_status_ok.svg" alt="statut" title="plateforme ISTEX en ligne"/>';
           else
             document.getElementById("iwh_header_status_a").innerHTML =
               '<img src="' +
               ressourceUrl +
-              'img/ic_status_down.svg" alt="statut"/>';
+              'img/ic_status_down.svg" alt="statut" title="plateforme ISTEX momentanément hors service"/> ';
         } catch (error) {
           document.getElementById("iwh_header_status_a").innerHTML =
             '<img src="' +
             ressourceUrl +
-            'img/ic_status_unknow.svg" alt="statut"/>';
+            'img/ic_status_unknow.svg" alt="statut" title="état de la plateforme ISTEX inconnu"/>';
         }
       } else
         document.getElementById("iwh_header_status_a").innerHTML =
           '<img src="' +
           ressourceUrl +
-          'img/ic_status_unknow.svg" alt="statut"/>';
+          'img/ic_status_unknow.svg" alt="statut" title="état de la plateforme ISTEX inconnu"/>';
     }
   );
 }

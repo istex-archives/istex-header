@@ -8,6 +8,8 @@
   font-size: 12px;
   line-height: 1;
   box-sizing: content-box;
+  position: relative;
+  z-index: 99999;
 }
 
 #istex_web_header *:hover {
@@ -52,6 +54,12 @@
   visibility: hidden;
 }
 
+#iwh_header_block_tweets.off iframe {
+  visibility: hidden !important;
+}
+#iwh_header_block_tweets.on iframe {
+  visibility: visible !important;
+}
 #iwh_tweets_parent {
   background-color: #242b32;
   border: 1px solid #ffffff;
@@ -206,6 +214,7 @@
   display: flex;
   align-items: center;
   color: #ffffff;
+  z-index: 99999;
 }
 
 #iwh_header_popin_menu.on {
@@ -232,7 +241,6 @@
   padding: 20px;
   font-size: 1.6em;
   font-family: Montserrat;
-  z-index: 99999;
 }
 
 .iwh_header_popin_menu_a:hover {
