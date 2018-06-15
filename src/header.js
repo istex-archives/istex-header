@@ -10,7 +10,10 @@ import readme from "../README.md";
 
 // Permet de charger le header istex
 function loadHeader() {
-  document.body.innerHTML = htmlHeader + document.body.innerHTML;
+  var header=document.createElement('header');
+  header.id="istex_web_header";
+  header.innerHTML=htmlHeader;
+  document.body.insertBefore(header, document.body.childNodes[0]);
   stateIstex();
   setInterval(stateIstex, 60000);
   addTwitterScript();
