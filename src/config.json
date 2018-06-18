@@ -19,7 +19,7 @@
     "A2KZ": [
         "doc"
     ],
-    "QoTd": "https://doc.istex.fr/users/usage/googlescholar/",
+    "QoTd": "https://doc.istex.fr/doc/google-scholar.html",
     "Cl2W": "https://www.istex.fr/wp-content/uploads/2017/11/ic_google_scholar-1.svg",
     "publicationDate": "2018-04-23T12:52:47.894Z",
     "BNzf": "OpenURL et diffusion d'ISTEX à travers Google Scholar",
@@ -33,7 +33,7 @@
     "A2KZ": [
         "doc"
     ],
-    "QoTd": "https://doc.istex.fr/users/usage/bib/",
+    "QoTd": "https://doc.istex.fr/doc/bib/zotero.html",
     "Cl2W": "https://www.istex.fr/wp-content/uploads/2017/11/ic_istex_bibliographie-1.svg",
     "publicationDate": "2018-04-23T12:52:03.020Z",
     "BNzf": "Utiliser vos logiciels de Gestion Bibliographique avec ISTEX",
@@ -61,7 +61,7 @@
     "A2KZ": [
         "tdm"
     ],
-    "QoTd": "https://api.istex.fr/documentation/",
+    "QoTd": "https://doc.istex.fr/api/",
     "Cl2W": "https://www.istex.fr/wp-content/uploads/2017/11/ic_Istex_API-1.svg",
     "publicationDate": "2018-04-23T12:57:11.593Z",
     "BNzf": "API ISTEX",
