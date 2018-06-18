@@ -10,7 +10,10 @@ import readme from "../README.md";
 
 // Permet de charger le header istex
 function loadHeader() {
-  document.body.innerHTML = htmlHeader + document.body.innerHTML;
+  var header=document.createElement('header');
+  header.id="istex_web_header";
+  header.innerHTML=htmlHeader;
+  document.body.insertBefore(header, document.body.childNodes[0]);
   stateIstex();
   setInterval(stateIstex, 60000);
   addTwitterScript();
@@ -175,7 +178,14 @@ function loadServices() {
           var config = JSON.parse(responseText);
           var html = "<ul id='iwh_popin_services_ul'>";
           for (var i = 0; i < config.total; i++) {
-            if (url.indexOf(config.data[i].QoTd) != -1) {
+            if (
+              url.indexOf(
+                config.data[i].QoTd.replace("https://", "").replace(
+                  "http://",
+                  ""
+                )
+              ) != -1
+            ) {
               loadMenu(config.data[i].menu);
             } else if (!config.data[i].hidden) {
               html +=
@@ -208,7 +218,7 @@ function loadServices() {
 
 // Permet de charger le menu
 function loadMenu(menu) {
-  if (menu.length != 0) {
+  if (menu.length != 0 && document.getElementById("iwh_header_menu") == null) {
     try {
       var limenu = document.createElement("li");
       limenu.innerHTML =
