@@ -90,6 +90,8 @@ Pour installer et lancer en mode production :
 make build
 make run-prod
 ```
+Remarque : cette application peut être déployée sur [ezmaster](https://github.com/Inist-CNRS/ezmaster)
+
 
 Pour connaître les autres commandes disponibles :
 ```
