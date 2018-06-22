@@ -266,16 +266,16 @@ function stateIstex() {
           var json = JSON.parse(
             responseText.replace("jsonUptimeRobotApi(", "").replace(")", "")
           );
-          if (json.stat == "ok")
+          if (json.monitors.monitor[0].status > 2)
             document.getElementById("iwh_header_status_a").innerHTML =
               '<img src="' +
               ressourceUrl +
-              'img/ic_status_ok.svg" alt="statut" title="plateforme ISTEX en ligne"/>';
+              'img/ic_status_down.svg" alt="statut" title="plateforme ISTEX momentanément hors service"/>';
           else
             document.getElementById("iwh_header_status_a").innerHTML =
               '<img src="' +
               ressourceUrl +
-              'img/ic_status_down.svg" alt="statut" title="plateforme ISTEX momentanément hors service"/> ';
+              'img/ic_status_ok.svg" alt="statut" title="plateforme ISTEX en ligne"/> ';
         } catch (error) {
           document.getElementById("iwh_header_status_a").innerHTML =
             '<img src="' +
