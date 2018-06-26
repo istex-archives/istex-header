@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat");
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
 #istex_web_header {
   background-color: #242b32;
@@ -124,6 +125,7 @@
 #iwh_readme_text a,
 #iwh_readme_text {
   color: #ffffff;
+  font-family: 'Open Sans';
 }
 
 #iwh_readme_text h1,
