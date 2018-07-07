@@ -1,5 +1,7 @@
-[![Build Status](https://travis-ci.org/istex/istex-header.svg?branch=master)](https://travis-ci.org/istex/istex-header)
+
 # istex-header
+
+[![Build Status](https://travis-ci.org/istex/istex-header.svg?branch=master)](https://travis-ci.org/istex/istex-header) [![Docker Pulls](https://img.shields.io/docker/pulls/istex/istex-header.svg)](https://registry.hub.docker.com/u/istex/istex-header/)
 
 Le header web affiché sur tous les sites de la Galaxy Istex
 
