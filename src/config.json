@@ -59,9 +59,9 @@
     "uri": "ark:/65376/DZ2-ZBV0QVZ2-8",
     "z351": "API",
     "A2KZ": [
-        "tdm"
+        "tdm","doc"
     ],
-    "QoTd": "https://doc.istex.fr/api/",
+    "QoTd": "https://api.istex.fr/",
     "Cl2W": "https://www.istex.fr/wp-content/uploads/2017/11/ic_Istex_API-1.svg",
     "publicationDate": "2018-04-23T12:57:11.593Z",
     "BNzf": "API ISTEX",
@@ -102,8 +102,8 @@
     "uri": "ark:/65376/DZ2-G44ZWGJS-3",
     "z351": "data.istex.fr",
     "A2KZ": [
-        "doct",
-        "dm"
+        "doc",
+        "tdm"
     ],
     "QoTd": "https://data.istex.fr/",
     "Cl2W": "https://www.istex.fr/wp-content/uploads/2017/11/ic_Data_ISTEX-2.svg",
